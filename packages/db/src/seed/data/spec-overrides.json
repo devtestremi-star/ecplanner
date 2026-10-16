@@ -457,14 +457,14 @@
     {
       "spellId": 443454,
       "specId": 262,
-      "category": "UTILITY",
-      "note": "Ancestral Swiftness en Elemental"
+      "category": "OFFENSIVE",
+      "note": "Ancestral Swiftness en Elemental — sort offensif pour un dps ; Restoration le garde en HEALER"
     },
     {
       "spellId": 443454,
       "specId": 263,
-      "category": "UTILITY",
-      "note": "Ancestral Swiftness en Enhancement"
+      "category": "OFFENSIVE",
+      "note": "Ancestral Swiftness en Enhancement — sort offensif pour un dps ; Restoration le garde en HEALER"
     },
     {
       "spellId": 443028,
