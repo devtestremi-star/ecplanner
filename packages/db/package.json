@@ -22,6 +22,7 @@
     "schema:update": "node --env-file=../../.env --import @swc-node/register/esm-register ../../node_modules/@mikro-orm/cli/esm.js schema:update --run",
     "migration:create": "node --env-file=../../.env --import @swc-node/register/esm-register ../../node_modules/@mikro-orm/cli/esm.js migration:create",
     "migration:up": "node --env-file=../../.env --import @swc-node/register/esm-register ../../node_modules/@mikro-orm/cli/esm.js migration:up",
+    "migration:down": "node --env-file=../../.env --import @swc-node/register/esm-register ../../node_modules/@mikro-orm/cli/esm.js migration:down",
     "seed": "node --env-file=../../.env --import @swc-node/register/esm-register src/seed/seed.ts"
   },
   "dependencies": {

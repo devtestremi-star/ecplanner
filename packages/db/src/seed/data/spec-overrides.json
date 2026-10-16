@@ -295,6 +295,78 @@
     {
       "spellId": 205636,
       "specId": 104
+    },
+    {
+      "spellId": 216331,
+      "specId": 66
+    },
+    {
+      "spellId": 216331,
+      "specId": 70
+    },
+    {
+      "spellId": 215769,
+      "specId": 258
+    },
+    {
+      "spellId": 421453,
+      "specId": 258
+    },
+    {
+      "spellId": 322118,
+      "specId": 268
+    },
+    {
+      "spellId": 322118,
+      "specId": 269
+    },
+    {
+      "spellId": 325197,
+      "specId": 268
+    },
+    {
+      "spellId": 325197,
+      "specId": 269
+    },
+    {
+      "spellId": 388615,
+      "specId": 268
+    },
+    {
+      "spellId": 388615,
+      "specId": 269
+    },
+    {
+      "spellId": 359816,
+      "specId": 1467
+    },
+    {
+      "spellId": 359816,
+      "specId": 1473
+    },
+    {
+      "spellId": 363534,
+      "specId": 1467
+    },
+    {
+      "spellId": 363534,
+      "specId": 1473
+    },
+    {
+      "spellId": 370537,
+      "specId": 1467
+    },
+    {
+      "spellId": 370537,
+      "specId": 1473
+    },
+    {
+      "spellId": 740,
+      "specId": 102
+    },
+    {
+      "spellId": 443028,
+      "specId": 268
     }
   ],
   "overrides": [
@@ -339,6 +411,78 @@
       "specId": 1473,
       "category": "PERSONAL",
       "note": "Emerald Blossom en Augmentation — idem ; seul Preservation le garde en HEALER"
+    },
+    {
+      "spellId": 31884,
+      "specId": 66,
+      "category": "OFFENSIVE",
+      "note": "Avenging Wrath en Protection — burst, pas un cooldown de soin"
+    },
+    {
+      "spellId": 31884,
+      "specId": 70,
+      "category": "OFFENSIVE",
+      "note": "Avenging Wrath en Retribution — burst, pas un cooldown de soin"
+    },
+    {
+      "spellId": 391528,
+      "specId": 102,
+      "category": "OFFENSIVE",
+      "note": "Convoke the Spirits en Balance"
+    },
+    {
+      "spellId": 391528,
+      "specId": 103,
+      "category": "OFFENSIVE",
+      "note": "Convoke the Spirits en Feral"
+    },
+    {
+      "spellId": 391528,
+      "specId": 104,
+      "category": "OFFENSIVE",
+      "note": "Convoke the Spirits en Guardian"
+    },
+    {
+      "spellId": 378081,
+      "specId": 262,
+      "category": "UTILITY",
+      "note": "Nature's Swiftness en Elemental"
+    },
+    {
+      "spellId": 378081,
+      "specId": 263,
+      "category": "UTILITY",
+      "note": "Nature's Swiftness en Enhancement"
+    },
+    {
+      "spellId": 443454,
+      "specId": 262,
+      "category": "UTILITY",
+      "note": "Ancestral Swiftness en Elemental"
+    },
+    {
+      "spellId": 443454,
+      "specId": 263,
+      "category": "UTILITY",
+      "note": "Ancestral Swiftness en Enhancement"
+    },
+    {
+      "spellId": 443028,
+      "specId": 269,
+      "category": "OFFENSIVE",
+      "note": "Celestial Conduit en Windwalker"
+    },
+    {
+      "spellId": 374227,
+      "specId": 1467,
+      "category": "EXTERNAL",
+      "note": "Zephyr en Devastation — réduction de groupe, comme Rallying Cry ou Darkness"
+    },
+    {
+      "spellId": 374227,
+      "specId": 1473,
+      "category": "EXTERNAL",
+      "note": "Zephyr en Augmentation — idem"
     }
   ]
 }

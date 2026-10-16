@@ -65,4 +65,4 @@ Coût : 0 $. Le front est servi en statique, toute l'API passe par une seule fon
 | `/api/admin` | Exige `Authorization: Bearer $ADMIN_TOKEN`. Sans `ADMIN_TOKEN`, ouvert en local, **fermé** une fois déployé. Le front demande le jeton au premier refus. |
 | `/api/cron/purge` | Appelé chaque jour par Vercel. Au-delà de `PURGE_MAX_RUNS` runs, supprime la moitié la plus ancienne (`scanned_at`). Seuil en NOMBRE de runs : un DELETE ne réduit pas `pg_database_size()`. |
 | Pool | Sur Vercel (`VERCEL=1`), 2 connexions max par instance ; c'est le pooler Neon qui mutualise. |
-| Schéma | Pas de migrations : une évolution d'entité se pousse à la main avec `schema:update` sur l'URL Neon. |
+| Migrations | `packages/db/src/migrations/`. À appliquer sur Neon après chaque ajout : `DATABASE_URL='<url non poolée>' npm run -w @timeline/db migration:up`. Une correction de données va AUSSI dans le JSON du seed, qui reste la source de vérité. |
