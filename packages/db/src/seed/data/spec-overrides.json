@@ -489,6 +489,48 @@
       "specId": 65,
       "category": "HEALER",
       "note": "Divine Protection en Holy — cooldown de soigneur ; celle de Retribution est un autre sort (403876), qui reste PERSONAL"
+    },
+    {
+      "spellId": 1291894,
+      "specId": 65,
+      "category": "HEALER",
+      "note": "Soulcoiler Ritual Vessel en Holy — CD de soin chez un soigneur, EXTERNAL sinon"
+    },
+    {
+      "spellId": 1291894,
+      "specId": 105,
+      "category": "HEALER",
+      "note": "Soulcoiler Ritual Vessel en Restoration — CD de soin chez un soigneur, EXTERNAL sinon"
+    },
+    {
+      "spellId": 1291894,
+      "specId": 256,
+      "category": "HEALER",
+      "note": "Soulcoiler Ritual Vessel en Discipline — CD de soin chez un soigneur, EXTERNAL sinon"
+    },
+    {
+      "spellId": 1291894,
+      "specId": 257,
+      "category": "HEALER",
+      "note": "Soulcoiler Ritual Vessel en Holy — CD de soin chez un soigneur, EXTERNAL sinon"
+    },
+    {
+      "spellId": 1291894,
+      "specId": 264,
+      "category": "HEALER",
+      "note": "Soulcoiler Ritual Vessel en Restoration — CD de soin chez un soigneur, EXTERNAL sinon"
+    },
+    {
+      "spellId": 1291894,
+      "specId": 270,
+      "category": "HEALER",
+      "note": "Soulcoiler Ritual Vessel en Mistweaver — CD de soin chez un soigneur, EXTERNAL sinon"
+    },
+    {
+      "spellId": 1291894,
+      "specId": 1468,
+      "category": "HEALER",
+      "note": "Soulcoiler Ritual Vessel en Preservation — CD de soin chez un soigneur, EXTERNAL sinon"
     }
   ]
 }
