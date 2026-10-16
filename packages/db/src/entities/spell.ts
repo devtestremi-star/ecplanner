@@ -29,6 +29,25 @@ export enum SpellCategory {
   BOSS = 'BOSS',
 }
 
+/** Ce que fait un sort de joueur qui répond aux dégâts. Voir `Spell.effect`. */
+export enum SpellEffect {
+  HEALING = 'HEALING',
+  SHIELD = 'SHIELD',
+  DR = 'DR',
+}
+
+/** Nature des dégâts d'un sort de boss. Voir `Spell.damageType`. */
+export enum BossDamageType {
+  BURST = 'burst',
+  DOT = 'dot',
+  /** Gros coup sur le tank : n'appelle que ses défensifs et les externes. */
+  TANKBUSTER = 'tankbuster',
+  /** Évitable : aucun dégât s'il est bien joué, jamais une ancre. */
+  DODGE = 'dodge',
+  /** Sans intérêt pour l'alignement, jamais une ancre. */
+  IGNORE = 'ignore',
+}
+
 /**
  * Plan §5.2. Pas d'enum de portée : l'appartenance se lit dans les relations.
  * Aucune ligne `SpellSpec` et pas de `boss` ⇒ sort inter-classes, toujours inclus.
@@ -74,6 +93,34 @@ export class Spell {
   @Property({ type: 'Date', nullable: true })
   cooldownMeasuredAt?: Date;
 
+  /**
+   * Nature des dégâts d'un sort de boss — renseignée ⇔ sort de boss. Décide comment
+   * l'alignement y rattache les réponses des joueurs (`api/src/align.ts`) :
+   *  - `burst`      : un coup unique, au moment du cast. On se protège AVANT.
+   *  - `dot`        : des dégâts étalés après le cast. On soigne et on se protège PENDANT.
+   *  - `tankbuster` : un coup unique sur le tank, qui n'appelle que ses réponses à lui.
+   *  - `dodge`, `ignore` : rien à quoi répondre, jamais une ancre.
+   *
+   * Pas de durée : décision de curation, une fenêtre fixe suffit (coupée par la capacité
+   * suivante). ⚠️ Les dégâts d'un dot ne sont pas toujours attribués au sort lui-même —
+   * Ssscavenging pose un debuff qui frappe sous le nom de Carrion Burst. D'où une saisie
+   * manuelle, jamais une déduction des logs.
+   */
+  @Enum({ items: () => BossDamageType, type: 'string', nullable: true })
+  damageType?: BossDamageType;
+
+  /**
+   * Ce que fait un sort de joueur qui peut répondre à une capacité de boss (catégorie
+   * PERSONAL, EXTERNAL ou HEALER, ou requalifié ainsi pour une spec). Décide du sens de
+   * rattachement dans l'alignement :
+   *  - `HEALING` soigne : utile avant ou après les dégâts ;
+   *  - `SHIELD` absorbe et `DR` réduit : utiles seulement avant les dégâts, ou pendant
+   *    un dot.
+   * Classé à la main d'après le tooltip, sort par sort — jamais déduit.
+   */
+  @Enum({ items: () => SpellEffect, type: 'string', nullable: true })
+  effect?: SpellEffect;
+
   /** Renseigné ⇔ sort de boss. */
   @ManyToOne(() => Boss, { ref: true, nullable: true, fieldName: 'boss_encounter_id' })
   @Index()
@@ -95,7 +142,9 @@ export class Spell {
   filterType?: string;
 
   /**
-   * Annotation de curation, reprise de `boss-spells.json` et transmise jusqu'au front.
+   * Sort de boss PLANIFIABLE : copie du drapeau `allowedInPlan` de l'addon (`Data/Content.lua`),
+   * repris de `boss-spells.json`. Rien à voir avec `allowInTimeline` de l'addon, qui ne règle
+   * que l'affichage des barres en combat et que le site n'importe pas.
    *
    * Ne filtre pas le SCAN — tout ce qui est curé entre dans le filtre WCL — ni le
    * pré-masquage des chips, retiré depuis : cacher au premier rendu des sorts réellement
@@ -106,7 +155,7 @@ export class Spell {
    * l'export ECP. Le passer à `false` retire silencieusement le sort de tous les plans.
    */
   @Property({ type: 'boolean', default: true })
-  inTimeline: boolean = true;
+  allowedInPlan: boolean = true;
 
 
   /**
@@ -157,4 +206,28 @@ export class SpellSpec {
   category?: SpellCategory;
 
   [PrimaryKeyProp]?: ['spell', 'specId'];
+}
+
+/**
+ * Identifiant sous lequel un sort de boss apparaît dans le log de combat, quand il diffère
+ * de celui de la curation.
+ *
+ * La curation (`boss-spells.json`) porte les identifiants de l'ADDON : ce sont eux que
+ * l'export ECP doit émettre. Mais l'addon minute parfois l'event serveur d'une capacité,
+ * et le log enregistre le cast sous un autre id — Ravenous Bellow : 1235118 côté addon,
+ * 1234681 dans le log. Sans alias, le filtre de scan ne demande jamais le second, et la
+ * capacité manque à la timeline sans le moindre avertissement.
+ *
+ * Le scan ramène tout cast reçu sous un alias à l'identifiant curé : en aval, plus
+ * personne ne voit les identifiants du log.
+ */
+@Entity({ tableName: 'spell_alias' })
+export class SpellAlias {
+  /** `abilityGameID` tel que Warcraft Logs l'enregistre. Clé : un alias ne désigne qu'un sort. */
+  @PrimaryKey({ type: 'integer', autoincrement: false })
+  aliasId!: number;
+
+  /** Le sort curé — l'identifiant de l'addon. */
+  @ManyToOne(() => Spell, { ref: true, deleteRule: 'cascade', fieldName: 'spell_id', index: true })
+  spell!: Ref<Spell>;
 }

@@ -1,5 +1,6 @@
 import { Box, Chip, CircularProgress, Container, Stack, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { SpellIcon } from '../spells/SpellIcon.js';
 import { loadCatalog, type SpellSummary } from '../spells/catalog.js';
 import { CATEGORY_COLOR } from '../timeline/categories.js';
@@ -9,6 +10,7 @@ const CAT_COLOR: Record<string, string> = { ...CATEGORY_COLOR, BOSS: '#e06c75' }
 
 /** Page de contrôle du rendu : toutes les icônes du catalogue, tooltip au survol. */
 export function Spells() {
+  const { t } = useTranslation();
   const [spells, setSpells] = useState<SpellSummary[] | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -29,9 +31,9 @@ export function Spells() {
 
   return (
     <Container maxWidth="lg" sx={{ py: 5 }}>
-      <Typography variant="h1" gutterBottom>Catalogue des sorts</Typography>
+      <Typography variant="h1" gutterBottom>{t('spells.title')}</Typography>
       <Typography sx={{ color: 'text.secondary', mb: 4 }}>
-        {spells.length} sorts. Survole une icône pour son tooltip Wowhead.
+        {t('spells.count', { count: spells.length })}
       </Typography>
 
       {[...byCat.entries()].sort((a, b) => b[1].length - a[1].length).map(([cat, list]) => (

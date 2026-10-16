@@ -3,7 +3,7 @@
   "spellId": 66,
   "name": "Invisibility",
   "classId": 8,
-  "category": "PERSONAL",
+  "category": "UTILITY",
   "baseCooldownSec": 300,
   "specIds": [
    62,
@@ -17,6 +17,7 @@
   "name": "Divine Protection",
   "classId": 2,
   "category": "PERSONAL",
+  "effect": "DR",
   "baseCooldownSec": 60,
   "specIds": [
    65
@@ -28,6 +29,7 @@
   "name": "Fade",
   "classId": 5,
   "category": "PERSONAL",
+  "effect": "DR",
   "baseCooldownSec": 30,
   "specIds": [
    256,
@@ -41,6 +43,7 @@
   "name": "Lay on Hands",
   "classId": 2,
   "category": "HEALER",
+  "effect": "HEALING",
   "baseCooldownSec": 600,
   "specIds": [
    65,
@@ -54,6 +57,7 @@
   "name": "Divine Shield",
   "classId": 2,
   "category": "PERSONAL",
+  "effect": "DR",
   "baseCooldownSec": 300,
   "specIds": [
    65,
@@ -67,6 +71,7 @@
   "name": "Tranquility",
   "classId": 11,
   "category": "HEALER",
+  "effect": "HEALING",
   "baseCooldownSec": 150,
   "specIds": [
    102,
@@ -94,6 +99,7 @@
   "name": "Demoralizing Shout",
   "classId": 1,
   "category": "PERSONAL",
+  "effect": "DR",
   "baseCooldownSec": 45,
   "specIds": [
    71,
@@ -160,6 +166,7 @@
   "name": "Evasion",
   "classId": 4,
   "category": "PERSONAL",
+  "effect": "DR",
   "baseCooldownSec": 120,
   "specIds": [
    259,
@@ -186,6 +193,7 @@
   "name": "Blessing of Sacrifice",
   "classId": 2,
   "category": "PERSONAL",
+  "effect": "DR",
   "baseCooldownSec": 120,
   "specIds": [
    65,
@@ -225,6 +233,7 @@
   "name": "Ice Barrier",
   "classId": 8,
   "category": "PERSONAL",
+  "effect": "SHIELD",
   "baseCooldownSec": 30,
   "specIds": [
    64
@@ -262,6 +271,7 @@
   "name": "Vampiric Embrace",
   "classId": 5,
   "category": "EXTERNAL",
+  "effect": "HEALING",
   "baseCooldownSec": 120,
   "specIds": [
    258
@@ -286,6 +296,7 @@
   "name": "Desperate Prayer",
   "classId": 5,
   "category": "PERSONAL",
+  "effect": "HEALING",
   "baseCooldownSec": 90,
   "specIds": [
    256,
@@ -338,6 +349,7 @@
   "name": "Barkskin",
   "classId": 11,
   "category": "PERSONAL",
+  "effect": "DR",
   "baseCooldownSec": 60,
   "specIds": [
    102,
@@ -366,6 +378,7 @@
   "name": "Cloak of Shadows",
   "classId": 4,
   "category": "PERSONAL",
+  "effect": "DR",
   "baseCooldownSec": 120,
   "specIds": [
    259,
@@ -379,6 +392,7 @@
   "name": "Aura Mastery",
   "classId": 2,
   "category": "HEALER",
+  "effect": "DR",
   "baseCooldownSec": 150,
   "specIds": [
    65,
@@ -392,6 +406,7 @@
   "name": "Ardent Defender",
   "classId": 2,
   "category": "PERSONAL",
+  "effect": "DR",
   "baseCooldownSec": 90,
   "specIds": [
    65,
@@ -405,6 +420,7 @@
   "name": "Avenging Wrath",
   "classId": 2,
   "category": "HEALER",
+  "effect": "HEALING",
   "baseCooldownSec": 105,
   "specIds": [
    65,
@@ -444,6 +460,7 @@
   "name": "Incarnation: Tree of Life",
   "classId": 11,
   "category": "HEALER",
+  "effect": "HEALING",
   "baseCooldownSec": 120,
   "specIds": [
    102,
@@ -471,6 +488,7 @@
   "name": "Ice Block",
   "classId": 8,
   "category": "PERSONAL",
+  "effect": "DR",
   "baseCooldownSec": 240,
   "specIds": [
    62,
@@ -484,6 +502,7 @@
   "name": "Dispersion",
   "classId": 5,
   "category": "PERSONAL",
+  "effect": "DR",
   "baseCooldownSec": 120,
   "specIds": [
    258
@@ -495,6 +514,7 @@
   "name": "Guardian Spirit",
   "classId": 5,
   "category": "HEALER",
+  "effect": "DR",
   "baseCooldownSec": 180,
   "specIds": [
    256,
@@ -508,6 +528,7 @@
   "name": "Anti-Magic Shell",
   "classId": 6,
   "category": "PERSONAL",
+  "effect": "SHIELD",
   "baseCooldownSec": 45,
   "specIds": [
    250,
@@ -521,6 +542,7 @@
   "name": "Death Pact",
   "classId": 6,
   "category": "PERSONAL",
+  "effect": "SHIELD",
   "baseCooldownSec": 120,
   "specIds": [
    250,
@@ -534,6 +556,7 @@
   "name": "Icebound Fortitude",
   "classId": 6,
   "category": "PERSONAL",
+  "effect": "DR",
   "baseCooldownSec": 120,
   "specIds": [
    250,
@@ -547,6 +570,7 @@
   "name": "Dancing Rune Weapon",
   "classId": 6,
   "category": "PERSONAL",
+  "effect": "DR",
   "baseCooldownSec": 120,
   "specIds": [
    250,
@@ -560,6 +584,7 @@
   "name": "Lichborne",
   "classId": 6,
   "category": "PERSONAL",
+  "effect": "HEALING",
   "baseCooldownSec": 120,
   "specIds": [
    250,
@@ -587,6 +612,7 @@
   "name": "Anti-Magic Zone",
   "classId": 6,
   "category": "EXTERNAL",
+  "effect": "DR",
   "baseCooldownSec": 240,
   "specIds": [
    250,
@@ -639,6 +665,7 @@
   "name": "Roar of Sacrifice",
   "classId": 3,
   "category": "PERSONAL",
+  "effect": "DR",
   "baseCooldownSec": 120,
   "specIds": [
    253,
@@ -652,6 +679,7 @@
   "name": "Vampiric Blood",
   "classId": 6,
   "category": "PERSONAL",
+  "effect": "HEALING",
   "baseCooldownSec": 90,
   "specIds": [
    250,
@@ -664,7 +692,7 @@
   "spellId": 55342,
   "name": "Mirror Image",
   "classId": 8,
-  "category": "PERSONAL",
+  "category": "UTILITY",
   "baseCooldownSec": 120,
   "specIds": [
    62,
@@ -691,6 +719,7 @@
   "name": "Survival Instincts",
   "classId": 11,
   "category": "PERSONAL",
+  "effect": "DR",
   "baseCooldownSec": 180,
   "specIds": [
    103
@@ -715,6 +744,7 @@
   "name": "Power Word: Barrier",
   "classId": 5,
   "category": "HEALER",
+  "effect": "DR",
   "baseCooldownSec": 180,
   "specIds": [
    256
@@ -726,6 +756,7 @@
   "name": "Divine Hymn",
   "classId": 5,
   "category": "HEALER",
+  "effect": "HEALING",
   "baseCooldownSec": 120,
   "specIds": [
    257
@@ -788,7 +819,7 @@
   "spellId": 88625,
   "name": "Holy Word: Chastise",
   "classId": 5,
-  "category": "HEALER",
+  "category": "UTILITY",
   "baseCooldownSec": 60,
   "specIds": [
    256,
@@ -802,6 +833,7 @@
   "name": "Rallying Cry",
   "classId": 1,
   "category": "EXTERNAL",
+  "effect": "HEALING",
   "baseCooldownSec": 180,
   "specIds": [
    71,
@@ -815,6 +847,7 @@
   "name": "Spirit Link Totem",
   "classId": 7,
   "category": "HEALER",
+  "effect": "HEALING",
   "baseCooldownSec": 180,
   "specIds": [
    262,
@@ -828,6 +861,7 @@
   "name": "Ironbark",
   "classId": 11,
   "category": "PERSONAL",
+  "effect": "DR",
   "baseCooldownSec": 90,
   "specIds": [
    102,
@@ -870,6 +904,7 @@
   "name": "Unending Resolve",
   "classId": 9,
   "category": "PERSONAL",
+  "effect": "DR",
   "baseCooldownSec": 180,
   "specIds": [
    265,
@@ -896,6 +931,7 @@
   "name": "Astral Shift",
   "classId": 7,
   "category": "PERSONAL",
+  "effect": "DR",
   "baseCooldownSec": 90,
   "specIds": [
    262,
@@ -909,6 +945,7 @@
   "name": "Healing Tide Totem",
   "classId": 7,
   "category": "HEALER",
+  "effect": "HEALING",
   "baseCooldownSec": 180,
   "specIds": [
    262,
@@ -922,6 +959,7 @@
   "name": "Dark Pact",
   "classId": 9,
   "category": "PERSONAL",
+  "effect": "SHIELD",
   "baseCooldownSec": 60,
   "specIds": [
    265,
@@ -935,6 +973,7 @@
   "name": "Exhilaration",
   "classId": 3,
   "category": "PERSONAL",
+  "effect": "HEALING",
   "baseCooldownSec": 120,
   "specIds": [
    253,
@@ -947,7 +986,7 @@
   "spellId": 110959,
   "name": "Greater Invisibility",
   "classId": 8,
-  "category": "PERSONAL",
+  "category": "UTILITY",
   "baseCooldownSec": 120,
   "specIds": [
    62,
@@ -987,6 +1026,7 @@
   "name": "Ascendance",
   "classId": 7,
   "category": "HEALER",
+  "effect": "HEALING",
   "baseCooldownSec": 180,
   "specIds": [
    262,
@@ -1000,6 +1040,7 @@
   "name": "Holy Prism",
   "classId": 2,
   "category": "HEALER",
+  "effect": "HEALING",
   "baseCooldownSec": 45,
   "specIds": [
    65,
@@ -1013,6 +1054,7 @@
   "name": "Revival",
   "classId": 10,
   "category": "HEALER",
+  "effect": "HEALING",
   "baseCooldownSec": 180,
   "specIds": [
    268,
@@ -1039,6 +1081,7 @@
   "name": "Die by the Sword",
   "classId": 1,
   "category": "PERSONAL",
+  "effect": "DR",
   "baseCooldownSec": 120,
   "specIds": [
    71
@@ -1050,6 +1093,7 @@
   "name": "Victory Rush",
   "classId": 1,
   "category": "PERSONAL",
+  "effect": "HEALING",
   "baseCooldownSec": 30,
   "specIds": [
    71,
@@ -1102,6 +1146,7 @@
   "name": "Touch of Karma",
   "classId": 10,
   "category": "PERSONAL",
+  "effect": "SHIELD",
   "baseCooldownSec": 90,
   "specIds": [
    269
@@ -1126,6 +1171,7 @@
   "name": "Nature's Swiftness",
   "classId": 11,
   "category": "HEALER",
+  "effect": "HEALING",
   "baseCooldownSec": 60,
   "specIds": [
    102,
@@ -1140,6 +1186,7 @@
   "name": "Invoke Niuzao, the Black Ox",
   "classId": 10,
   "category": "PERSONAL",
+  "effect": "DR",
   "baseCooldownSec": 120,
   "specIds": [
    268,
@@ -1218,6 +1265,7 @@
   "name": "Enraged Regeneration",
   "classId": 1,
   "category": "PERSONAL",
+  "effect": "HEALING",
   "baseCooldownSec": 120,
   "specIds": [
    72
@@ -1229,6 +1277,7 @@
   "name": "Crimson Vial",
   "classId": 4,
   "category": "PERSONAL",
+  "effect": "HEALING",
   "baseCooldownSec": 30,
   "specIds": [
    259,
@@ -1242,6 +1291,7 @@
   "name": "Aspect of the Turtle",
   "classId": 3,
   "category": "PERSONAL",
+  "effect": "DR",
   "baseCooldownSec": 180,
   "specIds": [
    253,
@@ -1267,7 +1317,7 @@
   "spellId": 190778,
   "name": "Sindragosa's Fury",
   "classId": 6,
-  "category": "PERSONAL",
+  "category": "OFFENSIVE",
   "baseCooldownSec": 300,
   "specIds": [
    250,
@@ -1307,6 +1357,7 @@
   "name": "Darkness",
   "classId": 12,
   "category": "EXTERNAL",
+  "effect": "DR",
   "baseCooldownSec": 180,
   "specIds": [
    577,
@@ -1333,6 +1384,7 @@
   "name": "Earth Elemental",
   "classId": 7,
   "category": "PERSONAL",
+  "effect": "DR",
   "baseCooldownSec": 180,
   "specIds": [
    262,
@@ -1346,6 +1398,7 @@
   "name": "Blur",
   "classId": 12,
   "category": "PERSONAL",
+  "effect": "DR",
   "baseCooldownSec": 60,
   "specIds": [
    577,
@@ -1359,6 +1412,7 @@
   "name": "Apotheosis",
   "classId": 5,
   "category": "HEALER",
+  "effect": "HEALING",
   "baseCooldownSec": 120,
   "specIds": [
    257
@@ -1449,6 +1503,7 @@
   "name": "Consumption",
   "classId": 6,
   "category": "PERSONAL",
+  "effect": "HEALING",
   "baseCooldownSec": 45,
   "specIds": [
    250,
@@ -1593,7 +1648,7 @@
   "spellId": 215769,
   "name": "Spirit of Redemption",
   "classId": 5,
-  "category": "HEALER",
+  "category": "UTILITY",
   "baseCooldownSec": 120,
   "specIds": [
    256,
@@ -1607,6 +1662,7 @@
   "name": "Avenging Crusader",
   "classId": 2,
   "category": "HEALER",
+  "effect": "HEALING",
   "baseCooldownSec": 105,
   "specIds": [
    65,
@@ -1659,6 +1715,7 @@
   "name": "Cold Snap",
   "classId": 8,
   "category": "PERSONAL",
+  "effect": "SHIELD",
   "baseCooldownSec": 300,
   "specIds": [
    62,
@@ -1672,6 +1729,7 @@
   "name": "Blazing Barrier",
   "classId": 8,
   "category": "PERSONAL",
+  "effect": "SHIELD",
   "baseCooldownSec": 30,
   "specIds": [
    63
@@ -1683,6 +1741,7 @@
   "name": "Prismatic Barrier",
   "classId": 8,
   "category": "PERSONAL",
+  "effect": "SHIELD",
   "baseCooldownSec": 30,
   "specIds": [
    62
@@ -1694,6 +1753,7 @@
   "name": "Fortifying Brew",
   "classId": 10,
   "category": "PERSONAL",
+  "effect": "DR",
   "baseCooldownSec": 120,
   "specIds": [
    268,
@@ -1759,6 +1819,7 @@
   "name": "Survival of the Fittest",
   "classId": 3,
   "category": "PERSONAL",
+  "effect": "DR",
   "baseCooldownSec": 180,
   "specIds": [
    253,
@@ -1864,6 +1925,7 @@
   "name": "Invoke Yu'lon, the Jade Serpent",
   "classId": 10,
   "category": "HEALER",
+  "effect": "HEALING",
   "baseCooldownSec": 120,
   "specIds": [
    268,
@@ -1877,6 +1939,7 @@
   "name": "Invoke Chi-Ji, the Red Crane",
   "classId": 10,
   "category": "HEALER",
+  "effect": "SHIELD",
   "baseCooldownSec": 120,
   "specIds": [
    268,
@@ -1903,6 +1966,7 @@
   "name": "Alter Time",
   "classId": 8,
   "category": "PERSONAL",
+  "effect": "HEALING",
   "baseCooldownSec": 60,
   "specIds": [
    62,
@@ -1916,6 +1980,7 @@
   "name": "Emerald Blossom",
   "classId": 13,
   "category": "HEALER",
+  "effect": "HEALING",
   "baseCooldownSec": 30,
   "specIds": [
    1467,
@@ -1929,6 +1994,7 @@
   "name": "Dream Flight",
   "classId": 13,
   "category": "HEALER",
+  "effect": "HEALING",
   "baseCooldownSec": 120,
   "specIds": [
    1467,
@@ -1955,6 +2021,7 @@
   "name": "Rewind",
   "classId": 13,
   "category": "HEALER",
+  "effect": "HEALING",
   "baseCooldownSec": 120,
   "specIds": [
    1467,
@@ -1968,6 +2035,7 @@
   "name": "Obsidian Scales",
   "classId": 13,
   "category": "PERSONAL",
+  "effect": "DR",
   "baseCooldownSec": 90,
   "specIds": [
    1467,
@@ -1994,6 +2062,7 @@
   "name": "Stasis",
   "classId": 13,
   "category": "HEALER",
+  "effect": "HEALING",
   "baseCooldownSec": 90,
   "specIds": [
    1467,
@@ -2020,6 +2089,7 @@
   "name": "Zephyr",
   "classId": 13,
   "category": "HEALER",
+  "effect": "DR",
   "baseCooldownSec": 120,
   "specIds": [
    1467,
@@ -2046,6 +2116,7 @@
   "name": "Divine Toll",
   "classId": 2,
   "category": "OFFENSIVE",
+  "effect": "HEALING",
   "baseCooldownSec": 60,
   "specIds": [
    65,
@@ -2072,6 +2143,7 @@
   "name": "Nature's Swiftness",
   "classId": 7,
   "category": "HEALER",
+  "effect": "HEALING",
   "baseCooldownSec": 60,
   "specIds": [
    262,
@@ -2085,6 +2157,7 @@
   "name": "Poison Cleansing Totem",
   "classId": 7,
   "category": "PERSONAL",
+  "effect": "HEALING",
   "baseCooldownSec": 120,
   "specIds": [
    262,
@@ -2176,6 +2249,7 @@
   "name": "Restoral",
   "classId": 10,
   "category": "HEALER",
+  "effect": "HEALING",
   "baseCooldownSec": 180,
   "specIds": [
    268,
@@ -2215,6 +2289,7 @@
   "name": "Convoke the Spirits",
   "classId": 11,
   "category": "HEALER",
+  "effect": "HEALING",
   "baseCooldownSec": 60,
   "specIds": [
    102,
@@ -2255,6 +2330,7 @@
   "name": "Divine Protection",
   "classId": 2,
   "category": "PERSONAL",
+  "effect": "DR",
   "baseCooldownSec": 60,
   "specIds": [
    70
@@ -2292,6 +2368,7 @@
   "name": "Ultimate Penitence",
   "classId": 5,
   "category": "HEALER",
+  "effect": "HEALING",
   "baseCooldownSec": 240,
   "specIds": [
    256,
@@ -2305,6 +2382,7 @@
   "name": "Ultimate Penitence",
   "classId": 5,
   "category": "HEALER",
+  "effect": "HEALING",
   "baseCooldownSec": 240,
   "specIds": [
    256
@@ -2355,6 +2433,7 @@
   "name": "Celestial Conduit",
   "classId": 10,
   "category": "HEALER",
+  "effect": "HEALING",
   "baseCooldownSec": 90,
   "specIds": [
    268,
@@ -2368,6 +2447,7 @@
   "name": "Ancestral Swiftness",
   "classId": 7,
   "category": "HEALER",
+  "effect": "HEALING",
   "baseCooldownSec": 30,
   "specIds": [
    262,
@@ -2394,6 +2474,7 @@
   "name": "Evangelism",
   "classId": 5,
   "category": "HEALER",
+  "effect": "HEALING",
   "baseCooldownSec": 90,
   "specIds": [
    256
@@ -2590,6 +2671,7 @@
   "name": "Consumption",
   "classId": 6,
   "category": "PERSONAL",
+  "effect": "HEALING",
   "baseCooldownSec": 45,
   "specIds": [
    250,
@@ -2655,6 +2737,7 @@
   "name": "Soulcoiler Ritual Vessel",
   "classId": null,
   "category": "HEALER",
+  "effect": "SHIELD",
   "baseCooldownSec": 120,
   "specIds": [],
   "origin": "defensives"

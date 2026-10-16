@@ -31,18 +31,18 @@ export function parseRunUrl(input: string): ParsedRunUrl {
     throw new InvalidRunUrlError(
       'bad-url',
       REPORT_CODE.test(trimmed)
-        ? 'Un code de rapport ne suffit pas : préciser la run avec ?fight=N'
-        : `URL Warcraft Logs non reconnue : ${trimmed.slice(0, 80)}`,
+        ? 'A report code alone is not enough: specify the run with ?fight=N'
+        : `Unrecognized Warcraft Logs URL: ${trimmed.slice(0, 80)}`,
     );
   }
 
   const match = url.pathname.match(/\/reports\/([a-zA-Z0-9]+)/);
   if (!match?.[1]) {
-    throw new InvalidRunUrlError('bad-url', "L'URL ne contient pas de /reports/<code>");
+    throw new InvalidRunUrlError('bad-url', 'The URL does not contain /reports/<code>');
   }
   const reportCode = match[1];
   if (!REPORT_CODE.test(reportCode)) {
-    throw new InvalidRunUrlError('bad-code', `Code de rapport malformé : ${reportCode}`);
+    throw new InvalidRunUrlError('bad-code', `Malformed report code: ${reportCode}`);
   }
 
   // WCL utilise tantôt la query string, tantôt le fragment.
@@ -52,12 +52,12 @@ export function parseRunUrl(input: string): ParsedRunUrl {
   if (raw === null) {
     throw new InvalidRunUrlError(
       'no-fight',
-      'URL sans paramètre `fight` : un rapport contient plusieurs runs, il faut désigner laquelle.',
+      'URL without a `fight` parameter: a report contains several runs, you must pick one.',
     );
   }
   if (raw === 'last') return { reportCode, fight: 'last' };
   if (!/^\d+$/.test(raw)) {
-    throw new InvalidRunUrlError('bad-fight', `Paramètre fight non géré : ${raw}`);
+    throw new InvalidRunUrlError('bad-fight', `Unsupported fight parameter: ${raw}`);
   }
   return { reportCode, fight: Number(raw) };
 }

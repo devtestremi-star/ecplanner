@@ -35,7 +35,7 @@ export default async function handler(req, res) {
     console.error('Démarrage de l’API impossible :', err);
     res.statusCode = 503;
     res.setHeader('Content-Type', 'application/json; charset=utf-8');
-    res.end(JSON.stringify({ status: 'error', message: 'API indisponible — voir les logs de la fonction' }));
+    res.end(JSON.stringify({ status: 'error', message: 'API unavailable - see the function logs' }));
     return;
   }
   srv.emit('request', req, res);

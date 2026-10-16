@@ -8,7 +8,7 @@
  *  - `data/spells.json` — union de la relecture manuelle et de wow_defensives, cette dernière
  *    prioritaire en cas de conflit.
  *  - `data/boss-spells.json` — curation manuelle des sorts de boss, par boss. Tout ce qui
- *    y est listé entre en base et donc dans le filtre de scan. `inTimeline` ne filtre ni
+ *    y est listé entre en base et donc dans le filtre de scan. `allowedInPlan` ne filtre ni
  *    la collecte ni l'affichage, mais il DÉCIDE de l'ancrage : seul un sort à `true` sert
  *    de point de recalage aux réponses des joueurs et devient une cible valide à l'export
  *    ECP. Le passer à `false` retire silencieusement le sort de tous les plans.
@@ -26,7 +26,7 @@ import { fileURLToPath } from 'node:url';
 import { MikroORM } from '@mikro-orm/postgresql';
 import { WclClient, buildAbilityLookup, WORLD_ZONE } from '@timeline/wcl';
 import config from '../mikro-orm.config.js';
-import { Boss, Dungeon, DungeonSeason, Season, Spell, SpellCategory, SpellSpec, TraitEntry } from '../entities/index.js';
+import { Boss, BossDamageType, Dungeon, DungeonSeason, Season, Spell, SpellAlias, SpellCategory, SpellEffect, SpellSpec, TraitEntry } from '../entities/index.js';
 
 const DATA = join(dirname(fileURLToPath(import.meta.url)), 'data');
 const read = async <T>(f: string): Promise<T> => JSON.parse(await readFile(join(DATA, f), 'utf8')) as T;
@@ -37,6 +37,8 @@ interface SpellRow {
   specIds: number[]; origin: string;
   /** Type d'event WCL attendu. Absent ou null = `cast`. */
   filterType?: string | null;
+  /** Ce que fait le sort s'il répond aux dégâts. Voir `Spell.effect`. */
+  effect?: string;
   /** Justification d'un ajout manuel — pourquoi ce sort ne vient pas des CSV. */
   note?: string;
 }
@@ -51,10 +53,17 @@ interface BossRow {
   spells: Array<{
     spellId: number;
     name: string;
+    /** Obligatoire : coup unique ou dot. Voir `Spell.damageType`. */
+    damageType: string;
     /** Type d'event WCL attendu. Absent = `cast`. Voir `Spell.filterType`. */
     filterType?: string | null;
     /** Annotation de curation, transmise jusqu'au front. Ne filtre rien. */
-    inTimeline?: boolean;
+    allowedInPlan?: boolean;
+    /**
+     * Identifiants sous lesquels le LOG enregistre ce sort, quand ils diffèrent de
+     * `spellId` (l'identifiant de l'addon). Voir `SpellAlias`.
+     */
+    aliases?: number[];
   }>;
 }
 
@@ -186,6 +195,7 @@ for (const s of spells) {
   e.name = m?.name ?? s.name;
   if (m?.icon) e.icon = m.icon;
   if (s.category) e.category = s.category as SpellCategory;
+  e.effect = (s.effect as SpellEffect | undefined) ?? undefined;
   e.filterType = s.filterType ?? undefined;
   if (s.baseCooldownSec) e.baseCooldownSec = s.baseCooldownSec;
   em.persist(e);
@@ -211,6 +221,22 @@ const removedLinks = new Set(specOverrides.removes.map((r) => `${r.spellId}|${r.
 const linkCategory = new Map(
   specOverrides.overrides.map((o) => [`${o.spellId}|${o.specId}`, o.category as SpellCategory]),
 );
+
+/**
+ * Tout sort qui peut répondre à une capacité de boss DOIT dire ce qu'il fait : sans
+ * `effect`, l'alignement ne sait pas s'il faut chercher avant ou après les dégâts.
+ * « Peut répondre » : catégorie de réponse par défaut, ou requalifié ainsi pour une spec.
+ */
+const RESPONSE = new Set<string>([SpellCategory.PERSONAL, SpellCategory.EXTERNAL, SpellCategory.HEALER]);
+const effects = new Set<string>(Object.values(SpellEffect));
+const missingEffect = spells.filter((s) => {
+  const responds = RESPONSE.has(s.category ?? '')
+    || specOverrides.overrides.some((o) => o.spellId === s.spellId && RESPONSE.has(o.category));
+  return responds ? !effects.has(s.effect ?? '') : s.effect !== undefined && !effects.has(s.effect);
+});
+if (missingEffect.length) {
+  throw new Error(`effect manquant ou invalide (HEALING, SHIELD ou DR) : ${missingEffect.map((s) => `${s.name} (${s.spellId})`).join(', ')}`);
+}
 // Réconciliation dans les deux sens : un rattachement qui se resserre doit perdre
 // ses liens devenus faux, pas seulement gagner les nouveaux.
 let added = 0;
@@ -290,7 +316,7 @@ for (const row of bossRows) {
 
   for (const sp of row.spells) {
     // Aucun verrou sur la COLLECTE : tout ce qui est listé est scanné et affiché.
-    // `inTimeline`, lui, décide de l'ancrage et de l'export ECP (cf. `Spell.inTimeline`).
+    // `allowedInPlan`, lui, décide de l'ancrage et de l'export ECP (cf. `Spell.allowedInPlan`).
     // La réconciliation du §6 retire ce qui sort de la curation.
     const m = meta.get(sp.spellId);
     let e = await em.findOne(Spell, { spellId: sp.spellId });
@@ -301,7 +327,12 @@ for (const row of bossRows) {
     e.boss = em.getReference(Boss, row.encounterID, { wrapped: true });
     // Un sort de boss aussi peut n'exister qu'en `applybuff` — même mécanique que côté joueur.
     e.filterType = sp.filterType ?? undefined;
-    e.inTimeline = sp.inTimeline ?? true;
+    e.allowedInPlan = sp.allowedInPlan ?? true;
+    // Obligatoire : sans lui l'alignement ne sait pas s'il faut chercher avant ou après.
+    if (!Object.values(BossDamageType).includes(sp.damageType as BossDamageType)) {
+      throw new Error(`${row.name} / ${sp.name} (${sp.spellId}) : damageType « ${sp.damageType} », attendu burst ou dot`);
+    }
+    e.damageType = sp.damageType as BossDamageType;
     em.persist(e);
     bossSpellCount++;
   }
@@ -321,6 +352,34 @@ if (staleBoss.length) {
   await em.nativeDelete(Spell, { spellId: { $in: staleBoss.map((e) => e.spellId) } });
 }
 console.log(`🗑  Boss ret. : ${staleBoss.length} sorts sortis de la curation`);
+
+// --- 6 bis. Alias de sorts de boss -----------------------------------------
+/**
+ * Remplacement en bloc : la table n'est qu'un dérivé de la curation. Deux garde-fous,
+ * parce qu'une erreur ici ne se verrait qu'au scan, sous forme de casts disparus :
+ *  - un alias ne désigne qu'UN sort ;
+ *  - un alias ne peut pas être lui-même un sort du catalogue, sinon le même cast serait
+ *    tantôt lui-même, tantôt un autre.
+ */
+const catalogIds = new Set([...spells.map((s) => s.spellId), ...bossSpellIds]);
+const aliasOf = new Map<number, number>();
+for (const row of bossRows) {
+  for (const sp of row.spells) {
+    for (const alias of sp.aliases ?? []) {
+      const prev = aliasOf.get(alias);
+      if (prev !== undefined && prev !== sp.spellId) {
+        throw new Error(`alias ${alias} attribué à deux sorts : ${prev} et ${sp.spellId}`);
+      }
+      if (catalogIds.has(alias)) throw new Error(`alias ${alias} (${sp.name}) est déjà un sort du catalogue`);
+      aliasOf.set(alias, sp.spellId);
+    }
+  }
+}
+await em.nativeDelete(SpellAlias, {});
+if (aliasOf.size) {
+  await em.insertMany(SpellAlias, [...aliasOf].map(([aliasId, spellId]) => ({ aliasId, spell: spellId })));
+}
+console.log(`✅ SpellAlias: ${aliasOf.size} alias (log → addon)`);
 
 // --- 7. Talents : nœud d'arbre → sort ---------------------------------------
 /**

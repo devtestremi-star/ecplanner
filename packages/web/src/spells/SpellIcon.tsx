@@ -1,7 +1,7 @@
 import { Box, Skeleton, Tooltip } from '@mui/material';
 import DOMPurify from 'dompurify';
 import { useEffect, useState } from 'react';
-import { iconSizeFor, iconUrl, loadTooltip, type SpellSummary } from './catalog.js';
+import { iconFallbackUrl, iconSizeFor, iconUrl, loadTooltip, type SpellSummary } from './catalog.js';
 
 /**
  * Le HTML vient de Wowhead : contenu tiers injecté dans notre page. On l'assainit
@@ -67,8 +67,11 @@ export interface SpellIconProps {
 /** L'icône seule dans la timeline ; le tooltip n'est chargé qu'au survol. */
 export function SpellIcon({ spell, size = 36, borderColor }: SpellIconProps) {
   // L'affichage et la taille servie sont découplés : demander /icons/32/ rendrait un 403.
-  const url = iconUrl(spell.icon, iconSizeFor(size));
-  const [broken, setBroken] = useState(false);
+  const served = iconSizeFor(size);
+  // 0 = CDN Blizzard, 1 = repli Wowhead, 2 = les deux ont échoué → « ? ».
+  const [attempt, setAttempt] = useState(0);
+  const url = attempt === 0 ? iconUrl(spell.icon, served) : iconFallbackUrl(spell.icon, served);
+  const broken = attempt >= 2;
   return (
     <Tooltip
       title={<TooltipBody spellId={spell.spellId} name={spell.name} />}
@@ -80,7 +83,7 @@ export function SpellIcon({ spell, size = 36, borderColor }: SpellIconProps) {
       <Box
         component={broken || !url ? 'div' : 'img'}
         {...(broken || !url ? {} : { src: url, alt: spell.name, loading: 'lazy' as const })}
-        onError={() => setBroken(true)}
+        onError={() => setAttempt((a) => a + 1)}
         sx={{
           width: size,
           height: size,

@@ -13,11 +13,11 @@ export class AdminGuard implements CanActivate {
   canActivate(ctx: ExecutionContext): boolean {
     const token = process.env.ADMIN_TOKEN;
     if (!token) {
-      if (isDeployed()) throw new ForbiddenException('Admin désactivé : ADMIN_TOKEN non configuré');
+      if (isDeployed()) throw new ForbiddenException('Admin disabled: ADMIN_TOKEN is not configured');
       return true;
     }
     const req = ctx.switchToHttp().getRequest<FastifyRequest>();
-    if (!bearerMatches(req.headers.authorization, token)) throw new UnauthorizedException('Jeton admin requis');
+    if (!bearerMatches(req.headers.authorization, token)) throw new UnauthorizedException('Admin token required');
     return true;
   }
 }

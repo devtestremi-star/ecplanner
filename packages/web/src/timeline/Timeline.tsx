@@ -1,8 +1,11 @@
 import { Box, Paper, Stack, Typography } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import { SpellIcon } from '../spells/SpellIcon.js';
 import { iconSizeFor, iconUrl, type SpellSummary } from '../spells/catalog.js';
 import type { RunDetail } from '../api.js';
 import { categoryOf, type Category } from './categories.js';
+import { PanScroll } from './PanScroll.js';
+import { playerSpellKey } from './PlayerSpellFilter.js';
 import { minSeparationMs, packLane } from './stack.js';
 
 /** Pas de zoom : une échelle fixe, et le défilement horizontal fait le reste. */
@@ -93,9 +96,14 @@ export interface TimelineProps {
   aligned?: boolean;
   /** Sorts de boss masqués, par spellId. Filtre d'affichage seulement. */
   hiddenBossSpells?: ReadonlySet<number>;
+  /** Sorts masqués pour un joueur précis, clés `sourceID-spellId`. Filtre d'affichage seulement. */
+  hiddenPlayerSpells?: ReadonlySet<string>;
+  /** Joueurs masqués en entier (`?playerOff`) : leur piste disparaît. */
+  hiddenPlayers?: ReadonlySet<number>;
 }
 
-export function Timeline({ detail, catalog, categories, hiddenBossSpells, aligned }: TimelineProps) {
+export function Timeline({ detail, catalog, categories, hiddenBossSpells, hiddenPlayerSpells, hiddenPlayers, aligned }: TimelineProps) {
+  const { t } = useTranslation();
   /**
    * Abscisse effective d'un cast. Un cast sans ancre garde sa position réelle même quand
    * l'alignement est actif — il n'y a rien sur quoi le recaler.
@@ -146,11 +154,12 @@ export function Timeline({ detail, catalog, categories, hiddenBossSpells, aligne
          * la colonne des noms et la piste défilante doivent partager EXACTEMENT les
          * mêmes hauteurs, sinon les lignes se désalignent au premier décalage.
          */
-        const lanes = players.map((player) => {
+        const lanes = players.filter((p) => !hiddenPlayers?.has(p.sourceID)).map((player) => {
           const casts = boss.casts.filter(
             (c) =>
               c.sourceID === player.sourceID &&
-              categories.has(categoryOf(catalog.get(c.abilityGameID), player.specId)),
+              categories.has(categoryOf(catalog.get(c.abilityGameID), player.specId)) &&
+              !hiddenPlayerSpells?.has(playerSpellKey(player.sourceID, c.abilityGameID)),
           );
           const { placed, rowCount } = packLane(casts, at, windowMs);
           return { player, placed, rowCount, height: LANE_H + (rowCount - 1) * STACK_OFFSET };
@@ -166,9 +175,9 @@ export function Timeline({ detail, catalog, categories, hiddenBossSpells, aligne
               <Typography sx={{ color: 'text.secondary' }}>{boss.orderIndex + 1}</Typography>
               <Typography variant="h2" sx={{ fontSize: '1rem' }}>{boss.name}</Typography>
               <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                {mmss(boss.duration)} · {visible} / {boss.casts.length} casts
-                {bossLane.placed.length > 0 && ` · ${bossLane.placed.length} du boss`}
-                {' '}· run +{mmss(boss.offsetRun)}
+                {t('timeline.summary', { duration: mmss(boss.duration), visible, total: boss.casts.length })}
+                {bossLane.placed.length > 0 && t('timeline.summaryBoss', { count: bossLane.placed.length })}
+                {t('timeline.summaryOffset', { offset: mmss(boss.offsetRun) })}
               </Typography>
             </Stack>
 
@@ -186,11 +195,7 @@ export function Timeline({ detail, catalog, categories, hiddenBossSpells, aligne
                       borderBottom: '1px solid', borderColor: 'rgba(248,81,73,.25)',
                     }}
                   >
-                    <Box sx={{ width: 8, height: 8, borderRadius: '50%', bgcolor: BOSS_COLOR, flex: 'none' }} />
-                    <Box sx={{ minWidth: 0 }}>
-                      <Typography variant="body2" noWrap sx={{ color: BOSS_COLOR }}>{boss.name}</Typography>
-                      <Typography variant="caption" sx={{ color: 'text.secondary' }} noWrap>boss</Typography>
-                    </Box>
+                    <Typography variant="body2" noWrap sx={{ minWidth: 0, color: BOSS_COLOR }}>{boss.name}</Typography>
                   </Stack>
                 )}
                 {lanes.map(({ player: p, height }) => (
@@ -212,8 +217,8 @@ export function Timeline({ detail, catalog, categories, hiddenBossSpells, aligne
                       <Box
                         component="img"
                         src={iconUrl(p.specIcon, iconSizeFor(RECAP_ICON)) ?? undefined}
-                        alt={[p.class, p.spec].filter(Boolean).join(' — ')}
-                        title={[p.class, p.spec].filter(Boolean).join(' — ')}
+                        alt={[p.class, p.spec].filter(Boolean).join(' - ')}
+                        title={[p.class, p.spec].filter(Boolean).join(' - ')}
                         sx={{
                           width: RECAP_ICON, height: RECAP_ICON, flex: 'none', display: 'block',
                           borderRadius: '4px', border: `1px solid ${p.color ?? 'rgba(255,255,255,.2)'}`,
@@ -238,7 +243,7 @@ export function Timeline({ detail, catalog, categories, hiddenBossSpells, aligne
               </Box>
 
               {/* Piste défilante */}
-              <Box sx={{ overflowX: 'auto', overflowY: 'hidden', flex: 1 }}>
+              <PanScroll sx={{ flex: 1 }}>
                 <Box sx={{ position: 'relative', width }}>
                   <Box sx={{ position: 'absolute', inset: 0 }}>
                     <Ruler endSec={endSec} />
@@ -257,7 +262,7 @@ export function Timeline({ detail, catalog, categories, hiddenBossSpells, aligne
                         variant="caption"
                         sx={{ position: 'absolute', top: 0, left: 5, color: 'text.secondary', whiteSpace: 'nowrap' }}
                       >
-                        fin
+                        {t('timeline.end')}
                       </Typography>
                     </Box>
                   </Box>
@@ -343,12 +348,12 @@ export function Timeline({ detail, catalog, categories, hiddenBossSpells, aligne
                     </Box>
                   ))}
                 </Box>
-              </Box>
+              </PanScroll>
             </Box>
           </Paper>
         );
       })}
-      {bySource.size === 0 && <Typography color="text.secondary">Aucun participant.</Typography>}
+      {bySource.size === 0 && <Typography color="text.secondary">{t('timeline.noParticipants')}</Typography>}
     </Stack>
   );
 }

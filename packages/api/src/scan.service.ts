@@ -66,7 +66,7 @@ export class ScanService {
           eventsStored: existing.bosses.getItems().reduce((n, b) => n + b.events.length, 0),
           eventsDropped: 0,
           pointsSpent: 0,
-          warnings: ['déjà scanné — servi depuis la base, aucun point consommé'],
+          warnings: ['already scanned - served from the database, no points spent'],
         };
       }
     }

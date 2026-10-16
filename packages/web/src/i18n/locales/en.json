@@ -1,0 +1,196 @@
+{
+  "app": {
+    "name": "Eiiko Cooldown Planner"
+  },
+  "nav": {
+    "home": "Home",
+    "discord": "Discord",
+    "getAddon": "Get the addon",
+    "curseforge": "CurseForge",
+    "wago": "Wago",
+    "collapse": "Collapse",
+    "expand": "Expand"
+  },
+  "footer": {
+    "tagline": "Eiiko Cooldown Planner - companion site of the in-game addon",
+    "discord": "Join the Discord"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Mythic+ · Warcraft Logs",
+      "name": "<e>E</e>iiko <c>C</c>ooldown <p>P</p>lanner",
+      "title": "Turn a run into a plan",
+      "subtitle": "See who used which cooldown and when, then export it straight into the addon for your group."
+    },
+    "scan": {
+      "title": "Scan a run",
+      "placeholder": "https://www.warcraftlogs.com/reports/CODE?fight=3",
+      "submit": "Scan",
+      "submitting": "Scanning…",
+      "hint": "The link must point to a single run: <code>?fight=3</code>, <code>#fight=3</code> or <code>?fight=last</code>.",
+      "force": "Force a new scan",
+      "forceHelp": "Ignores the stored version and queries Warcraft Logs again. Costs ~5 API points."
+    },
+    "steps": {
+      "paste": {
+        "title": "Paste a link",
+        "text": "A Warcraft Logs report pointing to a specific run."
+      },
+      "read": {
+        "title": "Read the timeline",
+        "text": "Every player's cooldowns, boss by boss, against the boss abilities."
+      },
+      "export": {
+        "title": "Export the plan",
+        "text": "Copy the ECP plan for one boss or the whole dungeon into the addon."
+      }
+    },
+    "addon": {
+      "title": "Get the ECP addon",
+      "text": "Plans exported from this site are read by Eiiko Cooldown Planner in game. Install it to see your healing and defensive cooldowns called out against every boss ability.",
+      "ctaCurseforge": "Download on CurseForge",
+      "ctaWago": "Download on Wago"
+    }
+  },
+  "run": {
+    "status": {
+      "completed": "completed",
+      "abandoned": "abandoned"
+    },
+    "missingSpells": "{{count}} spell(s) cast but missing from the catalog, not shown: <mono>{{ids}}</mono>. Either they left the catalog after the scan, or the loaded catalog is stale - a hard refresh tells which.",
+    "filters": {
+      "ecpPreset": "Filter for ECP",
+      "ecpPresetHelp": "Shows the run as the ECP export reads it: healing and external spells, each aligned on the boss ability it answers. Filters stay adjustable. Click again to leave and show everything.",
+      "categories": "Categories",
+      "categoryChip": "{{label}} · {{count}}",
+      "showAll": "show all",
+      "bossSpells": "Boss abilities",
+      "players": "Players",
+      "hiddenCount": "{{count}} hidden"
+    }
+  },
+  "categories": {
+    "OFFENSIVE": "Offensive",
+    "PERSONAL": "Personal",
+    "EXTERNAL": "Externals",
+    "HEALER": "Healing",
+    "BLOODLUST": "Bloodlust",
+    "UTILITY": "Utility"
+  },
+  "bossSpells": {
+    "show": "Hidden - click to show",
+    "hide": "Click to hide"
+  },
+  "playerSpells": {
+    "hiddenByCategory": "Already hidden by the category filter",
+    "hidePlayer": "Hide this player",
+    "showPlayer": "Hidden - click to show this player",
+    "none": "No tracked spell on this boss."
+  },
+  "timeline": {
+    "summary": "{{duration}} · {{visible}} / {{total}} casts",
+    "summaryBoss": " · {{count}} by the boss",
+    "summaryOffset": " · run +{{offset}}",
+    "end": "end",
+    "noParticipants": "No participants."
+  },
+  "ecp": {
+    "exportBoss": "Export ECP Boss",
+    "exportDungeon": "Export ECP Dungeon",
+    "copying": "Copying…",
+    "exportBossHelp": "Overwrites the {{boss}} plan in the open variant",
+    "exportDungeonHelp": "Creates a variant covering the whole dungeon",
+    "copied": "Copied - {{length}} characters. Paste it into the addon.",
+    "copiedWithFingerprint": "Copied - {{length}} characters · fingerprint {{fingerprint}}. Paste it into the addon.",
+    "clipboardRefused": "The browser blocked the copy. Fetch it from /api/runs/{{reportCode}}/{{fightID}}/ecp"
+  },
+  "spells": {
+    "title": "Spell catalog",
+    "count": "{{count}} spells. Hover an icon for its Wowhead tooltip."
+  },
+  "errors": {
+    "scanFailed": "The scan failed",
+    "runNotFound": "Run not found",
+    "exportFailed": "The export failed",
+    "catalogHttp": "catalog: HTTP {{status}}",
+    "runsHttp": "runs: HTTP {{status}}"
+  },
+  "admin": {
+    "subtitle": "administration",
+    "nav": {
+      "dashboard": "Dashboard",
+      "groupReference": "Reference data",
+      "groupScan": "Scan",
+      "groupSite": "Site",
+      "seasons": "Seasons",
+      "dungeons": "Dungeons",
+      "bosses": "Bosses",
+      "spells": "Spells",
+      "runs": "Scanned runs",
+      "scannedBosses": "Scanned bosses",
+      "scanJobs": "Scan jobs",
+      "backToSite": "← back to site"
+    },
+    "home": {
+      "title": "Dashboard",
+      "intro": "The 9 tables of the schema. The two pivot tables (dashed) have no page of their own: they are edited from their parent's record - a <code>spell_spec</code> without its spell means nothing.",
+      "pivotHelp": "Edited from its parent table"
+    },
+    "pivots": {
+      "dungeonSeasons": "encounterID per season",
+      "dungeonSeasonsEmpty": "No season - this dungeon won't be recognized in any report.",
+      "seasonDungeons": "Dungeons in this season",
+      "seasonDungeonsEmpty": "No dungeon linked - the scan won't resolve any encounterID.",
+      "spellSpecs": "Linked specs",
+      "spellSpecsEmpty": "No spec: cross-class spell, always included in the scan."
+    },
+    "runScannedBosses": "View this run's scanned bosses →",
+    "loading": "Loading…",
+    "loadingSchema": "Loading schema…",
+    "loadingOptions": "loading…",
+    "noRows": "No rows.",
+    "search": "Search…",
+    "reset": "reset",
+    "new": "+ New",
+    "edit": "edit",
+    "create": "Create",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "remove": "remove",
+    "add": "Add",
+    "close": "Close",
+    "drawerNew": "New - {{label}}",
+    "confirmDelete": "Delete {{label}} “{{name}}”?",
+    "page": "page {{page}} / {{pages}}",
+    "rowCount": "· {{count}} row(s)",
+    "perPage": "per page",
+    "filter": {
+      "all": "all",
+      "yes": "yes",
+      "no": "no",
+      "unset": "- not set -"
+    },
+    "field": {
+      "none": "- none -",
+      "outOfList": "{{value}} (not in list)",
+      "yes": "yes",
+      "no": "no"
+    },
+    "tokenPrompt": "Admin token",
+    "httpError": "Error {{status}}"
+  },
+  "dev": {
+    "open": "Dev tools",
+    "title": "Dev tools",
+    "close": "Close",
+    "searchPlaceholder": "Search a scan by ID (report code or CODE-fight)",
+    "history": "Last {{count}} scans",
+    "results": "{{count}} result(s)",
+    "noResult": "No scan found.",
+    "scannedAt": "scanned {{date}}",
+    "rescan": "Force rescan",
+    "rescanning": "Rescanning…",
+    "rescanHelp": "Queries Warcraft Logs again for this run and replaces the stored version. Costs ~5 API points."
+  }
+}

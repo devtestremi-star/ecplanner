@@ -1,7 +1,9 @@
+import { useTranslation } from 'react-i18next';
 import { CrudPage } from '../CrudPage.js';
 import { PivotPanel } from '../PivotPanel.js';
 
 export function SpellsPage() {
+  const { t } = useTranslation();
   return (
     <CrudPage
       resource="spells"
@@ -12,8 +14,8 @@ export function SpellsPage() {
           resource="spell-specs"
           parentField="spell"
           parentId={row.__id}
-          legend="Specs concernées"
-          empty="Aucune spec : sort inter-classes, toujours inclus au scan."
+          legend={t('admin.pivots.spellSpecs')}
+          empty={t('admin.pivots.spellSpecsEmpty')}
         />
       )}
     />

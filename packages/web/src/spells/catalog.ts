@@ -1,11 +1,13 @@
+import i18n from '../i18n/index.js';
+
 export interface SpellSummary {
   spellId: number;
   name: string;
   icon: string | null;
   category: string | null;
   baseCooldownSec: number | null;
-  /** Affiché par défaut dans la timeline. `false` = désaturé au premier rendu. */
-  inTimeline: boolean;
+  /** Sort de boss planifiable dans l'addon : ancre d'alignement et cible d'export ECP. */
+  allowedInPlan: boolean;
   /** Requalifications par spec du lanceur, `{ specId: category }`. */
   bySpec?: Record<number, string>;
 }
@@ -24,7 +26,7 @@ export function loadCatalog(): Promise<Map<number, SpellSummary>> {
   // timeline signalerait des sorts « absents » qui existent bel et bien.
   catalogPromise ??= fetch('/api/spells/catalog', { cache: 'no-cache' })
     .then((r) => {
-      if (!r.ok) throw new Error(`catalogue: HTTP ${r.status}`);
+      if (!r.ok) throw new Error(i18n.t('errors.catalogHttp', { status: r.status }));
       return r.json() as Promise<{ spells: SpellSummary[] }>;
     })
     .then(({ spells }) => new Map(spells.map((s) => [s.spellId, s])))
@@ -47,6 +49,16 @@ export const iconSizeFor = (displayPx: number): IconSize =>
   ICON_SIZES.find((s) => s >= displayPx) ?? 56;
 
 /** Icônes servies par le CDN first-party de Blizzard. `.jpg` obligatoire, 403 sinon. */
+/**
+ * Repli : le CDN de Wowhead. Celui de Blizzard ne sert pas toutes les icônes récentes —
+ * 10 du catalogue y rendent un 403 (bijoux et sorts de boss de la saison en cours, dont le
+ * Soulcoiler Ritual Vessel), alors que Wowhead les a toutes. Mêmes noms de fichier ; ses
+ * trois tailles portent un nom au lieu d'un nombre.
+ */
+const ZAMIMG_SIZE: Record<IconSize, string> = { 18: 'small', 36: 'medium', 56: 'large' };
+export const iconFallbackUrl = (icon: string | null, size: IconSize = 36): string | null =>
+  icon ? `https://wow.zamimg.com/images/wow/icons/${ZAMIMG_SIZE[size]}/${icon}` : null;
+
 export const iconUrl = (icon: string | null, size: IconSize = 36): string | null =>
   icon ? `https://render.worldofwarcraft.com/us/icons/${size}/${icon}` : null;
 

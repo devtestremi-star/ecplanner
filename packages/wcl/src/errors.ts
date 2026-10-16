@@ -67,6 +67,6 @@ export class RateLimitError extends WclError {
 export class ReportNotAccessibleError extends WclError {
   override readonly name = 'ReportNotAccessibleError';
   constructor(readonly reportCode: string) {
-    super(`Rapport ${reportCode} inaccessible (privé, supprimé, ou code invalide)`);
+    super(`Report ${reportCode} is not accessible (private, deleted, or invalid code)`);
   }
 }

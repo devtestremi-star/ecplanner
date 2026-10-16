@@ -4,6 +4,7 @@
   "name": "Blessing of Protection",
   "classId": 2,
   "category": "EXTERNAL",
+  "effect": "SHIELD",
   "baseCooldownSec": 300,
   "specIds": [
    65,
@@ -18,6 +19,7 @@
   "name": "Pain Suppression",
   "classId": 5,
   "category": "EXTERNAL",
+  "effect": "DR",
   "baseCooldownSec": 180,
   "specIds": [
    256
@@ -30,6 +32,7 @@
   "name": "Life Cocoon",
   "classId": 10,
   "category": "EXTERNAL",
+  "effect": "SHIELD",
   "baseCooldownSec": 120,
   "specIds": [
    270
@@ -42,6 +45,7 @@
   "name": "Time Dilation",
   "classId": 13,
   "category": "EXTERNAL",
+  "effect": "DR",
   "baseCooldownSec": 60,
   "specIds": [
    1468
@@ -67,6 +71,7 @@
   "name": "Beacon of Lightblind Wrath",
   "classId": null,
   "category": "HEALER",
+  "effect": "SHIELD",
   "baseCooldownSec": 90,
   "specIds": [],
   "origin": "manual",
@@ -77,6 +82,7 @@
   "name": "Soulcoiler Ritual Vessel",
   "classId": null,
   "category": "EXTERNAL",
+  "effect": "SHIELD",
   "baseCooldownSec": 120,
   "specIds": [
    62,

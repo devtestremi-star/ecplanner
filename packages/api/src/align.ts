@@ -13,7 +13,7 @@
  * fausserait en silence.
  *
  * Calculé à la LECTURE et non au scan : toutes les entrées vivent dans la même ligne
- * `scanned_boss`, la fenêtre n'est pas stabilisée, et la curation d'`inTimeline` bouge
+ * `scanned_boss`, la fenêtre n'est pas stabilisée, et la curation d'`allowedInPlan` bouge
  * encore. Figer le résultat imposerait un re-scan du corpus à chaque ajustement.
  */
 
@@ -21,19 +21,33 @@
 export const RESPONSE_CATEGORIES: ReadonlySet<string> = new Set(['PERSONAL', 'EXTERNAL', 'HEALER']);
 
 /**
- * Le joueur lance AVANT les dégâts : on cherche d'abord devant, et l'arrière ne sert que
- * de repli. Mesuré sur le corpus : délai médian +1,49 s.
+ * Rattachement d'une réponse à une capacité de boss : ce que fait le sort du JOUEUR
+ * (`effect`) croisé avec ce que fait la capacité (`damageType`). On ne garde que les
+ * rattachements qui ont un sens, classés par pertinence :
  *
- * L'arrière reste néanmoins large — une réaction peut partir bien après le début du sort
- * de boss, notamment un soin de rattrapage une fois les dégâts encaissés. Comme la
- * recherche avant est prioritaire, l'élargir ne détourne aucun cast qui avait déjà une
- * ancre devant lui : ça ne touche QUE les casts jusqu'ici non alignés.
+ * | Sort du joueur → | SHIELD / DR              | HEALING                                   |
+ * |------------------|--------------------------|-------------------------------------------|
+ * | capacité devant  | niveau 1                 | niveau 1 dans `ANTICIPATION_MS`, sinon 2  |
+ * | dot en cours     | niveau 1                 | niveau 1                                  |
+ * | burst derrière   | EXCLU : ne protège de rien | niveau 2 (soin de rattrapage)           |
+ *
+ * Le meilleur niveau l'emporte, puis la capacité la plus proche ; à égalité, celle devant.
+ * Les scans portent sur les meilleurs joueurs : chaque cast est présumé intentionnel, d'où
+ * le refus net des interprétations absurdes (un bouclier posé après le coup).
+ *
+ * « Dot en cours » : la DERNIÈRE capacité passée, si c'est un dot, dans `DOT_WINDOW_MS`.
+ * Dès qu'une autre capacité est passée, le dot n'explique plus la réponse. Sa durée réelle
+ * n'est pas encore modélisée : une fenêtre fixe en tient lieu.
  */
-export const WINDOW_AHEAD_MS = 6_000;
-export const WINDOW_BEHIND_MS = 5_000;
+export const ANTICIPATION_MS = 3_000;
+export const DOT_WINDOW_MS = 12_000;
+/** Portée maximale, devant comme derrière : au-delà, aucune réponse n'est présumée. */
+export const WINDOW_AHEAD_MS = 12_000;
+export const WINDOW_BEHIND_MS = 12_000;
 
 /**
- * Les tanks sont exclus : leurs défensifs PERSONNELS sont largement rotationnels. Mesuré
+ * Les défensifs personnels des tanks ne s'alignent sur rien : ils sont largement
+ * rotationnels, et leur alignement n'est pas utile (pas même sur un tankbuster). Mesuré
  * sur le corpus, Demoralizing Shout revient toutes les 23 à 33 s — un usage dès que c'est
  * prêt, que la règle ne décrit pas.
  */
@@ -60,7 +74,11 @@ export interface SpellFacts {
   /** Requalification par spec du lanceur : Emerald Blossom soigne en Preservation, protège ailleurs. */
   bySpec?: Record<number, string>;
   /** Seuls les sorts de boss ainsi flagués servent d'ancre. */
-  inTimeline: boolean;
+  allowedInPlan: boolean;
+  /** Sorts de boss : `burst` ou `dot`. Absent = `burst`, le comportement historique. */
+  damageType?: string;
+  /** Sorts de joueur : `HEALING`, `SHIELD` ou `DR`. Sans lui, pas de rattachement. */
+  effect?: string;
 }
 
 export interface AlignContext {
@@ -90,24 +108,42 @@ function lowerBound(offsets: readonly number[], offset: number): number {
 }
 
 /**
- * Index de la première ancre à `offset` ou après, dans la limite avant.
+ * Index de l'ancre retenue pour une réponse à `offset`, ou `null`. Voir l'ordre de
+ * recherche au-dessus de `ANTICIPATION_MS`.
  *
  * ⚠️ Rend un INDEX, pas un offset. Deux ancres peuvent partager le même instant — un boss
  * et un add qui lancent à la même milliseconde — et elles ne portent alors ni le même
  * sort ni le même rang d'occurrence. Repasser par l'offset pour les retrouver en écraserait
  * une, et l'export attribuerait le cast à la mauvaise capacité.
  */
-function firstAhead(offsets: readonly number[], offset: number): number | null {
-  const i = lowerBound(offsets, offset);
-  const a = offsets[i];
-  return a !== undefined && a - offset <= WINDOW_AHEAD_MS ? i : null;
-}
+function pickAnchor(
+  anchors: readonly Anchor[],
+  offsets: readonly number[],
+  offset: number,
+  effect: string,
+): number | null {
+  const ahead = lowerBound(offsets, offset);
+  const behind = ahead - 1;
+  const preventive = effect === 'SHIELD' || effect === 'DR';
+  /** [index, niveau, écart] des candidats retenus. */
+  const options: Array<[number, number, number]> = [];
 
-/** Index de la dernière ancre strictement avant `offset`, dans la limite arrière. */
-function lastBehind(offsets: readonly number[], offset: number): number | null {
-  const i = lowerBound(offsets, offset) - 1;
-  const a = offsets[i];
-  return a !== undefined && offset - a <= WINDOW_BEHIND_MS ? i : null;
+  if (ahead < anchors.length) {
+    const gap = offsets[ahead]! - offset;
+    if (gap <= WINDOW_AHEAD_MS) options.push([ahead, preventive || gap <= ANTICIPATION_MS ? 1 : 2, gap]);
+  }
+  if (behind >= 0) {
+    const gap = offset - offsets[behind]!;
+    if (anchors[behind]!.damageType === 'dot') {
+      if (gap <= DOT_WINDOW_MS) options.push([behind, 1, gap]);
+    } else if (!preventive && gap <= WINDOW_BEHIND_MS) {
+      options.push([behind, 2, gap]);
+    }
+  }
+  if (options.length === 0) return null;
+  // Meilleur niveau, puis écart le plus court ; le tri est stable, donc devant gagne l'égalité.
+  options.sort((a, b) => a[1] - b[1] || a[2] - b[2]);
+  return options[0]![0];
 }
 
 /**
@@ -121,6 +157,8 @@ export interface Anchor {
   offsetBoss: number;
   spellId: number;
   occurrence: number;
+  /** `burst` ou `dot` : décide si les réponses s'y rattachent avant ou après. */
+  damageType: string;
 }
 
 /**
@@ -142,30 +180,49 @@ export function resolveAnchors(
     // Une source hors roster est un boss — même règle qu'en base.
     if (ctx.roleBySource.has(c.sourceID)) continue;
     const facts = ctx.spells.get(c.abilityGameID);
-    if (facts?.category !== 'BOSS' || !facts.inTimeline) continue;
+    if (facts?.category !== 'BOSS' || !facts.allowedInPlan) continue;
+    // Évitable ou sans intérêt : rien à quoi répondre, jamais une ancre.
+    if (facts.damageType === 'dodge' || facts.damageType === 'ignore') continue;
     const n = (seen.get(c.abilityGameID) ?? 0) + 1;
     seen.set(c.abilityGameID, n);
-    anchors.push({ offsetBoss: c.offsetBoss, spellId: c.abilityGameID, occurrence: n });
+    anchors.push({ offsetBoss: c.offsetBoss, spellId: c.abilityGameID, occurrence: n, damageType: facts.damageType ?? 'burst' });
   }
   if (anchors.length === 0) return casts.map(() => null);
 
-  // `anchors` est déjà trié par instant : les index de la recherche dichotomique y renvoient
-  // directement, sans passer par une table qui confondrait deux ancres simultanées.
-  const offsets = anchors.map((a) => a.offsetBoss);
+  /**
+   * Qui répond à quoi. Un tankbuster ne frappe que le tank : seul un externe lancé sur lui
+   * y répond — jamais un cooldown de groupe ni le défensif personnel d'un autre joueur.
+   * Les défensifs personnels du tank, eux, ne s'alignent sur rien (décision : inutile).
+   *
+   * Deux sous-listes calculées une fois, triées par instant : les index de la recherche
+   * dichotomique y renvoient directement, sans passer par une table qui confondrait deux
+   * ancres simultanées.
+   */
+  const pool = (keep: (a: Anchor) => boolean) => {
+    const list = anchors.filter(keep);
+    return { list, offsets: list.map((a) => a.offsetBoss) };
+  };
+  const group = pool((a) => a.damageType !== 'tankbuster');
+  const everything = pool(() => true);
 
   return casts.map((c) => {
     const role = ctx.roleBySource.get(c.sourceID);
     if (role === undefined) return null; // un boss ne s'aligne pas sur lui-même
 
-    // La catégorie se résout AVANT le rôle : l'exclusion en dépend.
     const cat = categoryOf(ctx.spells.get(c.abilityGameID), ctx.specBySource.get(c.sourceID));
     if (cat === null || !RESPONSE_CATEGORIES.has(cat)) return null;
-    if (role !== null && EXCLUDED_ROLES.has(role) && !ROLE_EXEMPT_CATEGORIES.has(cat)) return null;
 
-    // En avant d'abord : le joueur anticipe. L'arrière ne sert qu'à rattraper une réaction
-    // partie juste après le début du sort de boss.
-    const i = firstAhead(offsets, c.offsetBoss) ?? lastBehind(offsets, c.offsetBoss);
-    return i === null ? null : anchors[i] ?? null;
+    // Sans effet déclaré, on ne sait pas dans quel sens chercher : pas de rattachement.
+    const effect = ctx.spells.get(c.abilityGameID)?.effect;
+    if (!effect) return null;
+
+    const external = ROLE_EXEMPT_CATEGORIES.has(cat);
+    // Défensifs personnels du tank : trop rotationnels, et leur alignement n'est pas utile.
+    if (role !== null && EXCLUDED_ROLES.has(role) && !external) return null;
+    // Un externe vise un allié précis : il répond aussi bien à un tankbuster qu'au groupe.
+    const p = external ? everything : group;
+    const i = pickAnchor(p.list, p.offsets, c.offsetBoss, effect);
+    return i === null ? null : p.list[i] ?? null;
   });
 }
 

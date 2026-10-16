@@ -1,5 +1,7 @@
 import { Box, Stack, Tooltip, Typography } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import type { RunDetail } from '../api.js';
+import { FilterLabel } from '../layout/FilterLabel.js';
 import { SpellIcon } from '../spells/SpellIcon.js';
 import type { SpellSummary } from '../spells/catalog.js';
 
@@ -13,7 +15,7 @@ export const serializeIds = (ids: ReadonlySet<number>): string =>
  * Ce qui est masqué vient UNIQUEMENT de l'utilisateur (`?bossOff`). Tout est affiché par
  * défaut.
  *
- * `Spell.inTimeline` reste transmis dans le payload — il documente la curation — mais ne
+ * `Spell.allowedInPlan` (planifiable dans l'addon) reste transmis dans le payload mais ne
  * pré-masque plus rien : un tri implicite au premier rendu cachait des sorts réellement
  * lancés sans que rien ne l'explique.
  */
@@ -32,6 +34,7 @@ export interface BossSpellFilterProps {
  * Désactivé = désaturé, pas masqué : on doit voir ce qu'on a écarté.
  */
 export function BossSpellFilter({ detail, catalog, hidden, onToggle }: BossSpellFilterProps) {
+  const { t } = useTranslation();
   const playerIds = new Set(detail.participants.map((p) => p.sourceID));
 
   // Un sort de boss = un cast dont la source n'est pas au roster (même règle qu'en base).
@@ -49,12 +52,13 @@ export function BossSpellFilter({ detail, catalog, hidden, onToggle }: BossSpell
     .sort((a, b) => b.n - a.n);
 
   return (
-    <Stack direction="row" spacing={1} useFlexGap sx={{ flexWrap: 'wrap', alignItems: 'center', mb: 2 }}>
-      <Typography variant="body2" sx={{ color: 'text.secondary', mr: .5 }}>Sorts du boss</Typography>
+    <Stack direction="row" spacing={2}>
+      <FilterLabel>{t('run.filters.bossSpells')}</FilterLabel>
+      <Stack direction="row" spacing={1} useFlexGap sx={{ flexWrap: 'wrap', alignItems: 'center' }}>
       {spells.map(({ spellId, n, spell }) => {
         const off = hidden.has(spellId);
         return (
-          <Tooltip key={spellId} title={off ? 'Masqué — cliquer pour afficher' : 'Cliquer pour masquer'}>
+          <Tooltip key={spellId} title={off ? t('bossSpells.show') : t('bossSpells.hide')}>
             <Stack
               direction="row"
               spacing={.75}
@@ -87,6 +91,7 @@ export function BossSpellFilter({ detail, catalog, hidden, onToggle }: BossSpell
           </Tooltip>
         );
       })}
+      </Stack>
     </Stack>
   );
 }

@@ -1,3 +1,5 @@
+import i18n from './i18n/index.js';
+
 export interface ScanResponse {
   reportCode: string;
   fightID: number;
@@ -84,7 +86,7 @@ async function post<T>(url: string, body: unknown): Promise<T> {
     const m = json['message'];
     throw new ApiError(
       String(json['reason'] ?? 'error'),
-      typeof m === 'string' ? m : 'Le scan a échoué',
+      typeof m === 'string' ? m : i18n.t('errors.scanFailed'),
     );
   }
   return json as T;
@@ -93,9 +95,31 @@ async function post<T>(url: string, body: unknown): Promise<T> {
 export const scan = (url: string, force = false): Promise<ScanResponse> =>
   post<ScanResponse>('/api/scan', { url, force });
 
+/** Une ligne de l'historique des scans (`GET /api/runs`). */
+export interface ScannedRunSummary {
+  reportCode: string;
+  fightID: number;
+  dungeon: string;
+  keystoneLevel: number;
+  keystoneBonus: number;
+  kill: boolean;
+  startedAt: string;
+  scannedAt: string;
+}
+
+/** Derniers scans, du plus récent au plus ancien ; `q` cherche par identifiant dans toute la base. */
+export async function listRuns(opts: { q?: string; limit?: number } = {}): Promise<ScannedRunSummary[]> {
+  const qs = new URLSearchParams();
+  if (opts.q) qs.set('q', opts.q);
+  if (opts.limit) qs.set('limit', String(opts.limit));
+  const res = await fetch(`/api/runs?${qs}`);
+  if (!res.ok) throw new ApiError('runs', i18n.t('errors.runsHttp', { status: res.status }));
+  return ((await res.json()) as { runs: ScannedRunSummary[] }).runs;
+}
+
 export async function fetchRun(reportCode: string, fightID: number): Promise<RunDetail> {
   const res = await fetch(`/api/runs/${reportCode}/${fightID}`);
-  if (!res.ok) throw new ApiError('not-found', 'Run introuvable en base');
+  if (!res.ok) throw new ApiError('not-found', i18n.t('errors.runNotFound'));
   return (await res.json()) as RunDetail;
 }
 
@@ -123,7 +147,7 @@ export async function fetchEcpExport(
   const body = await res.text();
   if (!res.ok) {
     // L'API rend du JSON sur erreur, du texte brut sur succès.
-    let message = "L'export a échoué";
+    let message = i18n.t('errors.exportFailed');
     try {
       const m = (JSON.parse(body) as { message?: unknown }).message;
       if (typeof m === 'string') message = m;

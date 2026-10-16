@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { formatLocale } from '../i18n/index.js';
 import { api } from './api.js';
 import type { FieldDef, Option, Refs, Row } from './types.js';
 
@@ -47,6 +49,7 @@ export const invalidateOptions = (resource: string): void => void optionCache.de
 function RelationInput({ field, value, onChange, disabled }: {
   field: FieldDef; value: string; onChange: (v: string) => void; disabled: boolean;
 }) {
+  const { t } = useTranslation();
   const [options, setOptions] = useState<Option[] | null>(null);
 
   useEffect(() => {
@@ -55,14 +58,14 @@ function RelationInput({ field, value, onChange, disabled }: {
     return () => { alive = false; };
   }, [field.target]);
 
-  if (!options) return <input value={value} disabled readOnly placeholder="chargement…" />;
+  if (!options) return <input value={value} disabled readOnly placeholder={t('admin.loadingOptions')} />;
 
   // La valeur courante peut sortir des 200 premières options : on l'ajoute pour ne pas la perdre.
   const known = options.some((o) => o.value === value);
   return (
     <select value={value} onChange={(e) => onChange(e.target.value)} disabled={disabled}>
-      <option value="">— aucun —</option>
-      {!known && value !== '' && <option value={value}>{value} (hors liste)</option>}
+      <option value="">{t('admin.field.none')}</option>
+      {!known && value !== '' && <option value={value}>{t('admin.field.outOfList', { value })}</option>}
       {options.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
     </select>
   );
@@ -71,6 +74,7 @@ function RelationInput({ field, value, onChange, disabled }: {
 export function FieldInput({ field, value, onChange, disabled = false }: {
   field: FieldDef; value: FormValue; onChange: (v: FormValue) => void; disabled?: boolean;
 }) {
+  const { t } = useTranslation();
   const str = typeof value === 'string' ? value : '';
 
   if (field.choices) {
@@ -88,7 +92,7 @@ export function FieldInput({ field, value, onChange, disabled = false }: {
         <span className="inline">
           <input type="checkbox" checked={value === true} disabled={disabled}
                  onChange={(e) => onChange(e.target.checked)} />
-          <span style={{ color: 'var(--text-dim)', fontSize: 12 }}>{value === true ? 'oui' : 'non'}</span>
+          <span style={{ color: 'var(--text-dim)', fontSize: 12 }}>{value === true ? t('admin.field.yes') : t('admin.field.no')}</span>
         </span>
       );
     case 'integer':
@@ -100,7 +104,7 @@ export function FieldInput({ field, value, onChange, disabled = false }: {
     case 'enum':
       return (
         <select value={str} onChange={(e) => onChange(e.target.value)} disabled={disabled}>
-          <option value="">— aucune —</option>
+          <option value="">{t('admin.field.none')}</option>
           {field.enumValues?.map((v) => <option key={v} value={v}>{v}</option>)}
         </select>
       );
@@ -136,16 +140,17 @@ export function Field({ field, value, onChange, disabled }: {
 
 /** Rendu d'une valeur dans le tableau. */
 export function Cell({ field, row, refs }: { field: FieldDef; row: Row; refs: Refs }) {
+  const { t } = useTranslation();
   const value = row[field.name];
   if (value === null || value === undefined) return <span className="null">—</span>;
 
   switch (field.kind) {
     case 'boolean':
-      return <span className={`badge ${value ? 'on' : 'off'}`}>{value ? 'oui' : 'non'}</span>;
+      return <span className={`badge ${value ? 'on' : 'off'}`}>{value ? t('admin.field.yes') : t('admin.field.no')}</span>;
     case 'enum':
       return <span className={`badge cat-${String(value)}`}>{String(value)}</span>;
     case 'date':
-      return <span className="mono">{new Date(String(value)).toLocaleString('fr-CA')}</span>;
+      return <span className="mono">{new Date(String(value)).toLocaleString(formatLocale())}</span>;
     case 'relation': {
       const label = refs[field.name]?.[String(value)];
       return label
@@ -155,7 +160,7 @@ export function Cell({ field, row, refs }: { field: FieldDef; row: Row; refs: Re
     case 'int-array':
       return <span className="mono">{Array.isArray(value) ? value.join(', ') : String(value)}</span>;
     case 'integer':
-      return <>{Number(value).toLocaleString('fr-CA')}</>;
+      return <>{Number(value).toLocaleString(formatLocale())}</>;
     default: {
       const s = String(value);
       return <span title={s.length > 60 ? s : undefined}>{s.length > 60 ? `${s.slice(0, 60)}…` : s}</span>;

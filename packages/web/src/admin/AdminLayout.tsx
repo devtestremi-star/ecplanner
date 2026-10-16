@@ -1,31 +1,33 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { NavLink, Outlet } from 'react-router-dom';
 import { api } from './api.js';
 import type { Stat } from './types.js';
 import './admin.css';
 
 /** Les 7 tables non pivot, dans l'ordre où on les lit : référentiel, puis scan. */
-export const NAV: ReadonlyArray<{ group: string; items: ReadonlyArray<{ to: string; key: string; label: string }> }> = [
+export const NAV = [
   {
-    group: 'Référentiel',
+    group: 'admin.nav.groupReference',
     items: [
-      { to: '/admin/seasons', key: 'seasons', label: 'Saisons' },
-      { to: '/admin/dungeons', key: 'dungeons', label: 'Donjons' },
-      { to: '/admin/bosses', key: 'bosses', label: 'Boss' },
-      { to: '/admin/spells', key: 'spells', label: 'Sorts' },
+      { to: '/admin/seasons', key: 'seasons', label: 'admin.nav.seasons' },
+      { to: '/admin/dungeons', key: 'dungeons', label: 'admin.nav.dungeons' },
+      { to: '/admin/bosses', key: 'bosses', label: 'admin.nav.bosses' },
+      { to: '/admin/spells', key: 'spells', label: 'admin.nav.spells' },
     ],
   },
   {
-    group: 'Scan',
+    group: 'admin.nav.groupScan',
     items: [
-      { to: '/admin/runs', key: 'runs', label: 'Runs scannées' },
-      { to: '/admin/scanned-bosses', key: 'scanned-bosses', label: 'Boss scannés' },
-      { to: '/admin/scan-jobs', key: 'scan-jobs', label: 'Jobs de scan' },
+      { to: '/admin/runs', key: 'runs', label: 'admin.nav.runs' },
+      { to: '/admin/scanned-bosses', key: 'scanned-bosses', label: 'admin.nav.scannedBosses' },
+      { to: '/admin/scan-jobs', key: 'scan-jobs', label: 'admin.nav.scanJobs' },
     ],
   },
-];
+] as const;
 
 export function AdminLayout() {
+  const { t } = useTranslation();
   const [counts, setCounts] = useState<Record<string, number>>({});
 
   useEffect(() => {
@@ -37,24 +39,24 @@ export function AdminLayout() {
   return (
     <div className="admin">
       <nav className="sidebar">
-        <h1>Timeline M+</h1>
-        <p className="sub">administration</p>
+        <h1>{t('app.name')}</h1>
+        <p className="sub">{t('admin.subtitle')}</p>
 
         <div className="nav">
-          <NavLink to="/admin" end>Tableau de bord</NavLink>
+          <NavLink to="/admin" end>{t('admin.nav.dashboard')}</NavLink>
           {NAV.map((section) => (
             <div key={section.group}>
-              <div className="nav-group">{section.group}</div>
+              <div className="nav-group">{t(section.group)}</div>
               {section.items.map((item) => (
                 <NavLink key={item.key} to={item.to}>
-                  <span>{item.label}</span>
+                  <span>{t(item.label)}</span>
                   <span className="count">{counts[item.key] ?? ''}</span>
                 </NavLink>
               ))}
             </div>
           ))}
-          <div className="nav-group">Site</div>
-          <NavLink to="/">← retour au site</NavLink>
+          <div className="nav-group">{t('admin.nav.groupSite')}</div>
+          <NavLink to="/">{t('admin.nav.backToSite')}</NavLink>
         </div>
       </nav>
 

@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState, type ReactNode } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
 import { api } from './api.js';
 import { Cell, Field, FieldInput, initialForm, invalidateOptions, loadOptions, type FormState } from './fields.js';
@@ -25,6 +26,7 @@ const numeric = (f: FieldDef): boolean => f.kind === 'integer';
 function FilterControl({ field, value, onChange }: {
   field: FieldDef; value: string; onChange: (v: string) => void;
 }) {
+  const { t } = useTranslation();
   const [options, setOptions] = useState<Option[]>([]);
 
   useEffect(() => {
@@ -36,16 +38,16 @@ function FilterControl({ field, value, onChange }: {
 
   const select = (opts: ReactNode) => (
     <select value={value} onChange={(e) => onChange(e.target.value)}>
-      <option value="">tous</option>
+      <option value="">{t('admin.filter.all')}</option>
       {opts}
     </select>
   );
 
-  if (field.kind === 'boolean') return select(<><option value="true">oui</option><option value="false">non</option></>);
+  if (field.kind === 'boolean') return select(<><option value="true">{t('admin.filter.yes')}</option><option value="false">{t('admin.filter.no')}</option></>);
   if (field.kind === 'enum') {
     return select(<>
       {field.enumValues?.map((v) => <option key={v} value={v}>{v}</option>)}
-      <option value="__null">— non renseigné —</option>
+      <option value="__null">{t('admin.filter.unset')}</option>
     </>);
   }
   if (field.choices) {
@@ -54,11 +56,11 @@ function FilterControl({ field, value, onChange }: {
   if (field.kind === 'relation') {
     return select(<>
       {options.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
-      <option value="__null">— non renseigné —</option>
+      <option value="__null">{t('admin.filter.unset')}</option>
     </>);
   }
   return (
-    <input value={value} placeholder="—" style={{ width: 110 }}
+    <input value={value} placeholder="-" style={{ width: 110 }}
            onChange={(e) => onChange(e.target.value)} />
   );
 }
@@ -73,6 +75,7 @@ function EditDrawer({ schema, id, onClose, onSaved, extra }: {
   onSaved: () => void;
   extra?: (row: Row) => ReactNode;
 }) {
+  const { t } = useTranslation();
   const creating = id === null;
   const [form, setForm] = useState<FormState | null>(creating ? initialForm(schema.fields, null) : null);
   const [row, setRow] = useState<Row | null>(null);
@@ -117,7 +120,7 @@ function EditDrawer({ schema, id, onClose, onSaved, extra }: {
   }
 
   async function remove() {
-    if (!id || !window.confirm(`Supprimer ${schema.label.toLowerCase()} « ${row?.__label ?? id} » ?`)) return;
+    if (!id || !window.confirm(t('admin.confirmDelete', { label: schema.label.toLowerCase(), name: row?.__label ?? id }))) return;
     setSaving(true);
     setError(null);
     try {
@@ -134,13 +137,13 @@ function EditDrawer({ schema, id, onClose, onSaved, extra }: {
     <div className="drawer-backdrop" onMouseDown={(e) => e.target === e.currentTarget && onClose()}>
       <aside className="drawer">
         <header className="drawer-head">
-          <h3>{creating ? `Nouveau — ${schema.label}` : `${schema.label} · ${row?.__label ?? '…'}`}</h3>
-          <button className="btn ghost" onClick={onClose} aria-label="Fermer">✕</button>
+          <h3>{creating ? t('admin.drawerNew', { label: schema.label }) : `${schema.label} · ${row?.__label ?? '…'}`}</h3>
+          <button className="btn ghost" onClick={onClose} aria-label={t('admin.close')}>✕</button>
         </header>
 
         <div className="drawer-body">
           {error && <div className="error">{error}</div>}
-          {!form && <p className="null">Chargement…</p>}
+          {!form && <p className="null">{t('admin.loading')}</p>}
 
           {form && schema.fields.map((f) => {
             if (f.generated && creating) return null;
@@ -156,11 +159,11 @@ function EditDrawer({ schema, id, onClose, onSaved, extra }: {
 
         <footer className="drawer-foot">
           <button className="btn primary" onClick={save} disabled={saving || !form}>
-            {saving ? '…' : creating ? 'Créer' : 'Enregistrer'}
+            {saving ? '…' : creating ? t('admin.create') : t('admin.save')}
           </button>
-          <button className="btn" onClick={onClose}>Annuler</button>
+          <button className="btn" onClick={onClose}>{t('admin.cancel')}</button>
           <span className="spacer" />
-          {!creating && <button className="btn danger" onClick={remove} disabled={saving}>Supprimer</button>}
+          {!creating && <button className="btn danger" onClick={remove} disabled={saving}>{t('admin.delete')}</button>}
         </footer>
       </aside>
     </div>
@@ -170,6 +173,7 @@ function EditDrawer({ schema, id, onClose, onSaved, extra }: {
 // ───────────────────────────────────── page ───────────────────────────────────
 
 export function CrudPage({ resource, title, columns, filters, extra, readOnlyCreate }: CrudPageProps) {
+  const { t } = useTranslation();
   const schema = useSchema(resource);
   // L'état de la liste vit dans l'URL : un filtre est partageable et le retour arrière fonctionne.
   const [params, setParams] = useSearchParams();
@@ -218,7 +222,7 @@ export function CrudPage({ resource, title, columns, filters, extra, readOnlyCre
   const toggleSort = (name: string) =>
     patch({ sort: name, order: sort === name && order === 'asc' ? 'desc' : 'asc' });
 
-  if (!schema) return <p className="null">Chargement du schéma…</p>;
+  if (!schema) return <p className="null">{t('admin.loadingSchema')}</p>;
 
   const page = data?.page ?? 1;
   const pages = data ? Math.max(1, Math.ceil(data.total / data.perPage)) : 1;
@@ -233,7 +237,7 @@ export function CrudPage({ resource, title, columns, filters, extra, readOnlyCre
 
       <div className="toolbar">
         {searchable && (
-          <input value={params.get('q') ?? ''} placeholder="Rechercher…" style={{ width: 220 }}
+          <input value={params.get('q') ?? ''} placeholder={t('admin.search')} style={{ width: 220 }}
                  onChange={(e) => patch({ q: e.target.value })} />
         )}
         {filterFields.map((f) => (
@@ -244,12 +248,12 @@ export function CrudPage({ resource, title, columns, filters, extra, readOnlyCre
         ))}
         {params.size > 0 && (
           <button className="btn ghost" onClick={() => setParams(new URLSearchParams(), { replace: true })}>
-            réinitialiser
+            {t('admin.reset')}
           </button>
         )}
         <span className="spacer" />
         {!readOnlyCreate && (
-          <button className="btn primary" onClick={() => setEditing(null)}>+ Nouveau</button>
+          <button className="btn primary" onClick={() => setEditing(null)}>{t('admin.new')}</button>
         )}
       </div>
 
@@ -277,25 +281,25 @@ export function CrudPage({ resource, title, columns, filters, extra, readOnlyCre
                   </td>
                 ))}
                 <td className="actions">
-                  <button className="btn sm ghost" onClick={() => setEditing(row.__id)}>éditer</button>
+                  <button className="btn sm ghost" onClick={() => setEditing(row.__id)}>{t('admin.edit')}</button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
         {data && data.rows.length === 0 && (
-          <div className="empty">{loading ? 'Chargement…' : 'Aucune ligne.'}</div>
+          <div className="empty">{loading ? t('admin.loading') : t('admin.noRows')}</div>
         )}
       </div>
 
       <div className="pagination">
         <button className="btn sm" disabled={page <= 1} onClick={() => patch({ page: String(page - 1) })}>‹</button>
-        <span>page {page} / {pages}</span>
+        <span>{t('admin.page', { page, pages })}</span>
         <button className="btn sm" disabled={page >= pages} onClick={() => patch({ page: String(page + 1) })}>›</button>
-        <span>· {data?.total ?? 0} ligne(s)</span>
+        <span>{t('admin.rowCount', { count: data?.total ?? 0 })}</span>
         <span className="spacer" style={{ flex: 1 }} />
         <span className="filter">
-          <label>par page</label>
+          <label>{t('admin.perPage')}</label>
           <select value={params.get('perPage') ?? '25'} onChange={(e) => patch({ perPage: e.target.value })}>
             {[25, 50, 100, 200].map((n) => <option key={n} value={n}>{n}</option>)}
           </select>

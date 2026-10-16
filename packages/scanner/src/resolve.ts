@@ -23,8 +23,8 @@ export class NoBossPullError extends Error {
   override readonly name = 'NoBossPullError';
   constructor(readonly reportCode: string, readonly fightID: number, readonly durationSec: number) {
     super(
-      `Le fight ${fightID} de ${reportCode} ne contient aucun combat de boss ` +
-        `(${durationSec.toFixed(0)}s, tentative abandonnée) — rien à afficher.`,
+      `Fight ${fightID} of ${reportCode} contains no boss encounter ` +
+        `(${durationSec.toFixed(0)}s, abandoned attempt) - nothing to show.`,
     );
   }
 }
@@ -33,9 +33,21 @@ export class NotAMythicPlusRunError extends Error {
   override readonly name = 'NotAMythicPlusRunError';
   constructor(readonly reportCode: string, readonly fightID: number | 'last') {
     super(
-      `Le fight ${fightID} de ${reportCode} n'a pas de keystoneLevel — ce n'est pas une run M+. ` +
-        `Un fight existant ne suffit pas : un rapport peut mélanger raid, trash et M+.`,
+      `Fight ${fightID} of ${reportCode} has no keystoneLevel - it is not an M+ run. ` +
+        `An existing fight is not enough: a report can mix raid, trash and M+.`,
     );
+  }
+}
+
+/**
+ * Aucun joueur du rapport n'a d'informations de combattant (`CombatantInfo`) : log lancé
+ * sans la journalisation avancée, ou démarré en cours de run. Sans elles, ni spé ni
+ * talents — pas de pistes de joueurs, pas d'alignement, pas d'export ECP. Permanent.
+ */
+export class NoCombatantInfoError extends Error {
+  override readonly name = 'NoCombatantInfoError';
+  constructor(readonly reportCode: string, readonly fightID: number) {
+    super("This report can't be used");
   }
 }
 

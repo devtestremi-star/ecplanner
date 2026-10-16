@@ -485,12 +485,6 @@
       "note": "Zephyr en Augmentation — idem"
     },
     {
-      "spellId": 498,
-      "specId": 65,
-      "category": "HEALER",
-      "note": "Divine Protection en Holy — cooldown de soigneur ; celle de Retribution est un autre sort (403876), qui reste PERSONAL"
-    },
-    {
       "spellId": 1291894,
       "specId": 65,
       "category": "HEALER",

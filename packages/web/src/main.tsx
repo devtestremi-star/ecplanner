@@ -1,20 +1,31 @@
+// En premier : les textes doivent être prêts avant le premier rendu.
+import './i18n/index.js';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 import { adminRoute } from './admin/routes.js';
-import { Scan } from './routes/Scan.js';
+import { AppShell } from './layout/AppShell.js';
+import { Home } from './routes/Home.js';
 import { Run } from './routes/Run.js';
 import { Spells } from './routes/Spells.js';
 import { theme } from './theme.js';
 
 const router = createBrowserRouter([
-  { path: '/scan', element: <Scan /> },
-  { path: '/spells', element: <Spells /> },
-  { path: '/runs/:reportCode/:fightID', element: <Run /> },
+  {
+    // Site public : tout passe par la coque avec sidebar. L'admin a la sienne.
+    element: <AppShell />,
+    children: [
+      { index: true, element: <Home /> },
+      { path: 'spells', element: <Spells /> },
+      { path: 'runs/:reportCode/:fightID', element: <Run /> },
+    ],
+  },
+  // Ancienne adresse de l'accueil : les liens déjà partagés doivent continuer de marcher.
+  { path: '/scan', element: <Navigate to="/" replace /> },
   adminRoute,
   // Le catch-all doit rester EN DERNIER, sinon il avale /admin.
-  { path: '*', element: <Navigate to="/scan" replace /> },
+  { path: '*', element: <Navigate to="/" replace /> },
 ]);
 
 const el = document.getElementById('root');

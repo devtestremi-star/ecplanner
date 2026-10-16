@@ -11,15 +11,6 @@ export const CATEGORIES = [
 ] as const;
 export type Category = (typeof CATEGORIES)[number];
 
-export const CATEGORY_LABEL: Record<Category, string> = {
-  OFFENSIVE: 'Offensifs',
-  PERSONAL: 'Personnels',
-  EXTERNAL: 'Externes',
-  HEALER: 'Soins',
-  BLOODLUST: 'Bloodlust',
-  UTILITY: 'Utilitaires',
-};
-
 export const CATEGORY_COLOR: Record<Category, string> = {
   OFFENSIVE: '#f85149',
   PERSONAL: '#4a9eff',

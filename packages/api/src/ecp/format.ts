@@ -121,23 +121,23 @@ export class EcpPlanError extends Error {
 export function encodePlan(plan: EcpPlan): string {
   const byId = new Map(plan.roster.map((r) => [r.id, r]));
   const healer = byId.get(plan.healer);
-  if (!healer) throw new EcpPlanError(`h; référence « ${plan.healer} », absent du roster`);
+  if (!healer) throw new EcpPlanError(`h; references “${plan.healer}”, who is not in the roster`);
   // Le §9 refuse l'import si le joueur désigné n'est pas soigneur : autant échouer ici.
   if (healer.role !== 'HEALER') {
-    throw new EcpPlanError(`h; désigne « ${plan.healer} », de rôle ${healer.role} et non HEALER`);
+    throw new EcpPlanError(`h; designates “${plan.healer}”, whose role is ${healer.role}, not HEALER`);
   }
   for (const u of plan.uses) {
-    if (!byId.has(u.id)) throw new EcpPlanError(`u; référence « ${u.id} », absent du roster`);
+    if (!byId.has(u.id)) throw new EcpPlanError(`u; references “${u.id}”, who is not in the roster`);
   }
 
   const lines: string[] = [`ecp;${ECP_FORMAT};${plan.kind}`];
   if (plan.kind === 'variant') {
-    if (plan.zoneID === undefined) throw new EcpPlanError('kind=variant sans zoneID');
+    if (plan.zoneID === undefined) throw new EcpPlanError('kind=variant without zoneID');
     lines.push(`z;${plan.zoneID}`);
   } else {
-    if (plan.encID === undefined) throw new EcpPlanError('kind=boss sans encID');
+    if (plan.encID === undefined) throw new EcpPlanError('kind=boss without encID');
     const stray = plan.uses.find((u) => u.encID !== plan.encID);
-    if (stray) throw new EcpPlanError(`kind=boss : une ligne u; porte encID ${stray.encID}`);
+    if (stray) throw new EcpPlanError(`kind=boss: a u; line carries encID ${stray.encID}`);
     lines.push(`b;${plan.encID}`);
   }
   if (plan.title) lines.push(`n;${enc(plan.title)}`);
@@ -190,8 +190,8 @@ export function toWire(document: string): string {
   const stray = document.match(/[^\x00-\x7F]/);
   if (stray) {
     throw new EcpPlanError(
-      `Document non ASCII (« ${stray[0]} » à l'offset ${stray.index}) : une feuille n'a pas été échappée. ` +
-        'Corriger enc(), pas le transport.',
+      `Non-ASCII document (“${stray[0]}” at offset ${stray.index}): a leaf was not escaped. ` +
+        'Fix enc(), not the transport.',
     );
   }
   // `latin1` reproduit exactement la sémantique de btoa : un caractère = un octet.
@@ -203,9 +203,9 @@ export function toWire(document: string): string {
    * est décodable. Un base64 dont la longueur n'est pas un multiple de 4 est malformé par
    * construction, et c'est le premier symptôme qu'on regarde quand un import échoue.
    */
-  if (b64.length % 4 !== 0) throw new EcpPlanError(`base64 malformé : longueur ${b64.length}, non multiple de 4`);
+  if (b64.length % 4 !== 0) throw new EcpPlanError(`Malformed base64: length ${b64.length}, not a multiple of 4`);
   if (Buffer.from(b64, 'base64').toString('latin1') !== document) {
-    throw new EcpPlanError('aller-retour base64 rompu avant émission');
+    throw new EcpPlanError('base64 round-trip broken before emission');
   }
   return `ecp64:${b64}`;
 }

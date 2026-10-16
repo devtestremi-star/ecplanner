@@ -1,13 +1,15 @@
 import { EntityManager } from '@mikro-orm/postgresql';
-import { BadRequestException, Body, Controller, Get, Header, NotFoundException, Param, Post, Query, Res } from '@nestjs/common';
+import { BadRequestException, Body, Controller, ForbiddenException, Get, Header, NotFoundException, Param, Post, Query, Res } from '@nestjs/common';
 import type { FastifyReply } from 'fastify';
 import { ScannedBoss, ScannedRun, TraitEntry } from '@timeline/db';
-import { NoBossPullError, NotAMythicPlusRunError } from '@timeline/scanner';
+import { NoBossPullError, NoCombatantInfoError, NotAMythicPlusRunError } from '@timeline/scanner';
 import { wowClass, wowSpec } from '@timeline/shared';
 import { InvalidRunUrlError, parseRunUrl, ReportNotAccessibleError } from '@timeline/wcl';
 import { alignedOffsets, type SpellFacts } from './align.js';
+import { dedupBossEvents } from './boss-dedup.js';
 import { buildPlanText, buildPlanWire, IncoherentSpecError, NoHealerError } from './ecp/build-plan.js';
 import { EcpPlanError, fingerprint } from './ecp/format.js';
+import { isDevMode } from './mode.js';
 import { ScanService } from './scan.service.js';
 import { WowheadService } from './wowhead.service.js';
 
@@ -25,8 +27,10 @@ export class RunsController {
    */
   @Post('scan')
   async scan(@Body() body: { url?: string; force?: boolean }): Promise<unknown> {
-    if (!body?.url) throw new BadRequestException('Champ `url` manquant');
+    if (!body?.url) throw new BadRequestException('Missing `url` field');
     const force = body.force === true;
+    // Un scan forcé coûte des points WCL à chaque appel : réservé au mode dev.
+    if (force && !isDevMode()) throw new ForbiddenException('Forced rescans are only available in dev mode');
 
     let parsed;
     try {
@@ -42,7 +46,10 @@ export class RunsController {
       return await this.scans.scan(parsed.reportCode, parsed.fight, force);
     } catch (err) {
       // Erreurs permanentes : inutile de faire réessayer l'appelant.
-      if (err instanceof NotAMythicPlusRunError || err instanceof NoBossPullError || err instanceof ReportNotAccessibleError) {
+      if (
+        err instanceof NotAMythicPlusRunError || err instanceof NoBossPullError ||
+        err instanceof NoCombatantInfoError || err instanceof ReportNotAccessibleError
+      ) {
         throw new BadRequestException({ reason: err.name, message: err.message });
       }
       throw err;
@@ -50,26 +57,48 @@ export class RunsController {
   }
 
   /**
-   * Ce qui a été scanné, du plus récent au plus ancien.
-   * La recherche (par joueur, spec, donjon) est écartée pour l'instant.
+   * Ce qui a été scanné, du scan le plus RÉCENT au plus ancien — l'historique des scans,
+   * pas l'ordre des runs dans le temps.
+   *
+   * `q` cherche dans toute la base par identifiant : un bout de code de rapport
+   * (`NcMvj`), ou un identifiant complet `CODE-14` / `CODE/14` / `CODE?fight=14`.
    */
   @Get('runs')
-  async list(@Query('limit') limit?: string): Promise<unknown> {
+  async list(@Query('limit') limit?: string, @Query('q') q?: string): Promise<unknown> {
+    const where: Record<string, unknown> = {};
+    const query = q?.trim();
+    if (query) {
+      const m = query.match(/^([A-Za-z0-9]+)(?:[-/]|\?fight=)(\d+)$/);
+      if (m) Object.assign(where, { reportCode: { $ilike: `%${m[1]}%` }, fightID: Number(m[2]) });
+      else where.reportCode = { $ilike: `%${query.replace(/[%_\\]/g, '\\$&')}%` };
+    }
     // `events` pèse ~1 Ko par boss : jamais de SELECT * sur un listing (plan §5.6).
-    const runs = await this.em.find(ScannedRun, {}, {
-      fields: ['reportCode', 'fightID', 'dungeonEncounterID', 'keystoneLevel', 'keystoneBonus', 'kill', 'startedAt', 'duration'],
-      orderBy: { startedAt: 'desc' },
+    const runs = await this.em.find(ScannedRun, where, {
+      fields: ['reportCode', 'fightID', 'keystoneLevel', 'keystoneBonus', 'kill', 'startedAt', 'scannedAt', 'dungeon.name'],
+      orderBy: { scannedAt: 'desc' },
       // `Number('abc')` vaut NaN et un négatif passait tel quel jusqu'à l'ORM.
       limit: Math.min(Math.max(1, Number(limit) || 50), 200),
     });
-    return { count: runs.length, runs };
+    return {
+      count: runs.length,
+      runs: runs.map((r) => ({
+        reportCode: r.reportCode,
+        fightID: r.fightID,
+        dungeon: r.dungeon.unwrap().name,
+        keystoneLevel: r.keystoneLevel,
+        keystoneBonus: r.keystoneBonus,
+        kill: r.kill,
+        startedAt: r.startedAt,
+        scannedAt: r.scannedAt,
+      })),
+    };
   }
 
   /**
    * Export `ecp;2` de la run, en texte brut prêt à coller dans l'addon.
    *
    * Rien n'est persisté : le plan est dérivé à chaque appel des casts déjà stockés. Les
-   * réglages d'alignement, la curation `inTimeline` et le catalogue de défensifs changent
+   * réglages d'alignement, la curation `allowedInPlan` et le catalogue de défensifs changent
    * donc le résultat sans re-scan ni migration.
    *
    * `?boss=<encID>` produit un import de boss seul (`kind=boss`), qui ÉCRASE le plan de ce
@@ -94,7 +123,7 @@ export class RunsController {
       { reportCode, fightID: Number(fightID) },
       { populate: ['dungeon'] },
     );
-    if (!run) throw new NotFoundException(`${reportCode}-${fightID} non scanné`);
+    if (!run) throw new NotFoundException(`${reportCode}-${fightID} has not been scanned`);
 
     const bosses = await this.em.find(ScannedBoss, { run }, { populate: ['boss'], orderBy: { orderIndex: 'asc' } });
 
@@ -106,16 +135,16 @@ export class RunsController {
     let onlyEncounterID: number | undefined;
     if (boss !== undefined) {
       onlyEncounterID = Number(boss);
-      if (!Number.isInteger(onlyEncounterID)) throw new BadRequestException(`boss « ${boss} » : entier attendu`);
+      if (!Number.isInteger(onlyEncounterID)) throw new BadRequestException(`boss “${boss}”: integer expected`);
       const known = bosses.map((b) => b.boss.unwrap().encounterID);
       if (!known.includes(onlyEncounterID)) {
-        throw new BadRequestException(`boss ${onlyEncounterID} absent de cette run (présents : ${known.join(', ')})`);
+        throw new BadRequestException(`boss ${onlyEncounterID} is not in this run (present: ${known.join(', ')})`);
       }
     }
 
     const catalog = await this.wowhead.getCatalog();
     const spells = new Map<number, SpellFacts>(
-      catalog.map((s) => [s.spellId, { category: s.category, bySpec: s.bySpec, inTimeline: s.inTimeline }]),
+      catalog.map((s) => [s.spellId, { category: s.category, bySpec: s.bySpec, allowedInPlan: s.allowedInPlan, damageType: s.damageType, effect: s.effect }]),
     );
 
     /**
@@ -142,7 +171,7 @@ export class RunsController {
         bosses: bosses.map((b) => ({
           encounterID: b.boss.unwrap().encounterID,
           startTime: b.startTime,
-          events: b.events,
+          events: dedupBossEvents(b.events, new Set(run.participants.map((p) => p.sourceID))),
         })),
         spells,
         talentSpells,
@@ -170,7 +199,7 @@ export class RunsController {
       { reportCode, fightID: Number(fightID) },
       { populate: ['dungeon', 'season'] },
     );
-    if (!run) throw new NotFoundException(`${reportCode}-${fightID} non scanné`);
+    if (!run) throw new NotFoundException(`${reportCode}-${fightID} has not been scanned`);
 
     const bosses = await this.em.find(
       ScannedBoss,
@@ -179,14 +208,15 @@ export class RunsController {
     );
 
     /**
-     * Le catalogue porte catégories, requalifications par spec et `inTimeline` — tout ce
+     * Le catalogue porte catégories, requalifications par spec et `allowedInPlan` — tout ce
      * dont l'alignement a besoin. Une seule lecture pour toute la run.
      */
     const catalog = await this.wowhead.getCatalog();
     const spells = new Map<number, SpellFacts>(
-      catalog.map((s) => [s.spellId, { category: s.category, bySpec: s.bySpec, inTimeline: s.inTimeline }]),
+      catalog.map((s) => [s.spellId, { category: s.category, bySpec: s.bySpec, allowedInPlan: s.allowedInPlan, damageType: s.damageType, effect: s.effect }]),
     );
     const roleBySource = new Map(run.participants.map((p) => [p.sourceID, p.role]));
+    const playerIds = new Set(run.participants.map((p) => p.sourceID));
     const specBySource = new Map(run.participants.map((p) => [p.sourceID, p.specId]));
 
     return {
@@ -214,7 +244,7 @@ export class RunsController {
         })),
       bosses: bosses.map((b) => {
         // Offsets recalculés ici : la base stocke le timestamp relatif au rapport.
-        const casts = b.events.map(([ts, src, ability, type]) => ({
+        const casts = dedupBossEvents(b.events, playerIds).map(([ts, src, ability, type]) => ({
           offsetBoss: ts - b.startTime,
           offsetRun: ts - run.startTime,
           sourceID: src,

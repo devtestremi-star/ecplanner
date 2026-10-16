@@ -1,15 +1,25 @@
-import { Alert, Box, Chip, CircularProgress, Container, FormControlLabel, Stack, Switch, Tab, Tabs, Tooltip, Typography } from '@mui/material';
+import RefreshRoundedIcon from '@mui/icons-material/RefreshRounded';
+import { Alert, Box, Button, Chip, CircularProgress, Container, Divider, Paper, Stack, Tab, Tabs, Tooltip, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
+import { Trans, useTranslation } from 'react-i18next';
 import { useParams, useSearchParams } from 'react-router-dom';
-import { fetchRun, type RunDetail } from '../api.js';
+import { ApiError, fetchRun, scan, type RunDetail } from '../api.js';
+import { DEV_MODE } from '../devMode.js';
+import { formatLocale } from '../i18n/index.js';
+import { PALETTE } from '../theme.js';
+import { dungeonArt } from './dungeonArt.js';
 import { loadCatalog, type SpellSummary } from '../spells/catalog.js';
 import {
-  CATEGORIES, CATEGORY_COLOR, CATEGORY_LABEL, countByCategory, parseCategories, type Category,
+  CATEGORIES, CATEGORY_COLOR, countByCategory, parseCategories, type Category,
 } from '../timeline/categories.js';
 import {
   BossSpellFilter, resolveHiddenBossSpells, serializeIds,
 } from '../timeline/BossSpellFilter.js';
 import { ExportButtons } from '../ecp/ExportButtons.js';
+import { FilterLabel } from '../layout/FilterLabel.js';
+import {
+  parsePlayers, parsePlayerSpells, PlayerSpellFilter, serializePlayerSpells,
+} from '../timeline/PlayerSpellFilter.js';
 import { Timeline } from '../timeline/Timeline.js';
 
 const mmss = (ms: number): string => {
@@ -18,11 +28,16 @@ const mmss = (ms: number): string => {
 };
 
 export function Run() {
+  const { t } = useTranslation();
   const { reportCode, fightID } = useParams();
   const [params, setParams] = useSearchParams();
   const [detail, setDetail] = useState<RunDetail | null>(null);
   const [catalog, setCatalog] = useState<Map<number, SpellSummary> | null>(null);
   const [error, setError] = useState<string | null>(null);
+  // Incrémenté après un rescan forcé : relance le chargement de la run.
+  const [version, setVersion] = useState(0);
+  const [rescanning, setRescanning] = useState(false);
+  const [rescanError, setRescanError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!reportCode || !fightID) return;
@@ -34,10 +49,25 @@ export function Run() {
         setCatalog(c);
       })
       .catch((e) => setError(String(e)));
-  }, [reportCode, fightID]);
+  }, [reportCode, fightID, version]);
 
-  if (error) return <Container sx={{ py: 5 }}><Alert severity="error">{error}</Alert></Container>;
-  if (!detail || !catalog) return <Container sx={{ py: 5 }}><CircularProgress size={20} /></Container>;
+  /** Outil de dev : réinterroge Warcraft Logs pour CETTE run, puis recharge la page. */
+  async function forceRescan() {
+    if (!reportCode || !fightID) return;
+    setRescanning(true);
+    setRescanError(null);
+    try {
+      await scan(`https://www.warcraftlogs.com/reports/${reportCode}?fight=${fightID}`, true);
+      setVersion((v) => v + 1);
+    } catch (e) {
+      setRescanError(e instanceof ApiError ? e.message : String(e));
+    } finally {
+      setRescanning(false);
+    }
+  }
+
+  if (error) return <Container sx={{ py: 6 }}><Alert severity="error">{error}</Alert></Container>;
+  if (!detail || !catalog) return <Container sx={{ py: 6 }}><CircularProgress size={24} /></Container>;
 
   const missing = new Set(
     detail.bosses.flatMap((b) => b.casts.map((c) => c.abilityGameID)).filter((id) => !catalog.has(id)),
@@ -87,14 +117,65 @@ export function Run() {
   };
 
   /**
-   * `?align=1` — recale les cooldowns de réaction sur le sort de boss qui les a provoqués.
-   * Comme les autres filtres, l'état vit dans l'URL : la vue alignée est partageable, et
-   * elle survit au changement d'onglet.
+   * `?spellOff=12-31884` — sorts masqués joueur par joueur (filtre avancé). Même principe
+   * que `?bossOff` : l'état vit dans l'URL et vaut pour tous les boss de la run.
    */
-  const aligned = params.get('align') === '1';
-  const toggleAligned = () => {
+  const hiddenPlayerSpells = parsePlayerSpells(params.get('spellOff'));
+  const togglePlayerSpell = (key: string) => {
+    const next = new Set(hiddenPlayerSpells);
+    if (next.has(key)) next.delete(key);
+    else next.add(key);
     const p = new URLSearchParams(params);
-    aligned ? p.delete('align') : p.set('align', '1');
+    next.size ? p.set('spellOff', serializePlayerSpells(next)) : p.delete('spellOff');
+    setParams(p, { replace: true });
+  };
+  /** `?playerOff=12,15` — joueurs masqués en entier, l'œil à côté de leur nom. */
+  const hiddenPlayers = parsePlayers(params.get('playerOff'));
+  const togglePlayer = (sourceID: number) => {
+    const next = new Set(hiddenPlayers);
+    if (next.has(sourceID)) next.delete(sourceID);
+    else next.add(sourceID);
+    const p = new URLSearchParams(params);
+    next.size ? p.set('playerOff', serializeIds(next)) : p.delete('playerOff');
+    setParams(p, { replace: true });
+  };
+  const resetPlayers = () => {
+    const p = new URLSearchParams(params);
+    p.delete('spellOff');
+    p.delete('playerOff');
+    setParams(p, { replace: true });
+  };
+  const hiddenOnPlayers = hiddenPlayerSpells.size + hiddenPlayers.size;
+
+  /**
+   * Mode ECP (`?ecp=1`) : la timeline telle que l'export la lira.
+   *
+   * L'entrer applique un preset — soins et externes, sorts de boss hors plan masqués
+   * (`allowedInPlan`) — et active l'ALIGNEMENT, qui n'existe que dans ce mode : l'export
+   * rattache chaque cast à une capacité de boss et le place à son instant, la vue alignée
+   * est donc le plan tel qu'il partira. Les filtres restent réglables dans le mode ; en
+   * sortir coupe l'alignement et rend la vue complète. Les exclusions par joueur
+   * (`spellOff`) ne sont jamais touchées.
+   */
+  const ecpMode = params.get('ecp') === '1';
+  const aligned = ecpMode;
+  const ecpBossOff = new Set(
+    detail.bosses.flatMap((b) => b.casts)
+      .filter((c) => !specBySource.has(c.sourceID) && catalog.get(c.abilityGameID)?.allowedInPlan === false)
+      .map((c) => c.abilityGameID),
+  );
+  const ECP_CATEGORIES: readonly Category[] = CATEGORIES.filter((c) => c === 'EXTERNAL' || c === 'HEALER');
+  const toggleEcpMode = () => {
+    const p = new URLSearchParams(params);
+    if (ecpMode) {
+      p.delete('ecp');
+      p.delete('cat');
+      p.delete('bossOff');
+    } else {
+      p.set('ecp', '1');
+      p.set('cat', ECP_CATEGORIES.join(','));
+      ecpBossOff.size ? p.set('bossOff', serializeIds(ecpBossOff)) : p.delete('bossOff');
+    }
     setParams(p, { replace: true });
   };
 
@@ -110,29 +191,73 @@ export function Run() {
   };
 
   return (
-    <Container maxWidth={false} sx={{ py: 4, maxWidth: 1600 }}>
-      <Stack direction="row" spacing={1.5} sx={{ alignItems: 'baseline', flexWrap: 'wrap', mb: .5 }}>
-        <Typography variant="h1">{detail.run.dungeon.name}</Typography>
-        <Typography sx={{ color: 'primary.main', fontWeight: 600 }}>+{detail.run.keystoneLevel}</Typography>
-        <Chip
-          size="small" variant="outlined"
-          label={detail.run.kill ? 'terminée' : 'abandonnée'}
-          color={detail.run.kill ? 'success' : 'error'}
-        />
-      </Stack>
-      <Typography variant="body2" sx={{ color: 'text.secondary', mb: 3 }}>
-        {new Date(detail.run.startedAt).toLocaleString('fr-CA')} · {mmss(detail.run.duration)} ·{' '}
-        {detail.run.season} · {detail.run.reportCode}
-      </Typography>
+    <Box>
+      {/* Bandeau : le fond du donjon tiré de l'addon, voilé comme dans l'addon pour que le
+          titre reste lisible même sur les illustrations claires, et fondu dans la page. */}
+      <Box
+        sx={{
+          backgroundImage: `
+            linear-gradient(180deg, rgba(20,18,43,.45) 0%, rgba(20,18,43,.72) 60%, ${PALETTE.bg} 100%),
+            url(${dungeonArt(detail.run.dungeon.gameZoneId)})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center 40%',
+        }}
+      >
+        <Container maxWidth={false} sx={{ pt: 12, pb: 6, px: 5, maxWidth: 1680 }}>
+          {/* En-tête : identité de la run à gauche, actions à droite. */}
+          <Stack direction="row" spacing={3} sx={{ justifyContent: 'space-between', alignItems: 'flex-end', textShadow: '0 2px 16px rgba(0,0,0,.6)' }}>
+            <Box>
+              <Typography variant="overline" sx={{ color: 'primary.light' }}>{detail.run.season}</Typography>
+              <Stack direction="row" spacing={2} sx={{ alignItems: 'baseline', flexWrap: 'wrap', mt: .5 }}>
+                <Typography variant="h1">{detail.run.dungeon.name}</Typography>
+                <Typography sx={{ color: 'primary.main', fontWeight: 700, fontSize: '1.4rem' }}>
+                  +{detail.run.keystoneLevel}
+                </Typography>
+                <Chip
+                  size="small" variant="outlined"
+                  label={detail.run.kill ? t('run.status.completed') : t('run.status.abandoned')}
+                  color={detail.run.kill ? 'success' : 'error'}
+                />
+              </Stack>
+              <Typography variant="body2" sx={{ color: 'rgba(238,236,251,.8)', mt: 1.5 }}>
+                {new Date(detail.run.startedAt).toLocaleString(formatLocale())} · {mmss(detail.run.duration)} ·{' '}
+                <Box component="span" sx={{ fontFamily: 'ui-monospace, monospace' }}>{detail.run.reportCode}</Box>
+              </Typography>
+            </Box>
+
+            <Stack direction="row" spacing={1}>
+              {DEV_MODE && (
+                <Tooltip title={t('dev.rescanHelp')}>
+                  <span>
+                    <Button
+                      size="small"
+                      variant="outlined"
+                      color="warning"
+                      disabled={rescanning}
+                      startIcon={rescanning ? <CircularProgress size={14} color="inherit" /> : <RefreshRoundedIcon />}
+                      onClick={() => void forceRescan()}
+                    >
+                      {rescanning ? t('dev.rescanning') : t('dev.rescan')}
+                    </Button>
+                  </span>
+                </Tooltip>
+              )}
+            </Stack>
+          </Stack>
+        </Container>
+      </Box>
+
+      <Container maxWidth={false} sx={{ pb: 6, px: 5, maxWidth: 1680 }}>
+
+      {rescanError && <Alert severity="error" sx={{ mt: 4 }}>{rescanError}</Alert>}
 
       {missing.size > 0 && (
-        <Alert severity="warning" sx={{ mb: 2 }}>
-          {missing.size} sort(s) castés mais absents du catalogue, non affichés :{' '}
-          <Box component="span" sx={{ fontFamily: 'ui-monospace, monospace' }}>
-            {[...missing].join(', ')}
-          </Box>
-          . Soit ils ont quitté le catalogue depuis le scan, soit le catalogue chargé est périmé —
-          un rechargement forcé tranche entre les deux.
+        <Alert severity="warning" sx={{ mt: 4 }}>
+          <Trans
+            i18nKey="run.missingSpells"
+            values={{ count: missing.size, ids: [...missing].join(', ') }}
+            components={{ mono: <Box component="span" sx={{ fontFamily: 'ui-monospace, monospace' }} /> }}
+          />
         </Alert>
       )}
 
@@ -143,85 +268,113 @@ export function Run() {
         onChange={(_, v) => selectBoss(Number(v))}
         variant="scrollable"
         scrollButtons="auto"
-        sx={{ mb: 2, borderBottom: '1px solid', borderColor: 'divider', minHeight: 40 }}
+        sx={{ mt: 1, borderBottom: '1px solid', borderColor: 'divider' }}
       >
         {detail.bosses.map((b) => (
-          <Tab
-            key={b.orderIndex}
-            value={b.orderIndex}
-            label={`${b.orderIndex + 1}. ${b.name}`}
-            sx={{ minHeight: 40, textTransform: 'none' }}
-          />
+          <Tab key={b.orderIndex} value={b.orderIndex} label={`${b.orderIndex + 1}. ${b.name}`} />
         ))}
       </Tabs>
 
-      <Stack direction="row" spacing={1} useFlexGap sx={{ flexWrap: 'wrap', mb: 2 }}>
-        {CATEGORIES.map((cat) => {
-          const on = active.has(cat);
-          const n = counts[cat];
-          return (
-            <Chip
-              key={cat}
-              label={`${CATEGORY_LABEL[cat]} · ${n}`}
-              onClick={() => toggleCategory(cat)}
-              variant={on ? 'filled' : 'outlined'}
-              disabled={n === 0}
-              sx={{
-                fontWeight: 600,
-                ...(on
-                  ? { bgcolor: CATEGORY_COLOR[cat], color: '#0b0d11', '&:hover': { bgcolor: CATEGORY_COLOR[cat] } }
-                  : { borderColor: CATEGORY_COLOR[cat], color: CATEGORY_COLOR[cat] }),
-              }}
+      {/* Tous les réglages d'affichage dans une seule carte, une ligne par filtre. */}
+      <Paper variant="outlined" sx={{ mt: 4, p: 3.5, borderRadius: '14px' }}>
+        <Stack spacing={3}>
+          <Stack direction="row" spacing={2}>
+            <FilterLabel>{t('run.filters.categories')}</FilterLabel>
+            <Stack direction="row" spacing={1} useFlexGap sx={{ flexWrap: 'wrap', alignItems: 'center' }}>
+              {CATEGORIES.map((cat) => {
+                const on = active.has(cat);
+                const n = counts[cat];
+                return (
+                  <Chip
+                    key={cat}
+                    label={t('run.filters.categoryChip', { label: t(`categories.${cat}`), count: n })}
+                    onClick={() => toggleCategory(cat)}
+                    variant={on ? 'filled' : 'outlined'}
+                    disabled={n === 0}
+                    sx={on
+                      ? { bgcolor: CATEGORY_COLOR[cat], color: '#0b0d11', '&:hover': { bgcolor: CATEGORY_COLOR[cat] } }
+                      : { borderColor: CATEGORY_COLOR[cat], color: CATEGORY_COLOR[cat] }}
+                  />
+                );
+              })}
+              {active.size < CATEGORIES.length && (
+                <Chip label={t('run.filters.showAll')} size="small" variant="outlined" onClick={() => {
+                  const p = new URLSearchParams(params);
+                  p.delete('cat');
+                  setParams(p, { replace: true });
+                }} />
+              )}
+            </Stack>
+          </Stack>
+
+          <BossSpellFilter
+            detail={shownDetail}
+            catalog={catalog}
+            hidden={hiddenBossSpells}
+            onToggle={toggleBossSpell}
+          />
+
+          {/* Toujours visible : une colonne par joueur, l'œil pour le masquer en entier. */}
+          <Stack direction="row" spacing={2}>
+            <Stack spacing={1} sx={{ alignItems: 'flex-start' }}>
+              <FilterLabel>{t('run.filters.players')}</FilterLabel>
+              {hiddenOnPlayers > 0 && (
+                <>
+                  <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                    {t('run.filters.hiddenCount', { count: hiddenOnPlayers })}
+                  </Typography>
+                  <Chip label={t('run.filters.showAll')} size="small" variant="outlined" onClick={resetPlayers} />
+                </>
+              )}
+            </Stack>
+            <Box sx={{ flex: 1, minWidth: 0 }}>
+              <PlayerSpellFilter
+                detail={shownDetail}
+                catalog={catalog}
+                categories={active}
+                hidden={hiddenPlayerSpells}
+                onToggle={togglePlayerSpell}
+                hiddenPlayers={hiddenPlayers}
+                onTogglePlayer={togglePlayer}
+              />
+            </Box>
+          </Stack>
+
+          {/* Actions, en bas à droite : le mode ECP puis l'export, qui lit ce que ce mode montre. */}
+          <Divider />
+          <Stack direction="row" spacing={1} sx={{ justifyContent: 'flex-end', alignItems: 'center', flexWrap: 'wrap' }}>
+            <Tooltip title={t('run.filters.ecpPresetHelp')} placement="top">
+              <Button
+                size="small"
+                variant={ecpMode ? 'contained' : 'outlined'}
+                onClick={toggleEcpMode}
+                startIcon={<Box component="img" src="/favicon.png" alt="" sx={{ width: 18, height: 18 }} />}
+              >
+                {t('run.filters.ecpPreset')}
+              </Button>
+            </Tooltip>
+            <ExportButtons
+              reportCode={detail.run.reportCode}
+              fightID={detail.run.fightID}
+              bossEncounterID={shown[0]?.encounterID}
+              bossName={shown[0]?.name}
             />
-          );
-        })}
-        {active.size < CATEGORIES.length && (
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <Chip label="tout afficher" size="small" variant="outlined" onClick={() => {
-              const p = new URLSearchParams(params);
-              p.delete('cat');
-              setParams(p, { replace: true });
-            }} />
-          </Box>
-        )}
-      </Stack>
+          </Stack>
+        </Stack>
+      </Paper>
 
-      <ExportButtons
-        reportCode={detail.run.reportCode}
-        fightID={detail.run.fightID}
-        bossEncounterID={shown[0]?.encounterID}
-        bossName={shown[0]?.name}
-      />
-
-      <Tooltip
-        title="Recale les défensifs, externes et cooldowns de soin sur le sort de boss auquel ils répondent, dans une fenêtre de −1 s à +6 s. Les tanks et les casts sans sort de boss correspondant gardent leur instant réel."
-        placement="right"
-      >
-        <FormControlLabel
-          sx={{ mb: 1 }}
-          control={<Switch size="small" checked={aligned} onChange={toggleAligned} />}
-          label={
-            <Typography variant="body2" sx={{ color: aligned ? 'text.primary' : 'text.secondary' }}>
-              Aligner sur les sorts de boss
-            </Typography>
-          }
+      <Box sx={{ mt: 4 }}>
+        <Timeline
+          detail={shownDetail}
+          catalog={catalog}
+          categories={active}
+          hiddenBossSpells={hiddenBossSpells}
+          hiddenPlayerSpells={hiddenPlayerSpells}
+          hiddenPlayers={hiddenPlayers}
+          aligned={aligned}
         />
-      </Tooltip>
-
-      <BossSpellFilter
-        detail={shownDetail}
-        catalog={catalog}
-        hidden={hiddenBossSpells}
-        onToggle={toggleBossSpell}
-      />
-
-      <Timeline
-        detail={shownDetail}
-        catalog={catalog}
-        categories={active}
-        hiddenBossSpells={hiddenBossSpells}
-        aligned={aligned}
-      />
-    </Container>
+      </Box>
+      </Container>
+    </Box>
   );
 }

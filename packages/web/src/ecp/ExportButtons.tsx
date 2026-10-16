@@ -1,5 +1,6 @@
 import { Alert, Button, Snackbar, Stack, Tooltip } from '@mui/material';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ApiError, fetchEcpExport } from '../api.js';
 
 /**
@@ -21,6 +22,7 @@ export interface ExportButtonsProps {
 type Feedback = { severity: 'success' | 'error'; message: string } | null;
 
 export function ExportButtons({ reportCode, fightID, bossEncounterID, bossName }: ExportButtonsProps) {
+  const { t } = useTranslation();
   const [busy, setBusy] = useState<'boss' | 'dungeon' | null>(null);
   const [feedback, setFeedback] = useState<Feedback>(null);
 
@@ -35,7 +37,9 @@ export function ExportButtons({ reportCode, fightID, bossEncounterID, bossName }
       await navigator.clipboard.writeText(wire);
       setFeedback({
         severity: 'success',
-        message: `Copié — ${wire.length} caractères${fingerprint ? ` · empreinte ${fingerprint}` : ''}. Coller dans l'addon.`,
+        message: fingerprint
+          ? t('ecp.copiedWithFingerprint', { length: wire.length, fingerprint })
+          : t('ecp.copied', { length: wire.length }),
       });
     } catch (err) {
       // `writeText` échoue hors contexte sécurisé ; on ne rend PAS la chaîne en secours,
@@ -43,7 +47,7 @@ export function ExportButtons({ reportCode, fightID, bossEncounterID, bossName }
       const message =
         err instanceof ApiError
           ? err.message
-          : `Copie refusée par le navigateur. Récupérer via /api/runs/${reportCode}/${fightID}/ecp`;
+          : t('ecp.clipboardRefused', { reportCode, fightID });
       setFeedback({ severity: 'error', message });
     } finally {
       setBusy(null);
@@ -52,8 +56,8 @@ export function ExportButtons({ reportCode, fightID, bossEncounterID, bossName }
 
   return (
     <>
-      <Stack direction="row" spacing={1} sx={{ mb: 2 }}>
-        <Tooltip title={bossName ? `Écrase le plan de ${bossName} dans la variante ouverte` : ''}>
+      <Stack direction="row" spacing={1}>
+        <Tooltip title={bossName ? t('ecp.exportBossHelp', { boss: bossName }) : ''}>
           <span>
             <Button
               size="small"
@@ -61,11 +65,11 @@ export function ExportButtons({ reportCode, fightID, bossEncounterID, bossName }
               disabled={busy !== null || bossEncounterID === undefined}
               onClick={() => void run('boss')}
             >
-              {busy === 'boss' ? 'Copie…' : 'Export ECP Boss'}
+              {busy === 'boss' ? t('ecp.copying') : t('ecp.exportBoss')}
             </Button>
           </span>
         </Tooltip>
-        <Tooltip title="Crée une variante couvrant tout le donjon">
+        <Tooltip title={t('ecp.exportDungeonHelp')}>
           <span>
             <Button
               size="small"
@@ -73,7 +77,7 @@ export function ExportButtons({ reportCode, fightID, bossEncounterID, bossName }
               disabled={busy !== null}
               onClick={() => void run('dungeon')}
             >
-              {busy === 'dungeon' ? 'Copie…' : 'Export ECP Dungeon'}
+              {busy === 'dungeon' ? t('ecp.copying') : t('ecp.exportDungeon')}
             </Button>
           </span>
         </Tooltip>

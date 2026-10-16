@@ -3,7 +3,7 @@ import { Migrator } from '@mikro-orm/migrations';
 import { defineConfig } from '@mikro-orm/postgresql';
 import {
   Boss, Dungeon, DungeonSeason, ScanJob,
-  ScannedBoss, ScannedRun, Season, Spell, SpellSpec, TraitEntry,
+  ScannedBoss, ScannedRun, Season, Spell, SpellAlias, SpellSpec, TraitEntry,
 } from './entities/index.js';
 
 const url = process.env.DATABASE_URL;
@@ -31,7 +31,7 @@ export default defineConfig({
   }),
   entities: [
     Season, Dungeon, DungeonSeason, Boss,
-    Spell, SpellSpec, TraitEntry,
+    Spell, SpellAlias, SpellSpec, TraitEntry,
     ScannedRun, ScannedBoss, ScanJob,
   ],
   // Pas de metadataProvider par réflexion : chaque décorateur porte son `type`.

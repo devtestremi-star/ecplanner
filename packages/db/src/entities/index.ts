@@ -1,5 +1,5 @@
 export { Season, Dungeon, DungeonSeason, Boss } from './world.js';
-export { Spell, SpellSpec, SpellCategory } from './spell.js';
+export { BossDamageType, Spell, SpellAlias, SpellCategory, SpellEffect, SpellSpec } from './spell.js';
 export { TraitEntry } from './trait.js';
 export {
   ScannedRun,

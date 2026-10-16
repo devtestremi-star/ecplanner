@@ -1,3 +1,4 @@
+import i18n from '../i18n/index.js';
 import type { ListResult, Option, ResourceSchema, Row, Stat } from './types.js';
 
 const BASE = '/api/admin';
@@ -24,7 +25,7 @@ function readToken(): string | null {
 }
 
 function askToken(): string | null {
-  const token = window.prompt('Jeton admin')?.trim() || null;
+  const token = window.prompt(i18n.t('admin.tokenPrompt'))?.trim() || null;
   try {
     if (token) localStorage.setItem(TOKEN_KEY, token);
     else localStorage.removeItem(TOKEN_KEY);
@@ -53,7 +54,7 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
     const body = await res.json().catch(() => null);
     const message = typeof body?.message === 'string'
       ? body.message
-      : Array.isArray(body?.message) ? body.message.join(', ') : `Erreur ${res.status}`;
+      : Array.isArray(body?.message) ? body.message.join(', ') : i18n.t('admin.httpError', { status: res.status });
     throw new ApiError(message, res.status);
   }
   return res.status === 204 ? (undefined as T) : ((await res.json()) as T);

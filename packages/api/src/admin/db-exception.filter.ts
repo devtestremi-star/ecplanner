@@ -24,16 +24,16 @@ export class DbExceptionFilter implements ExceptionFilter {
 
 function translate(err: DriverException): { status: number; message: string } {
   if (err instanceof UniqueConstraintViolationException) {
-    return { status: HttpStatus.CONFLICT, message: `Cette valeur existe déjà : ${detail(err)}` };
+    return { status: HttpStatus.CONFLICT, message: `This value already exists: ${detail(err)}` };
   }
   if (err instanceof ForeignKeyConstraintViolationException) {
     return {
       status: HttpStatus.CONFLICT,
-      message: `Ligne référencée ailleurs, ou référence inexistante : ${detail(err)}`,
+      message: `Row referenced elsewhere, or reference does not exist: ${detail(err)}`,
     };
   }
   if (err instanceof NotNullConstraintViolationException) {
-    return { status: HttpStatus.BAD_REQUEST, message: `Champ obligatoire non renseigné : ${detail(err)}` };
+    return { status: HttpStatus.BAD_REQUEST, message: `Required field is empty: ${detail(err)}` };
   }
   return { status: HttpStatus.BAD_REQUEST, message: detail(err) };
 }

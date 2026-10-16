@@ -8,22 +8,26 @@
    {
     "spellId": 386181,
     "name": "Mana Bomb",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 386544,
     "name": "Arcane Orbs",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 385958,
     "name": "Arcane Expulsion",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 388537,
     "name": "Arcane Fissure",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    }
   ]
  },
@@ -36,22 +40,26 @@
    {
     "spellId": 388623,
     "name": "Branch Out",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 388923,
     "name": "Burst Forth",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 388544,
     "name": "Barkbreaker",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 388796,
     "name": "Germinate",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    }
   ]
  },
@@ -64,17 +72,20 @@
    {
     "spellId": 376997,
     "name": "Savage Peck",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 377004,
     "name": "Deafening Screech",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 377034,
     "name": "Overpowering Gust",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    }
   ]
  },
@@ -87,22 +98,26 @@
    {
     "spellId": 373326,
     "name": "Arcane Missiles",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1282251,
     "name": "Astral Blast",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 374343,
     "name": "Energy Bomb",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 388822,
     "name": "Power Vacuum",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    }
   ]
  },
@@ -115,22 +130,26 @@
    {
     "spellId": 474496,
     "name": "Repulsing Slam",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1214081,
     "name": "Arcane Expulsion",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1214032,
     "name": "Ethereal Shackles",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 474345,
     "name": "Refueling Protocol",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    }
   ]
  },
@@ -143,32 +162,38 @@
    {
     "spellId": 1225792,
     "name": "Runic Mark",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1246446,
     "name": "Null Reaction",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1225787,
     "name": "Runic Mark",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1224903,
     "name": "Suppression Zone",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1248689,
     "name": "Hastening Ward",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1225193,
     "name": "Wave of Silence",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    }
   ]
  },
@@ -181,27 +206,32 @@
    {
     "spellId": 1283904,
     "name": "Cosmic Sting",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 1224299,
     "name": "Astral Grasp",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 1223847,
     "name": "Triplicate",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1284954,
     "name": "Cosmic Sting",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1253709,
     "name": "Neural Link",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    }
   ]
  },
@@ -214,17 +244,20 @@
    {
     "spellId": 1215897,
     "name": "Devouring Entropy",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 1280113,
     "name": "Hulking Fragment",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1215087,
     "name": "Unstable Void Essence",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    }
   ]
  },
@@ -237,37 +270,44 @@
    {
     "spellId": 1260648,
     "name": "Barrage",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1246666,
     "name": "Infected Pinions",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1266480,
     "name": "Flanking Spear",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1260731,
     "name": "Freezing Trap",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1243900,
     "name": "Fetid Quillstorm",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1260643,
     "name": "Barrage",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1249479,
     "name": "Carrion Swoop",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    }
   ]
  },
@@ -280,22 +320,26 @@
    {
     "spellId": 1251204,
     "name": "Wrest Phantoms",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 1250708,
     "name": "Necrotic Convergence",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 1251554,
     "name": "Drain Soul",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1252054,
     "name": "Unmake",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    }
   ]
  },
@@ -308,17 +352,20 @@
    {
     "spellId": 1251023,
     "name": "Spiritbreaker",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1252676,
     "name": "Crush Souls",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1253788,
     "name": "Soulrending Roar",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    }
   ]
  },
@@ -331,22 +378,26 @@
    {
     "spellId": 1257509,
     "name": "Corespark Detonation",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 1251579,
     "name": "Leyline Array",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1251772,
     "name": "Reflux Charge",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1264048,
     "name": "Flux Collapse",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    }
   ]
  },
@@ -359,32 +410,38 @@
    {
     "spellId": 1249014,
     "name": "Eclipsing Step",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 1247976,
     "name": "Lightscar Flare",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 1247937,
     "name": "Umbral Lash",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1252703,
     "name": "Null Vanguard",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1264439,
     "name": "Lightscar Flare",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1271684,
     "name": "Devour the Unworthy",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    }
   ]
  },
@@ -397,22 +454,26 @@
    {
     "spellId": 1253855,
     "name": "Brilliant Dispersion",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 1253950,
     "name": "Searing Rend",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1255531,
     "name": "Flicker",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1257595,
     "name": "Divine Guile",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    }
   ]
  },
@@ -425,22 +486,26 @@
    {
     "spellId": 1261847,
     "name": "Cryostomp",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 1261299,
     "name": "Throw Saronite",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1261546,
     "name": "Orebreaker",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1262029,
     "name": "Glacial Overload",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    }
   ]
  },
@@ -453,32 +518,38 @@
    {
     "spellId": 1276648,
     "name": "Bone Infusion",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 1263406,
     "name": "Army of the Dead",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 1262745,
     "name": "Rime Blast",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1276948,
     "name": "Ice Barrage",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1262582,
     "name": "Scourgelord's Brand",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1263756,
     "name": "Death's Grasp",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    }
   ]
  },
@@ -491,22 +562,26 @@
    {
     "spellId": 1264027,
     "name": "Shade Shift",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 1264336,
     "name": "Plague Expulsion",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 1264287,
     "name": "Blight Smash",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1264363,
     "name": "Get 'Em, Ick!",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    }
   ]
  },
@@ -519,27 +594,32 @@
    {
     "spellId": 1263399,
     "name": "Oozing Slam",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 1263297,
     "name": "Crashing Void",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 1263440,
     "name": "Void Slash",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1263282,
     "name": "Decimate",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1268916,
     "name": "Null Palm",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    }
   ]
  },
@@ -552,22 +632,26 @@
    {
     "spellId": 1263523,
     "name": "Overload",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 1280065,
     "name": "Phase Dash",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 245742,
     "name": "Shadow Pounce",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1248219,
     "name": "Void Bomb",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    }
   ]
  },
@@ -580,32 +664,38 @@
    {
     "spellId": 1263542,
     "name": "Mass Void Infusion",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 1263538,
     "name": "Umbral Tentacles",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 1263529,
     "name": "Collapsing Void",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 244750,
     "name": "Mind Blast",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1277358,
     "name": "Gates of the Abyss",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1263528,
     "name": "Repulse",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    }
   ]
  },
@@ -618,37 +708,44 @@
    {
     "spellId": 1265421,
     "name": "Dirge of Despair",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 1264196,
     "name": "Disintegrate",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1265463,
     "name": "Discordant Beam",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1265689,
     "name": "Grim Chorus",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1266003,
     "name": "Symphony of the Eternal Night",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1265999,
     "name": "Siphon Void",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1265464,
     "name": "Discordant Beam",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    }
   ]
  },
@@ -661,22 +758,26 @@
    {
     "spellId": 153757,
     "name": "Fan of Blades",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 1252690,
     "name": "Gale Surge",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1258152,
     "name": "Wind Chakram",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 156793,
     "name": "Chakram Vortex",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    }
   ]
  },
@@ -689,22 +790,26 @@
    {
     "spellId": 1252877,
     "name": "Energize",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 154135,
     "name": "Supernova",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 154110,
     "name": "Fiery Smash",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 154162,
     "name": "Energize",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    }
   ]
  },
@@ -717,17 +822,20 @@
    {
     "spellId": 1253510,
     "name": "Sunbreak",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 1253519,
     "name": "Burning Claws",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 159382,
     "name": "Searing Quills",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    }
   ]
  },
@@ -740,27 +848,32 @@
    {
     "spellId": 1253543,
     "name": "Scorching Ray",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 1253538,
     "name": "Scorching Ray",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 154396,
     "name": "Solar Blast",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 153954,
     "name": "Cast Down",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1253840,
     "name": "Lens Flare",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    }
   ]
  },
@@ -773,17 +886,20 @@
    {
     "spellId": 466556,
     "name": "Flaming Updraft",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 465904,
     "name": "Burning Gale",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 466064,
     "name": "Searing Beak",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    }
   ]
  },
@@ -796,27 +912,32 @@
    {
     "spellId": 472745,
     "name": "Splattering Spew",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 472795,
     "name": "Heaving Yank",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 472888,
     "name": "Bone Hack",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 474105,
     "name": "Curse of Darkness",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 472736,
     "name": "Debilitating Shriek",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    }
   ]
  },
@@ -829,32 +950,38 @@
    {
     "spellId": 468070,
     "name": "Rallying Bellow",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 1270620,
     "name": "Flame Nova",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 467620,
     "name": "Rampage",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 470963,
     "name": "Bladestorm",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 472081,
     "name": "Reckless Leap",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1253272,
     "name": "Intimidating Shout",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    }
   ]
  },
@@ -867,27 +994,32 @@
    {
     "spellId": 472556,
     "name": "Arrow Rain",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 468429,
     "name": "Bullseye Windblast",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 1253986,
     "name": "Gust Shot",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 472662,
     "name": "Tempest Slash",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 474528,
     "name": "Bolt Gale",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    }
   ]
  },
@@ -900,27 +1032,39 @@
    {
     "spellId": 1307894,
     "name": "Ravenous Stomp",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 1296220,
     "name": "Triple Shot",
-    "inTimeline": true
+    "damageType": "dot",
+    "allowedInPlan": true
    },
    {
     "spellId": 1296216,
     "name": "Ssscavenging",
-    "inTimeline": true
+    "damageType": "dot",
+    "allowedInPlan": true,
+    "filterType": "applybuff",
+    "aliases": [
+     1298223
+    ]
    },
    {
     "spellId": 1296050,
     "name": "Regurgitate",
-    "inTimeline": true
+    "damageType": "dodge",
+    "allowedInPlan": false,
+    "aliases": [
+     1296058
+    ]
    },
    {
     "spellId": 1307703,
     "name": "Fresh Meat",
-    "inTimeline": false
+    "damageType": "ignore",
+    "allowedInPlan": false
    }
   ]
  },
@@ -933,47 +1077,56 @@
    {
     "spellId": 1299154,
     "name": "Synchronized Venom",
-    "inTimeline": true
+    "damageType": "dot",
+    "allowedInPlan": true
    },
    {
     "spellId": 1299053,
     "name": "Death Rattle",
-    "inTimeline": true
+    "damageType": "dot",
+    "allowedInPlan": true
    },
    {
     "spellId": 1298949,
     "name": "Tail Scythe",
-    "inTimeline": false
+    "damageType": "tankbuster",
+    "allowedInPlan": false
    },
    {
     "spellId": 1310357,
     "name": "Preparing Toxin",
-    "inTimeline": false
+    "damageType": "ignore",
+    "allowedInPlan": false
    },
    {
     "spellId": 1299940,
     "name": "Vindictive Onslaught",
-    "inTimeline": false
+    "damageType": "tankbuster",
+    "allowedInPlan": false
    },
    {
     "spellId": 1310547,
     "name": "Toxic Atrophy",
-    "inTimeline": false
+    "damageType": "ignore",
+    "allowedInPlan": false
    },
    {
     "spellId": 1300686,
     "name": "Assimilation",
-    "inTimeline": false
+    "damageType": "ignore",
+    "allowedInPlan": false
    },
    {
     "spellId": 1299130,
     "name": "Burrowing Charge",
-    "inTimeline": false
+    "damageType": "ignore",
+    "allowedInPlan": false
    },
    {
     "spellId": 1300044,
     "name": "Venom Jet",
-    "inTimeline": false
+    "damageType": "tankbuster",
+    "allowedInPlan": false
    }
   ]
  },
@@ -986,22 +1139,26 @@
    {
     "spellId": 1300876,
     "name": "Ritual of the Fang",
-    "inTimeline": true
+    "damageType": "dot",
+    "allowedInPlan": true
    },
    {
     "spellId": 1301413,
     "name": "Boneslicer",
-    "inTimeline": true
+    "damageType": "dot",
+    "allowedInPlan": true
    },
    {
     "spellId": 1301111,
     "name": "Axegrinder",
-    "inTimeline": false
+    "damageType": "ignore",
+    "allowedInPlan": false
    },
    {
     "spellId": 1301350,
     "name": "Chop Down",
-    "inTimeline": false
+    "damageType": "tankbuster",
+    "allowedInPlan": false
    }
   ]
  },
@@ -1014,17 +1171,24 @@
    {
     "spellId": 1235118,
     "name": "Ravenous Bellow",
-    "inTimeline": true
+    "damageType": "dot",
+    "allowedInPlan": true,
+    "aliases": [
+     1234681,
+     1235125
+    ]
    },
    {
     "spellId": 1234233,
     "name": "Spoiled Supplies",
-    "inTimeline": true
+    "damageType": "dot",
+    "allowedInPlan": true
    },
    {
     "spellId": 1253268,
     "name": "Earthshatter Slam",
-    "inTimeline": false
+    "damageType": "dodge",
+    "allowedInPlan": false
    }
   ]
  },
@@ -1037,22 +1201,26 @@
    {
     "spellId": 1235548,
     "name": "Glacial Torment",
-    "inTimeline": true
+    "damageType": "dot",
+    "allowedInPlan": true
    },
    {
     "spellId": 1235656,
     "name": "Frozen Tempest",
-    "inTimeline": true
+    "damageType": "dot",
+    "allowedInPlan": true
    },
    {
     "spellId": 1235623,
     "name": "Raging Squall",
-    "inTimeline": false
+    "damageType": "ignore",
+    "allowedInPlan": false
    },
    {
     "spellId": 1235783,
     "name": "Shattering Frostspike",
-    "inTimeline": false
+    "damageType": "ignore",
+    "allowedInPlan": false
    }
   ]
  },
@@ -1065,17 +1233,20 @@
    {
     "spellId": 1242860,
     "name": "Echoing Maul",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 1243569,
     "name": "Overwhelming Onslaught",
-    "inTimeline": true
+    "damageType": "dot",
+    "allowedInPlan": true
    },
    {
     "spellId": 1243011,
     "name": "Fury of the War God",
-    "inTimeline": true
+    "damageType": "dot",
+    "allowedInPlan": true
    }
   ]
  },
@@ -1088,22 +1259,29 @@
    {
     "spellId": 265773,
     "name": "Spit Gold",
-    "inTimeline": true
+    "damageType": "dot",
+    "allowedInPlan": true
    },
    {
     "spellId": 265781,
     "name": "Serpentine Gust",
-    "inTimeline": true
+    "damageType": "dot",
+    "allowedInPlan": true,
+    "aliases": [
+     1311987
+    ]
    },
    {
     "spellId": 265910,
     "name": "Tail Thrash",
-    "inTimeline": false
+    "damageType": "tankbuster",
+    "allowedInPlan": false
    },
    {
     "spellId": 265923,
     "name": "Lucre's Call",
-    "inTimeline": false
+    "damageType": "ignore",
+    "allowedInPlan": false
    }
   ]
  },
@@ -1116,22 +1294,29 @@
    {
     "spellId": 267618,
     "name": "Drain Fluids",
-    "inTimeline": true
+    "damageType": "dot",
+    "allowedInPlan": true
    },
    {
     "spellId": 1311956,
     "name": "Burn Corruption",
-    "inTimeline": true
+    "damageType": "tankbuster",
+    "allowedInPlan": false,
+    "aliases": [
+     267639
+    ]
    },
    {
     "spellId": 1312146,
     "name": "Awakening Slam",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 267702,
     "name": "Entomb",
-    "inTimeline": false
+    "damageType": "ignore",
+    "allowedInPlan": false
    }
   ]
  },
@@ -1144,37 +1329,44 @@
    {
     "spellId": 1303327,
     "name": "Quaking Leap",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 1303267,
     "name": "Gilded Destruction",
-    "inTimeline": true
+    "damageType": "dot",
+    "allowedInPlan": true
    },
    {
     "spellId": 269230,
     "name": "Hunting Leap",
-    "inTimeline": false
+    "damageType": "ignore",
+    "allowedInPlan": false
    },
    {
     "spellId": 269369,
     "name": "Deathly Roar",
-    "inTimeline": false
+    "damageType": "ignore",
+    "allowedInPlan": false
    },
    {
     "spellId": 1303115,
     "name": "Aerial Smash",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 268586,
     "name": "Blade Combo",
-    "inTimeline": false
+    "damageType": "tankbuster",
+    "allowedInPlan": false
    },
    {
     "spellId": 1303488,
     "name": "Savage Maul",
-    "inTimeline": false
+    "damageType": "tankbuster",
+    "allowedInPlan": false
    }
   ]
  },
@@ -1187,22 +1379,26 @@
    {
     "spellId": 1253811,
     "name": "Fel Spray",
-    "inTimeline": false
+    "damageType": "ignore",
+    "allowedInPlan": false
    },
    {
     "spellId": 474240,
     "name": "Fel Nova",
-    "inTimeline": false
+    "damageType": "ignore",
+    "allowedInPlan": false
    },
    {
     "spellId": 1264095,
     "name": "Mirror Images",
-    "inTimeline": false
+    "damageType": "ignore",
+    "allowedInPlan": false
    },
    {
     "spellId": 1228198,
     "name": "Corroding Spittle",
-    "inTimeline": false
+    "damageType": "ignore",
+    "allowedInPlan": false
    }
   ]
  },
@@ -1215,27 +1411,32 @@
    {
     "spellId": 474478,
     "name": "Killing Spree",
-    "inTimeline": true
+    "damageType": "dot",
+    "allowedInPlan": true
    },
    {
     "spellId": 1218347,
     "name": "Murder in a Row",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 474765,
     "name": "Same-Day Delivery",
-    "inTimeline": false
+    "damageType": "ignore",
+    "allowedInPlan": false
    },
    {
     "spellId": 1214357,
     "name": "Fire Bomb",
-    "inTimeline": false
+    "damageType": "dot",
+    "allowedInPlan": false
    },
    {
     "spellId": 1222795,
     "name": "Envenom",
-    "inTimeline": false
+    "damageType": "tankbuster",
+    "allowedInPlan": false
    }
   ]
  },
@@ -1248,32 +1449,38 @@
    {
     "spellId": 1214637,
     "name": "Axe Toss",
-    "inTimeline": true
+    "damageType": "dot",
+    "allowedInPlan": true
    },
    {
     "spellId": 1295453,
     "name": "Infernal Crush",
-    "inTimeline": true
+    "damageType": "dot",
+    "allowedInPlan": true
    },
    {
     "spellId": 474197,
     "name": "Demonic Rage",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 473898,
     "name": "Legion Strike",
-    "inTimeline": false
+    "damageType": "tankbuster",
+    "allowedInPlan": false
    },
    {
     "spellId": 474234,
     "name": "Burning Steps",
-    "inTimeline": false
+    "damageType": "ignore",
+    "allowedInPlan": false
    },
    {
     "spellId": 1214650,
     "name": "Fel Lightning",
-    "inTimeline": false
+    "damageType": "ignore",
+    "allowedInPlan": false
    }
   ]
  },
@@ -1286,17 +1493,26 @@
    {
     "spellId": 1218203,
     "name": "Fingers of Gul'dan",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true,
+    "aliases": [
+     474462
+    ]
    },
    {
     "spellId": 474408,
     "name": "Summon Vilefiend",
-    "inTimeline": false
+    "damageType": "ignore",
+    "allowedInPlan": false
    },
    {
     "spellId": 1224478,
     "name": "Malefic Wave",
-    "inTimeline": false
+    "damageType": "ignore",
+    "allowedInPlan": false,
+    "aliases": [
+     1217345
+    ]
    }
   ]
  },
@@ -1309,17 +1525,26 @@
    {
     "spellId": 372864,
     "name": "Ritual of Blazebinding",
-    "inTimeline": true
+    "damageType": "dot",
+    "allowedInPlan": true,
+    "aliases": [
+     372863
+    ]
    },
    {
     "spellId": 372110,
     "name": "Molten Boulder",
-    "inTimeline": false
+    "damageType": "ignore",
+    "allowedInPlan": false,
+    "aliases": [
+     372107
+    ]
    },
    {
     "spellId": 372858,
     "name": "Searing Blows",
-    "inTimeline": false
+    "damageType": "tankbuster",
+    "allowedInPlan": false
    }
   ]
  },
@@ -1332,22 +1557,26 @@
    {
     "spellId": 373686,
     "name": "Frost Overload",
-    "inTimeline": true
+    "damageType": "dot",
+    "allowedInPlan": true
    },
    {
     "spellId": 1307297,
     "name": "Hailburst",
-    "inTimeline": false
+    "damageType": "dot",
+    "allowedInPlan": false
    },
    {
     "spellId": 1307308,
     "name": "Chillstorm",
-    "inTimeline": false
+    "damageType": "dot",
+    "allowedInPlan": false
    },
    {
     "spellId": 373046,
     "name": "Awaken Whelps",
-    "inTimeline": false
+    "damageType": "ignore",
+    "allowedInPlan": false
    }
   ]
  },
@@ -1360,27 +1589,36 @@
    {
     "spellId": 381512,
     "name": "Stormslam",
-    "inTimeline": false
+    "damageType": "tankbuster",
+    "allowedInPlan": false
    },
    {
     "spellId": 381517,
     "name": "Winds of Change",
-    "inTimeline": false
+    "damageType": "dot",
+    "allowedInPlan": false
    },
    {
     "spellId": 381862,
     "name": "Inferno Spit",
-    "inTimeline": true
+    "damageType": "dot",
+    "allowedInPlan": true,
+    "aliases": [
+     381602,
+     381605
+    ]
    },
    {
     "spellId": 381516,
     "name": "Interrupting Cloudburst",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 381525,
     "name": "Roaring Firebreath",
-    "inTimeline": false
+    "damageType": "dodge",
+    "allowedInPlan": false
    }
   ]
  },
@@ -1393,22 +1631,32 @@
    {
     "spellId": 1288864,
     "name": "Tempest Winds",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1288428,
     "name": "Overload",
-    "inTimeline": true
+    "damageType": "tankbuster",
+    "allowedInPlan": false
    },
    {
     "spellId": 1289059,
     "name": "Gale Force",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": true,
+    "aliases": [
+     1289062
+    ]
    },
    {
     "spellId": 1288049,
     "name": "Thunder and Lightning",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": true,
+    "aliases": [
+     1288087
+    ]
    }
   ]
  },
@@ -1421,32 +1669,38 @@
    {
     "spellId": 1293048,
     "name": "Serpentstorm",
-    "inTimeline": true
+    "damageType": "dot",
+    "allowedInPlan": true
    },
    {
     "spellId": 264172,
     "name": "Burrow",
-    "inTimeline": true
+    "damageType": "dot",
+    "allowedInPlan": true
    },
    {
     "spellId": 1290797,
     "name": "Lightning Bite",
-    "inTimeline": false
+    "damageType": "tankbuster",
+    "allowedInPlan": false
    },
    {
     "spellId": 1290029,
     "name": "A Knot of Snakes",
-    "inTimeline": false
+    "damageType": "ignore",
+    "allowedInPlan": false
    },
    {
     "spellId": 1289109,
     "name": "Thunder Spit",
-    "inTimeline": false
+    "damageType": "dot",
+    "allowedInPlan": false
    },
    {
     "spellId": 1289205,
     "name": "Hatch",
-    "inTimeline": false
+    "damageType": "ignore",
+    "allowedInPlan": false
    }
   ]
  },
@@ -1459,12 +1713,21 @@
    {
     "spellId": 1309525,
     "name": "Induction",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true,
+    "aliases": [
+     1290531
+    ]
    },
    {
     "spellId": 1291618,
     "name": "Lightning Spire",
-    "inTimeline": false
+    "damageType": "dot",
+    "allowedInPlan": true,
+    "filterType": "applydebuff",
+    "aliases": [
+     266923
+    ]
    }
   ]
  },
@@ -1477,32 +1740,38 @@
    {
     "spellId": 1234753,
     "name": "Bedrock Slam",
-    "inTimeline": true
+    "damageType": "dot",
+    "allowedInPlan": true
    },
    {
     "spellId": 1235564,
     "name": "Lightblossom Beam",
-    "inTimeline": true
+    "damageType": "dot",
+    "allowedInPlan": true
    },
    {
     "spellId": 1234850,
     "name": "Lightsower Dash",
-    "inTimeline": false
+    "damageType": "dodge",
+    "allowedInPlan": false
    },
    {
     "spellId": 1234802,
     "name": "Fertile Loam",
-    "inTimeline": false
+    "damageType": "dot",
+    "allowedInPlan": false
    },
    {
     "spellId": 1235828,
     "name": "Light-Scorched Earth",
-    "inTimeline": false
+    "damageType": "ignore",
+    "allowedInPlan": false
    },
    {
     "spellId": 1235640,
     "name": "Thornblade",
-    "inTimeline": false
+    "damageType": "dot",
+    "allowedInPlan": false
    }
   ]
  },
@@ -1515,27 +1784,32 @@
    {
     "spellId": 1236746,
     "name": "Verdant Stomp",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 1236709,
     "name": "Thorncaller Roar",
-    "inTimeline": true
+    "damageType": "dot",
+    "allowedInPlan": true
    },
    {
     "spellId": 1237090,
     "name": "Bloodthirsty Gaze",
-    "inTimeline": false
+    "damageType": "ignore",
+    "allowedInPlan": false
    },
    {
     "spellId": 1237267,
     "name": "Incise",
-    "inTimeline": false
+    "damageType": "tankbuster",
+    "allowedInPlan": false
    },
    {
     "spellId": 1272290,
     "name": "Crunched",
-    "inTimeline": false
+    "damageType": "ignore",
+    "allowedInPlan": false
    }
   ]
  },
@@ -1548,27 +1822,32 @@
    {
     "spellId": 1239825,
     "name": "Lightfire",
-    "inTimeline": false
+    "damageType": "dot",
+    "allowedInPlan": false
    },
    {
     "spellId": 1239919,
     "name": "Lightfire Beams",
-    "inTimeline": false
+    "damageType": "ignore",
+    "allowedInPlan": false
    },
    {
     "spellId": 1241058,
     "name": "Grievous Thrash",
-    "inTimeline": false
+    "damageType": "dot",
+    "allowedInPlan": false
    },
    {
     "spellId": 1251345,
     "name": "Blight Resin",
-    "inTimeline": false
+    "damageType": "dot",
+    "allowedInPlan": false
    },
    {
     "spellId": 1257094,
     "name": "Pulverized",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    }
   ]
  },
@@ -1581,27 +1860,32 @@
    {
     "spellId": 1246372,
     "name": "Awaken the Lightbloom",
-    "inTimeline": true
+    "damageType": "ignore",
+    "allowedInPlan": true
    },
    {
     "spellId": 1246858,
     "name": "Lightbloom's Essence",
-    "inTimeline": true
+    "damageType": "dot",
+    "allowedInPlan": true
    },
    {
     "spellId": 1246751,
     "name": "Concentrated Lightbeam",
-    "inTimeline": false
+    "damageType": "ignore",
+    "allowedInPlan": false
    },
    {
     "spellId": 1246753,
     "name": "Lightsap",
-    "inTimeline": false
+    "damageType": "ignore",
+    "allowedInPlan": false
    },
    {
     "spellId": 1247746,
     "name": "Thornspike",
-    "inTimeline": false
+    "damageType": "tankbuster",
+    "allowedInPlan": false
    }
   ]
  },
@@ -1614,22 +1898,29 @@
    {
     "spellId": 1222098,
     "name": "Nether Dash",
-    "inTimeline": true
+    "damageType": "dot",
+    "allowedInPlan": true,
+    "aliases": [
+     1222100
+    ]
    },
    {
     "spellId": 1300259,
     "name": "Dark Bloom",
-    "inTimeline": true
+    "damageType": "dot",
+    "allowedInPlan": true
    },
    {
     "spellId": 1296963,
     "name": "Umbral Rupture",
-    "inTimeline": false
+    "damageType": "burst",
+    "allowedInPlan": false
    },
    {
     "spellId": 1297017,
     "name": "Void Blast",
-    "inTimeline": false
+    "damageType": "ignore",
+    "allowedInPlan": false
    }
   ]
  },
@@ -1642,32 +1933,38 @@
    {
     "spellId": 1226120,
     "name": "Poison Splash",
-    "inTimeline": true
+    "damageType": "dot",
+    "allowedInPlan": true
    },
    {
     "spellId": 1262497,
     "name": "Monstrous Roar",
-    "inTimeline": true
+    "damageType": "burst",
+    "allowedInPlan": true
    },
    {
     "spellId": 1222642,
     "name": "Hulking Claw",
-    "inTimeline": false
+    "damageType": "ignore",
+    "allowedInPlan": false
    },
    {
     "spellId": 1222721,
     "name": "Noxious Breath",
-    "inTimeline": false
+    "damageType": "ignore",
+    "allowedInPlan": false
    },
    {
     "spellId": 1222484,
     "name": "Poison Pool",
-    "inTimeline": false
+    "damageType": "ignore",
+    "allowedInPlan": false
    },
    {
     "spellId": 1263971,
     "name": "Lingering Poison",
-    "inTimeline": false
+    "damageType": "ignore",
+    "allowedInPlan": false
    }
   ]
  },
@@ -1680,32 +1977,50 @@
    {
     "spellId": 1282770,
     "name": "Unstable Singularity",
-    "inTimeline": true
+    "damageType": "dot",
+    "allowedInPlan": true,
+    "aliases": [
+     1248112
+    ]
    },
    {
     "spellId": 1227264,
     "name": "Cosmic Crash",
-    "inTimeline": true
+    "damageType": "dot",
+    "allowedInPlan": true,
+    "aliases": [
+     1227197
+    ]
    },
    {
     "spellId": 1263982,
     "name": "Gravitic Orbs",
-    "inTimeline": false
+    "damageType": "ignore",
+    "allowedInPlan": false,
+    "aliases": [
+     1310025
+    ]
    },
    {
     "spellId": 1222755,
     "name": "Void Cascade",
-    "inTimeline": false
+    "damageType": "ignore",
+    "allowedInPlan": false,
+    "aliases": [
+     1227247
+    ]
    },
    {
     "spellId": 1311923,
     "name": "Dark Waves",
-    "inTimeline": false
+    "damageType": "ignore",
+    "allowedInPlan": false
    },
    {
     "spellId": 1264188,
     "name": "Event Horizon",
-    "inTimeline": false
+    "damageType": "ignore",
+    "allowedInPlan": false
    }
   ]
  }

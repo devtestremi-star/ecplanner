@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { api } from './api.js';
 import { FieldInput, type FormValue } from './fields.js';
 import type { FieldDef, ListResult, Row } from './types.js';
@@ -22,6 +23,7 @@ export interface PivotPanelProps {
  * sans son donjon, ne veut rien dire. On les édite là où ils ont un sens.
  */
 export function PivotPanel({ resource, parentField, parentId, legend, empty }: PivotPanelProps) {
+  const { t } = useTranslation();
   const schema = useSchema(resource);
   const [data, setData] = useState<ListResult | null>(null);
   const [draft, setDraft] = useState<Record<string, FormValue>>({});
@@ -73,7 +75,7 @@ export function PivotPanel({ resource, parentField, parentId, legend, empty }: P
       <legend>{legend}{data ? ` · ${data.total}` : ''}</legend>
       {error && <div className="error">{error}</div>}
 
-      {data?.rows.length === 0 && <p className="null" style={{ margin: '4px 0' }}>{empty ?? 'Aucune ligne.'}</p>}
+      {data?.rows.length === 0 && <p className="null" style={{ margin: '4px 0' }}>{empty ?? t('admin.noRows')}</p>}
 
       {data?.rows.map((row) => (
         <div className="pivot-row" key={row.__id}>
@@ -81,7 +83,7 @@ export function PivotPanel({ resource, parentField, parentId, legend, empty }: P
           {ownFields
             .filter((f) => !f.pk && f.kind !== 'relation')
             .map((f) => <span key={f.name} className="mono">{String(row[f.name] ?? '')}</span>)}
-          <button className="btn sm danger" disabled={busy} onClick={() => drop(row)}>retirer</button>
+          <button className="btn sm danger" disabled={busy} onClick={() => drop(row)}>{t('admin.remove')}</button>
         </div>
       ))}
 
@@ -90,7 +92,7 @@ export function PivotPanel({ resource, parentField, parentId, legend, empty }: P
           <FieldInput key={f.name} field={f} value={draft[f.name] ?? ''}
                       onChange={(v) => setDraft((d) => ({ ...d, [f.name]: v }))} />
         ))}
-        <button className="btn sm primary" disabled={busy} onClick={add}>Ajouter</button>
+        <button className="btn sm primary" disabled={busy} onClick={add}>{t('admin.add')}</button>
       </div>
     </fieldset>
   );

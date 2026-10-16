@@ -19,7 +19,7 @@ export class AdminService {
 
   resource(key: string): ResourceDef {
     const def = resourceByKey(key);
-    if (!def) throw new NotFoundException(`Table « ${key} » inconnue`);
+    if (!def) throw new NotFoundException(`Unknown table “${key}”`);
     return def;
   }
 
@@ -73,7 +73,7 @@ export class AdminService {
     const parts = id.split(ID_SEP);
     const expected = this.pkArity(def);
     if (parts.length !== expected) {
-      throw new BadRequestException(`Identifiant « ${id} » : ${expected} segment(s) attendu(s)`);
+      throw new BadRequestException(`Identifier “${id}”: ${expected} segment(s) expected`);
     }
     return parts;
   }
@@ -114,7 +114,7 @@ export class AdminService {
   private coerce(field: FieldDef, value: unknown, opts: { forKey?: boolean } = {}): unknown {
     if (value === null || value === '' || value === undefined) {
       if (field.required && !field.generated) {
-        throw new BadRequestException(`Champ « ${field.label} » requis`);
+        throw new BadRequestException(`Field “${field.label}” is required`);
       }
       return null;
     }
@@ -122,20 +122,20 @@ export class AdminService {
     switch (field.kind) {
       case 'integer': {
         const n = Number(value);
-        if (!Number.isInteger(n)) throw new BadRequestException(`« ${field.label} » : entier attendu, reçu « ${String(value)} »`);
+        if (!Number.isInteger(n)) throw new BadRequestException(`“${field.label}”: integer expected, got “${String(value)}”`);
         return n;
       }
       case 'boolean':
         return value === true || value === 'true' || value === 1 || value === '1';
       case 'date': {
         const d = value instanceof Date ? value : new Date(String(value));
-        if (Number.isNaN(d.getTime())) throw new BadRequestException(`« ${field.label} » : date invalide`);
+        if (Number.isNaN(d.getTime())) throw new BadRequestException(`“${field.label}”: invalid date`);
         return d;
       }
       case 'enum': {
         const v = String(value);
         if (!field.enumValues?.includes(v)) {
-          throw new BadRequestException(`« ${field.label} » : valeur hors liste (${field.enumValues?.join(', ')})`);
+          throw new BadRequestException(`“${field.label}”: value not in list (${field.enumValues?.join(', ')})`);
         }
         return v;
       }
@@ -143,13 +143,13 @@ export class AdminService {
         const arr = Array.isArray(value) ? value : String(value).split(',').filter((s) => s.trim() !== '');
         return arr.map((v) => {
           const n = Number(v);
-          if (!Number.isInteger(n)) throw new BadRequestException(`« ${field.label} » : liste d'entiers attendue`);
+          if (!Number.isInteger(n)) throw new BadRequestException(`“${field.label}”: list of integers expected`);
           return n;
         });
       }
       case 'json':
         if (typeof value !== 'string') return value;
-        try { return JSON.parse(value); } catch { throw new BadRequestException(`« ${field.label} » : JSON invalide`); }
+        try { return JSON.parse(value); } catch { throw new BadRequestException(`“${field.label}”: invalid JSON`); }
       case 'relation': {
         const target = this.resource(field.target!);
         const pk = this.decodeId(target, String(value));
@@ -285,7 +285,7 @@ export class AdminService {
   async get(key: string, id: string): Promise<{ row: Row; refs: Record<string, Record<string, string>> }> {
     const def = this.resource(key);
     const entity = await this.em.findOne(def.entity, this.decodeId(def, id) as never);
-    if (!entity) throw new NotFoundException(`${def.label} « ${id} » introuvable`);
+    if (!entity) throw new NotFoundException(`${def.label} “${id}” not found`);
     const row = this.serialize(def, entity as Row, { heavy: true });
     return { row, refs: await this.buildRefs(def, [row]) };
   }
@@ -310,7 +310,7 @@ export class AdminService {
   async update(key: string, id: string, body: Row): Promise<Row> {
     const def = this.resource(key);
     const entity = await this.em.findOne(def.entity, this.decodeId(def, id) as never);
-    if (!entity) throw new NotFoundException(`${def.label} « ${id} » introuvable`);
+    if (!entity) throw new NotFoundException(`${def.label} “${id}” not found`);
 
     for (const field of def.fields) {
       // Muter une PK reviendrait à créer une autre ligne : on refuse plutôt que de surprendre.
@@ -326,7 +326,7 @@ export class AdminService {
   async remove(key: string, id: string): Promise<{ deleted: string }> {
     const def = this.resource(key);
     const entity = await this.em.findOne(def.entity, this.decodeId(def, id) as never);
-    if (!entity) throw new NotFoundException(`${def.label} « ${id} » introuvable`);
+    if (!entity) throw new NotFoundException(`${def.label} “${id}” not found`);
     await this.em.removeAndFlush(entity);
     return { deleted: id };
   }

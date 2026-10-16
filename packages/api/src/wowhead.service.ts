@@ -19,8 +19,12 @@ export interface SpellSummary {
   icon: string | null;
   category: string | null;
   baseCooldownSec: number | null;
-  /** Affiché par défaut dans la timeline. `false` = chip désaturé au premier rendu. */
-  inTimeline: boolean;
+  /** Sort de boss planifiable dans l'addon : ancre d'alignement et cible d'export ECP. */
+  allowedInPlan: boolean;
+  /** Sorts de boss seulement : `burst` ou `dot`. Sert à l'alignement. */
+  damageType?: string;
+  /** Sorts de joueur qui répondent aux dégâts : `HEALING`, `SHIELD` ou `DR`. Sert à l'alignement. */
+  effect?: string;
   /**
    * Requalifications par spec, `{ specId: category }`. Présent seulement pour les sorts
    * qui en ont — inutile de transporter une clé vide pour 200 sorts.
@@ -50,7 +54,7 @@ export class WowheadService {
       Spell,
       {},
       {
-        fields: ['spellId', 'name', 'icon', 'category', 'baseCooldownSec', 'inTimeline'],
+        fields: ['spellId', 'name', 'icon', 'category', 'baseCooldownSec', 'allowedInPlan', 'damageType', 'effect'],
         orderBy: { spellId: 'asc' },
       },
     );
@@ -75,7 +79,9 @@ export class WowheadService {
         icon: s.icon ?? null,
         category: s.category ?? null,
         baseCooldownSec: s.baseCooldownSec ?? null,
-        inTimeline: s.inTimeline,
+        allowedInPlan: s.allowedInPlan,
+        ...(s.damageType ? { damageType: s.damageType } : {}),
+        ...(s.effect ? { effect: s.effect } : {}),
         ...(bySpec ? { bySpec } : {}),
       };
     });
@@ -88,10 +94,17 @@ export class WowheadService {
    * alors des sorts « absents du catalogue » qui y étaient bel et bien.
    */
   async getCatalogEtag(): Promise<string> {
+    /**
+     * Version de la FORME du catalogue, à incrémenter à chaque champ renommé ou ajouté.
+     * L'empreinte ne porte que les valeurs : quand `inTimeline` est devenu `allowedInPlan`
+     * à valeurs égales, l'ETag n'a pas bougé, le navigateur a gardé l'ancien JSON, et le
+     * mode ECP lisait un champ absent.
+     */
+    const CATALOG_FORMAT = 2;
     const spells = await this.getCatalog();
     const digest = createHash('sha1')
       /**
-       * TOUT ce que le front consomme entre dans l'empreinte, `inTimeline` et les
+       * TOUT ce que le front consomme entre dans l'empreinte, `allowedInPlan` et les
        * requalifications par spec comprises. Sans elles, un seed qui bascule un drapeau
        * laisse l'ETag identique : le navigateur garde un catalogue périmé, et l'alignement
        * côté front diverge en silence de ce que le serveur considère comme une ancre.
@@ -99,13 +112,13 @@ export class WowheadService {
       .update(
         spells
           .map((s) =>
-            [s.spellId, s.name, s.icon, s.category, s.inTimeline ? 1 : 0, JSON.stringify(s.bySpec ?? null)].join(':'),
+            [s.spellId, s.name, s.icon, s.category, s.allowedInPlan ? 1 : 0, s.damageType ?? '', s.effect ?? '', JSON.stringify(s.bySpec ?? null)].join(':'),
           )
           .join('|'),
       )
       .digest('base64url')
       .slice(0, 16);
-    return `"cat-${spells.length}-${digest}"`;
+    return `"cat-v${CATALOG_FORMAT}-${spells.length}-${digest}"`;
   }
 
   /** Le tooltip d'un sort. `null` si le sort est inconnu de la base. */
@@ -152,7 +165,7 @@ export class WowheadService {
       icon: s.icon ?? null,
       category: s.category ?? null,
       baseCooldownSec: s.baseCooldownSec ?? null,
-      inTimeline: s.inTimeline,
+      allowedInPlan: s.allowedInPlan,
       tooltipHtml: s.tooltipHtml ?? null,
       fetched: refreshed.has(s.spellId),
     }));

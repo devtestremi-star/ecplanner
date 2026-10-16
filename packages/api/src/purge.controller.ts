@@ -28,7 +28,7 @@ export class PurgeController {
     // Vercel envoie `Authorization: Bearer $CRON_SECRET` sur chaque appel de cron.
     const secret = process.env.CRON_SECRET;
     if (!secret) {
-      if (isDeployed()) throw new ForbiddenException('CRON_SECRET non configuré');
+      if (isDeployed()) throw new ForbiddenException('CRON_SECRET is not configured');
     } else if (!bearerMatches(authorization, secret)) {
       throw new UnauthorizedException();
     }

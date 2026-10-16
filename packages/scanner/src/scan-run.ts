@@ -10,7 +10,7 @@ import {
 } from '@timeline/db';
 import { wowClassByName, wowSpec } from '@timeline/shared';
 import { fetchAllEvents, WORLD_ZONE, type WclClient } from '@timeline/wcl';
-import { resolveRun } from './resolve.js';
+import { NoCombatantInfoError, resolveRun } from './resolve.js';
 import { fetchRoster, type RosterMember } from './roster.js';
 import { buildSpellFilter } from './spell-filter.js';
 
@@ -20,8 +20,10 @@ import { buildSpellFilter } from './spell-filter.js';
  * 2 : ajout des sorts de boss curés (`boss-spells.json`). Les runs en version 1 ont été
  * scannées sans eux — leurs fenêtres de boss ne contiennent que des casts joueurs, et
  * l'absence de cast de boss n'y signifie donc rien.
+ * 3 : alias de sorts de boss (`SpellAlias`). Avant, une capacité que le log enregistre
+ * sous un autre id que celui de l'addon (Ravenous Bellow) n'était jamais demandée.
  */
-export const SPELL_SET_VERSION = 2;
+export const SPELL_SET_VERSION = 3;
 
 /**
  * Fenêtre en deçà de laquelle deux events du même sort par la même source comptent pour
@@ -64,20 +66,36 @@ export async function scanRun(
     endTime: fight.endTime,
   });
 
+  // Refusé avant la requête d'events, la plus coûteuse, et avant toute écriture en base.
+  if (roster.members.every((m) => m.specID == null)) throw new NoCombatantInfoError(reportCode, fight.id);
+
   const specIds = [...new Set(roster.members.map((m) => m.specID).filter((s): s is number => s != null))];
   if (specIds.length < roster.members.length) {
-    warnings.push(`${roster.members.length - specIds.length} joueur(s) sans CombatantInfo — spec inconnue`);
+    warnings.push(`${roster.members.length - specIds.length} player(s) without CombatantInfo - unknown spec`);
   }
 
   // --- filtre, construit AVANT la requête coûteuse ------------------------
   const filter = await buildSpellFilter(em, specIds);
 
   // --- 3/3 events ---------------------------------------------------------
-  const { events, pages } = await fetchAllEvents(client, {
+  const { events: rawEvents, pages } = await fetchAllEvents(client, {
     reportCode,
     startTime: fight.startTime,
     endTime: fight.endTime,
     filter: filter.expression,
+  });
+
+  /**
+   * Alias ramenés à l'identifiant curé DÈS ICI, avant tout tri : le type d'event attendu,
+   * le dédoublonnage et le stockage raisonnent tous sur l'identifiant de l'addon.
+   *
+   * Entorse assumée à « la base garde ce que WCL a dit » : l'id du log est perdu, mais
+   * aucun lecteur n'en a l'usage, et le garder obligerait l'API, l'alignement et l'export
+   * ECP à connaître chacun la table d'alias.
+   */
+  const events = rawEvents.map((e) => {
+    const canonical = filter.aliasOf.get(e.abilityGameID ?? -1);
+    return canonical === undefined ? e : { ...e, abilityGameID: canonical };
   });
 
   // Un sourceID absent du roster ne doit jamais créer de participant.
@@ -89,7 +107,7 @@ export async function scanRun(
   const orphans = [...new Set(events.map((e) => e.sourceID).filter((s): s is number => s != null))].filter(
     (s) => s >= 0 && !known.has(s) && !bossSources.has(s),
   );
-  if (orphans.length) warnings.push(`sourceID hors roster : ${orphans.join(', ')}`);
+  if (orphans.length) warnings.push(`sourceID not in roster: ${orphans.join(', ')}`);
 
   // --- persistance --------------------------------------------------------
   // Le seed ne connaît que la saison courante ; un utilisateur peut soumettre un log
@@ -108,7 +126,7 @@ export async function scanRun(
       active: false,
     } as Season);
     await em.persistAndFlush(season);
-    warnings.push(`saison "${zone.name}" (zone ${zone.id}) découverte et créée`);
+    warnings.push(`season "${zone.name}" (zone ${zone.id}) discovered and created`);
   }
 
   // Le seed dérive gameZoneId du suffixe de l'encounterID ; ici on a la vraie valeur.
@@ -120,7 +138,7 @@ export async function scanRun(
       name: fight.gameZone?.name ?? `Zone ${run.gameZoneId}`,
     } as Dungeon);
     em.persist(dungeon);
-    warnings.push(`donjon ${run.gameZoneId} inconnu du seed — créé à la volée`);
+    warnings.push(`dungeon ${run.gameZoneId} unknown to the seed - created on the fly`);
     await em.flush();
   }
 
@@ -139,7 +157,7 @@ export async function scanRun(
       } as unknown as Boss);
       em.persist(boss);
     } else if (boss.name !== b.name) {
-      warnings.push(`boss ${b.encounterID} : référentiel "${boss.name}" vs rapport "${b.name}"`);
+      warnings.push(`boss ${b.encounterID}: reference "${boss.name}" vs report "${b.name}"`);
     }
   }
   await em.flush();
@@ -149,15 +167,15 @@ export async function scanRun(
   for (const m of roster.members) {
     const cls = wowClassByName(m.className);
     if (!cls) {
-      warnings.push(`classe inconnue "${m.className}" pour ${m.name} — joueur ignoré`);
+      warnings.push(`unknown class "${m.className}" for ${m.name} - player skipped`);
       continue;
     }
     if (m.specID == null) {
-      warnings.push(`${m.name} sans CombatantInfo — joueur ignoré`);
+      warnings.push(`${m.name} without CombatantInfo - player skipped`);
       continue;
     }
     if (!wowSpec(m.specID)) {
-      warnings.push(`specID ${m.specID} inconnu du référentiel — ${m.name} conservé sans spec nommée`);
+      warnings.push(`specID ${m.specID} unknown to the reference data - ${m.name} kept without a spec name`);
     }
     participants.push({
       sourceID: m.sourceID,
@@ -219,7 +237,7 @@ export async function scanRun(
     ),
   ];
   if (buffOnly.length) {
-    warnings.push(`sorts sans aucun cast, à déclarer filterType='applybuff' ? ${buffOnly.join(', ')}`);
+    warnings.push(`spells with no cast at all, declare filterType='applybuff'? ${buffOnly.join(', ')}`);
   }
 
   // Boss de la run + leurs events. Le trash n'est pas conservé (plan §5.6).
@@ -291,12 +309,12 @@ export async function scanRun(
     pointsSpent: before != null && after != null ? after - before : null,
     warnings: [
       ...warnings,
-      `${pages} page(s) d'events, filtre de ${filter.ids.length} sorts (coût ${filter.cost.toFixed(0)})`,
+      `${pages} page(s) of events, filter of ${filter.ids.length} spells (cost ${filter.cost.toFixed(0)})`,
       // Zéro cast de boss sur une run entière trahit une curation dont les spellId ne sont
       // pas ceux vus dans `abilityGameID` — l'API ne le dirait jamais, elle rend 0 event.
       bossCasts === 0
-        ? '⚠️ aucun cast de boss — vérifier les spellId de `boss-spells.json`'
-        : `${bossCasts} cast(s) de boss sur ${stored} conservés`,
+        ? '⚠️ no boss casts - check the spellIds in `boss-spells.json`'
+        : `${bossCasts} boss cast(s) out of ${stored} stored`,
     ],
   };
 }

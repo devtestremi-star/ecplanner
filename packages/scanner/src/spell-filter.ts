@@ -7,6 +7,11 @@ export interface SpellFilter {
   cost: number;
   /** spellId → type d'event attendu, pour les sorts qui ne passent pas par `cast`. */
   filterTypeById: Map<number, string>;
+  /**
+   * Identifiant du log → identifiant curé (celui de l'addon), pour les sorts que le log
+   * enregistre sous un autre id. Voir `SpellAlias`.
+   */
+  aliasOf: Map<number, number>;
 }
 
 /**
@@ -38,9 +43,21 @@ export async function buildSpellFilter(em: EntityManager, specIds: number[]): Pr
   const filterTypeById = new Map(
     rows.filter((r) => r.filter_type).map((r) => [r.spell_id, r.filter_type as string]),
   );
+
+  // Les alias des sorts retenus entrent dans le filtre : c'est sous CET id que le log
+  // enregistre le cast, l'identifiant curé n'y apparaît jamais.
+  const aliasRows = ids.length
+    ? await em.getConnection().execute<Array<{ alias_id: number; spell_id: number }>>(
+        'select alias_id, spell_id from spell_alias where spell_id in (?)',
+        [ids],
+      )
+    : [];
+  const aliasOf = new Map(aliasRows.map((a) => [a.alias_id, a.spell_id]));
+  const requested = [...ids, ...aliasOf.keys()];
+
   // buildAbilityFilter lève FilterTooLargeError avant tout appel réseau.
-  const expression = buildAbilityFilter(ids);
-  return { ids, expression, cost: filterCost(ids), filterTypeById };
+  const expression = buildAbilityFilter(requested);
+  return { ids: requested, expression, cost: filterCost(requested), filterTypeById, aliasOf };
 }
 
 export { FILTER_BUDGET };

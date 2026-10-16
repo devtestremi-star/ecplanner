@@ -34,7 +34,7 @@ export class SpellsController {
   @Header('Cache-Control', 'public, max-age=3600')
   async tooltip(@Param('spellId', ParseIntPipe) spellId: number): Promise<{ spellId: number; tooltipHtml: string | null }> {
     const res = await this.wowhead.getTooltip(spellId);
-    if (!res) throw new NotFoundException(`Sort ${spellId} inconnu`);
+    if (!res) throw new NotFoundException(`Unknown spell ${spellId}`);
     return res;
   }
 
@@ -44,12 +44,12 @@ export class SpellsController {
    */
   @Get()
   async byIds(@Query('ids') ids?: string): Promise<{ spells: SpellInfo[] }> {
-    if (!ids) throw new BadRequestException('Paramètre `ids` manquant');
+    if (!ids) throw new BadRequestException('Missing `ids` parameter');
     const parsed = [...new Set(ids.split(',').map((s) => Number(s.trim())))].filter(
       (n) => Number.isInteger(n) && n > 0,
     );
-    if (!parsed.length) throw new BadRequestException('Aucun spellId valide');
-    if (parsed.length > 200) throw new BadRequestException('200 ids au maximum');
+    if (!parsed.length) throw new BadRequestException('No valid spellId');
+    if (parsed.length > 200) throw new BadRequestException('200 ids at most');
     return { spells: await this.wowhead.getSpells(parsed) };
   }
 }

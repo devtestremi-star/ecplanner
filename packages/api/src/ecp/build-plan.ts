@@ -16,10 +16,14 @@ import { encodePlan, toWire, type EcpPlan, type PlanUse, type RosterEntry } from
  *  3. la cohérence classe/spé — même conséquence (§10.8, §11.3).
  */
 
-/** Arrondi du décalage. La milliseconde est exacte mais illisible dans un plan relu à la main. */
-const OFFSET_STEP_MS = 100;
-/** Borne du format (§9). Au-delà, l'addon écrête. */
-const OFFSET_MAX_MS = 12_000;
+/** Arrondi du décalage, à la seconde : la milliseconde est exacte mais illisible dans un plan. */
+const OFFSET_STEP_MS = 1_000;
+/**
+ * Plage EXCLUSIVE ]-12 s ; 12 s[ : après arrondi, un décalage vaut au plus ±11 s. Les
+ * fenêtres d'alignement (12 s) peuvent produire un écart de 11,6 s ou de 12 s pile, que
+ * l'arrondi porterait à 12 : il est ramené à la borne.
+ */
+const OFFSET_MAX_MS = 11_000;
 
 export interface BossWindow {
   encounterID: number;
@@ -45,14 +49,14 @@ export interface BuildPlanInput {
 
 export class IncoherentSpecError extends Error {
   constructor(name: string, cls: string, specId: number) {
-    super(`${name} : classe ${cls} incompatible avec le specID ${specId}`);
+    super(`${name}: class ${cls} is incompatible with specID ${specId}`);
     this.name = 'IncoherentSpecError';
   }
 }
 
 export class NoHealerError extends Error {
   constructor() {
-    super("La run n'a aucun soigneur — un plan ECP n'est pas exprimable sans `h;`");
+    super('The run has no healer - an ECP plan cannot be expressed without `h;`');
     this.name = 'NoHealerError';
   }
 }

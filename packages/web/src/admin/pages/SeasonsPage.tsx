@@ -1,7 +1,9 @@
+import { useTranslation } from 'react-i18next';
 import { CrudPage } from '../CrudPage.js';
 import { PivotPanel } from '../PivotPanel.js';
 
 export function SeasonsPage() {
+  const { t } = useTranslation();
   return (
     <CrudPage
       resource="seasons"
@@ -11,8 +13,8 @@ export function SeasonsPage() {
           resource="dungeon-seasons"
           parentField="season"
           parentId={row.__id}
-          legend="Donjons de la saison"
-          empty="Aucun donjon rattaché — le scan ne résoudra aucun encounterID."
+          legend={t('admin.pivots.seasonDungeons')}
+          empty={t('admin.pivots.seasonDungeonsEmpty')}
         />
       )}
     />
