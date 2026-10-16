@@ -6,12 +6,13 @@
  *
  * L'app est construite une fois par instance puis réutilisée d'une requête à l'autre.
  */
-import { createApp } from '../packages/api/dist/app.js';
-
 let server = null;
 
 async function getServer() {
   server ??= (async () => {
+    // Import dynamique : la config jette dès le chargement si une variable manque, et
+    // un import statique ferait planter le module avant que `handler` puisse répondre.
+    const { createApp } = await import('../packages/api/dist/app.js');
     const app = await createApp();
     await app.init();
     const fastify = app.getHttpAdapter().getInstance();
@@ -26,5 +27,16 @@ async function getServer() {
 }
 
 export default async function handler(req, res) {
-  (await getServer()).emit('request', req, res);
+  let srv;
+  try {
+    srv = await getServer();
+  } catch (err) {
+    // Le détail (variable manquante, base injoignable…) va dans les logs Vercel, pas au client.
+    console.error('Démarrage de l’API impossible :', err);
+    res.statusCode = 503;
+    res.setHeader('Content-Type', 'application/json; charset=utf-8');
+    res.end(JSON.stringify({ status: 'error', message: 'API indisponible — voir les logs de la fonction' }));
+    return;
+  }
+  srv.emit('request', req, res);
 }
