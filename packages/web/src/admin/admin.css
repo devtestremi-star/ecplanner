@@ -1,0 +1,221 @@
+/*
+ * Tout est porté par `.admin` et les variables sont préfixées `--adm-`.
+ *
+ * `styles.css` (page de scan) définit déjà `--bg`, `--border`, `--accent`, ainsi que des
+ * règles nues sur `button`, `table`, `th`, `td`, `.card`, `.badge`, `.error`. Sans ce
+ * cloisonnement, le premier des deux fichiers chargés casserait l'autre.
+ */
+
+.admin {
+  --adm-bg: #0f1115;
+  --adm-panel: #161920;
+  --adm-elev: #1c2029;
+  --adm-hover: #232833;
+  --adm-border: #2a2f3a;
+  --adm-border-soft: #21252e;
+  --adm-text: #e4e7ee;
+  --adm-dim: #9aa3b2;
+  --adm-faint: #6b7484;
+  --adm-accent: #6ea8fe;
+  --adm-accent-dim: #2b4a7d;
+  --adm-danger: #f2717b;
+  --adm-danger-dim: #5c2830;
+  --adm-ok: #64d09a;
+  --adm-warn: #e8b563;
+  --adm-radius: 6px;
+  --adm-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  display: grid;
+  grid-template-columns: 232px 1fr;
+  min-height: 100vh;
+  background: var(--adm-bg);
+  color: var(--adm-text);
+  font: 14px/1.5 system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+.admin a { color: var(--adm-accent); text-decoration: none; }
+.admin a:hover { text-decoration: underline; }
+.admin h2, .admin h3 { color: var(--adm-text); }
+
+/* ───────────────────────────── mise en page ───────────────────────────── */
+
+.admin .sidebar {
+  background: var(--adm-panel);
+  border-right: 1px solid var(--adm-border);
+  padding: 18px 12px;
+  position: sticky; top: 0; height: 100vh; overflow-y: auto;
+}
+.admin .sidebar h1 { font-size: 15px; margin: 0 0 2px 8px; letter-spacing: .2px; }
+.admin .sidebar .sub { font-size: 11px; color: var(--adm-faint); margin: 0 0 18px 8px; }
+.admin .nav-group {
+  font-size: 10px; text-transform: uppercase; letter-spacing: .8px;
+  color: var(--adm-faint); margin: 16px 0 6px 8px;
+}
+.admin .nav a {
+  display: flex; justify-content: space-between; align-items: center; gap: 8px;
+  padding: 7px 8px; border-radius: var(--adm-radius);
+  color: var(--adm-dim); font-size: 13px;
+}
+.admin .nav a:hover { background: var(--adm-hover); color: var(--adm-text); text-decoration: none; }
+.admin .nav a.active { background: var(--adm-accent-dim); color: #fff; }
+.admin .nav .count { font-size: 11px; color: var(--adm-faint); font-variant-numeric: tabular-nums; }
+.admin .nav a.active .count { color: #cfe0ff; }
+
+.admin .content { padding: 24px 28px 64px; min-width: 0; }
+
+.admin .page-head { margin-bottom: 18px; }
+.admin .page-head h2 { margin: 0 0 4px; font-size: 20px; }
+.admin .page-head p { margin: 0; color: var(--adm-dim); font-size: 13px; max-width: 78ch; }
+.admin .page-head code { font-family: var(--adm-mono); font-size: 12px; color: var(--adm-warn); background: none; }
+
+/* ───────────────────────────── barre d'outils ─────────────────────────── */
+
+.admin .toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 14px; }
+.admin .toolbar .spacer { flex: 1; }
+
+.admin input, .admin select, .admin textarea {
+  background: var(--adm-elev); color: var(--adm-text);
+  border: 1px solid var(--adm-border); border-radius: var(--adm-radius);
+  padding: 6px 9px; font: inherit; font-size: 13px; outline: none; min-width: 0;
+}
+.admin input:focus, .admin select:focus, .admin textarea:focus { border-color: var(--adm-accent); }
+.admin input[type=checkbox] { width: 16px; height: 16px; accent-color: var(--adm-accent); }
+.admin textarea { font-family: var(--adm-mono); font-size: 12px; resize: vertical; min-height: 90px; width: 100%; }
+.admin label { font-size: 12px; color: var(--adm-dim); }
+
+.admin .btn {
+  background: var(--adm-elev); color: var(--adm-text);
+  border: 1px solid var(--adm-border); border-radius: var(--adm-radius);
+  padding: 6px 12px; font: inherit; font-size: 13px; font-weight: 400;
+  cursor: pointer; white-space: nowrap;
+}
+.admin .btn:hover:not(:disabled) { background: var(--adm-hover); }
+.admin .btn:disabled { opacity: .45; cursor: not-allowed; }
+.admin .btn.primary { background: var(--adm-accent-dim); border-color: #3a5f9e; color: #fff; }
+.admin .btn.primary:hover:not(:disabled) { background: #35558f; }
+.admin .btn.danger { background: var(--adm-elev); color: var(--adm-danger); border-color: var(--adm-danger-dim); }
+.admin .btn.danger:hover:not(:disabled) { background: var(--adm-danger-dim); color: #fff; }
+.admin .btn.ghost { background: none; border-color: transparent; color: var(--adm-dim); padding: 4px 8px; }
+.admin .btn.ghost:hover:not(:disabled) { background: var(--adm-hover); color: var(--adm-text); }
+.admin .btn.sm { padding: 3px 8px; font-size: 12px; }
+
+.admin .filter { display: flex; align-items: center; gap: 6px; }
+.admin .filter label { white-space: nowrap; }
+
+/* ──────────────────────────────── tableau ─────────────────────────────── */
+
+.admin .table-wrap {
+  border: 1px solid var(--adm-border); border-radius: var(--adm-radius);
+  overflow-x: auto; background: var(--adm-panel);
+}
+.admin table { border-collapse: collapse; width: 100%; font-size: 13px; }
+.admin th, .admin td {
+  text-align: left; padding: 8px 12px;
+  border-bottom: 1px solid var(--adm-border-soft); white-space: nowrap;
+}
+.admin th {
+  background: var(--adm-elev); color: var(--adm-dim);
+  font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: .5px;
+  position: sticky; top: 0; z-index: 1;
+}
+.admin th.sortable { cursor: pointer; user-select: none; }
+.admin th.sortable:hover { color: var(--adm-text); }
+.admin th .arrow { color: var(--adm-accent); margin-left: 4px; }
+.admin tbody tr:hover { background: var(--adm-hover); }
+.admin tbody tr:last-child td { border-bottom: none; }
+.admin td.num { text-align: right; font-variant-numeric: tabular-nums; font-family: var(--adm-mono); font-size: 12px; color: var(--adm-text); }
+.admin td.actions { text-align: right; }
+.admin .null { color: var(--adm-faint); font-style: italic; }
+.admin .mono { font-family: var(--adm-mono); font-size: 12px; }
+
+.admin .badge {
+  display: inline-block; padding: 1px 7px; border-radius: 10px; font-weight: 400;
+  font-size: 11px; border: 1px solid var(--adm-border);
+  background: var(--adm-elev); color: var(--adm-dim);
+}
+.admin .badge.on { color: var(--adm-ok); border-color: #2c5a44; }
+.admin .badge.off { color: var(--adm-faint); }
+.admin .badge.cat-DEFENSIVE { color: #7fb4ff; border-color: #2f4e7d; }
+.admin .badge.cat-OFFENSIVE { color: #f28f6b; border-color: #6d3d2a; }
+.admin .badge.cat-EXTERNAL  { color: #b78ff0; border-color: #4c3670; }
+.admin .badge.cat-BOSS      { color: var(--adm-danger); border-color: var(--adm-danger-dim); }
+.admin .badge.cat-HEALING   { color: var(--adm-ok); border-color: #2c5a44; }
+.admin .badge.cat-OTHER     { color: var(--adm-dim); }
+
+.admin .pagination {
+  display: flex; align-items: center; gap: 10px;
+  margin-top: 12px; font-size: 12px; color: var(--adm-dim);
+}
+
+.admin .empty { padding: 36px; text-align: center; color: var(--adm-faint); }
+.admin .error {
+  background: var(--adm-danger-dim); border: 1px solid var(--adm-danger);
+  color: #ffdfe2; padding: 9px 12px; border-radius: var(--adm-radius);
+  font-size: 13px; margin-bottom: 12px;
+}
+
+/* ───────────────────────────────── tiroir ─────────────────────────────── */
+
+.admin .drawer-backdrop {
+  position: fixed; inset: 0; background: rgba(0, 0, 0, .55);
+  display: flex; justify-content: flex-end; z-index: 10;
+}
+.admin .drawer {
+  background: var(--adm-panel); border-left: 1px solid var(--adm-border);
+  width: min(620px, 100%); height: 100%; overflow-y: auto;
+  display: flex; flex-direction: column;
+}
+.admin .drawer-head {
+  display: flex; align-items: center; gap: 12px;
+  padding: 16px 20px; border-bottom: 1px solid var(--adm-border);
+  position: sticky; top: 0; background: var(--adm-panel); z-index: 1;
+}
+.admin .drawer-head h3 { margin: 0; font-size: 15px; flex: 1; }
+.admin .drawer-body { padding: 18px 20px; flex: 1; }
+.admin .drawer-foot {
+  display: flex; gap: 8px; padding: 14px 20px; border-top: 1px solid var(--adm-border);
+  position: sticky; bottom: 0; background: var(--adm-panel);
+}
+.admin .drawer-foot .spacer { flex: 1; }
+
+.admin .field { margin-bottom: 15px; }
+.admin .field > label {
+  display: block; margin-bottom: 5px;
+  font-weight: 500; color: var(--adm-text); font-size: 13px;
+}
+.admin .field .req { color: var(--adm-danger); margin-left: 3px; }
+.admin .field .help { display: block; margin-top: 4px; font-size: 11px; color: var(--adm-faint); }
+.admin .field input:not([type=checkbox]), .admin .field select { width: 100%; }
+.admin .field .inline { display: flex; align-items: center; gap: 8px; }
+.admin .field.locked > label::after {
+  content: ' · verrouillé'; color: var(--adm-faint); font-weight: 400; font-size: 11px;
+}
+
+.admin fieldset.pivot {
+  border: 1px solid var(--adm-border); border-radius: var(--adm-radius);
+  padding: 12px 14px; margin: 22px 0 0;
+}
+.admin fieldset.pivot legend { padding: 0 6px; font-size: 12px; color: var(--adm-dim); }
+.admin .pivot-row {
+  display: flex; align-items: center; gap: 8px;
+  padding: 5px 0; border-bottom: 1px solid var(--adm-border-soft); font-size: 13px;
+}
+.admin .pivot-row:last-of-type { border-bottom: none; }
+.admin .pivot-row .grow { flex: 1; }
+.admin .pivot-add { display: flex; gap: 8px; margin-top: 10px; }
+.admin .pivot-add select, .admin .pivot-add input { flex: 1; }
+
+/* ─────────────────────────────── dashboard ────────────────────────────── */
+
+.admin .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px; }
+.admin .card {
+  background: var(--adm-panel); border: 1px solid var(--adm-border);
+  border-radius: var(--adm-radius); padding: 14px 16px; margin: 0;
+  display: block; color: inherit;
+}
+.admin .card:hover { border-color: var(--adm-accent); text-decoration: none; }
+.admin .card .n { font-size: 26px; font-variant-numeric: tabular-nums; }
+.admin .card .l { color: var(--adm-dim); font-size: 13px; margin-top: 2px; }
+.admin .card .t { font-family: var(--adm-mono); font-size: 11px; color: var(--adm-faint); margin-top: 6px; }
+.admin .card.pivot { border-style: dashed; }
+.admin .card.pivot:hover { border-color: var(--adm-border); cursor: default; }

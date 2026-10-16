@@ -1,0 +1,2662 @@
+[
+ {
+  "spellId": 66,
+  "name": "Invisibility",
+  "classId": 8,
+  "category": "PERSONAL",
+  "baseCooldownSec": 300,
+  "specIds": [
+   62,
+   63,
+   64
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 498,
+  "name": "Divine Protection",
+  "classId": 2,
+  "category": "PERSONAL",
+  "baseCooldownSec": 60,
+  "specIds": [
+   65
+  ],
+  "origin": "defensives+reviewed"
+ },
+ {
+  "spellId": 586,
+  "name": "Fade",
+  "classId": 5,
+  "category": "PERSONAL",
+  "baseCooldownSec": 30,
+  "specIds": [
+   256,
+   257,
+   258
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 633,
+  "name": "Lay on Hands",
+  "classId": 2,
+  "category": "HEALER",
+  "baseCooldownSec": 600,
+  "specIds": [
+   65,
+   66,
+   70
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 642,
+  "name": "Divine Shield",
+  "classId": 2,
+  "category": "PERSONAL",
+  "baseCooldownSec": 300,
+  "specIds": [
+   65,
+   66,
+   70
+  ],
+  "origin": "defensives+reviewed"
+ },
+ {
+  "spellId": 740,
+  "name": "Tranquility",
+  "classId": 11,
+  "category": "HEALER",
+  "baseCooldownSec": 150,
+  "specIds": [
+   102,
+   103,
+   104,
+   105
+  ],
+  "origin": "defensives+reviewed"
+ },
+ {
+  "spellId": 1122,
+  "name": "Summon Infernal",
+  "classId": 9,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 120,
+  "specIds": [
+   265,
+   266,
+   267
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 1160,
+  "name": "Demoralizing Shout",
+  "classId": 1,
+  "category": "PERSONAL",
+  "baseCooldownSec": 45,
+  "specIds": [
+   71,
+   72,
+   73
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 1161,
+  "name": "Challenging Shout",
+  "classId": 1,
+  "category": "UTILITY",
+  "baseCooldownSec": 120,
+  "specIds": [
+   71,
+   72,
+   73
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 1719,
+  "name": "Recklessness",
+  "classId": 1,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 90,
+  "specIds": [
+   71,
+   72,
+   73
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 2825,
+  "name": "Bloodlust",
+  "classId": 7,
+  "category": "BLOODLUST",
+  "baseCooldownSec": 300,
+  "specIds": [
+   262,
+   263,
+   264
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 5217,
+  "name": "Tiger's Fury",
+  "classId": 11,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 30,
+  "specIds": [
+   102,
+   103,
+   104,
+   105
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 5277,
+  "name": "Evasion",
+  "classId": 4,
+  "category": "PERSONAL",
+  "baseCooldownSec": 120,
+  "specIds": [
+   259,
+   260,
+   261
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 6353,
+  "name": "Soul Fire",
+  "classId": 9,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 45,
+  "specIds": [
+   265,
+   266,
+   267
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 6940,
+  "name": "Blessing of Sacrifice",
+  "classId": 2,
+  "category": "PERSONAL",
+  "baseCooldownSec": 120,
+  "specIds": [
+   65,
+   66,
+   70
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 8143,
+  "name": "Tremor Totem",
+  "classId": 7,
+  "category": "UTILITY",
+  "baseCooldownSec": 60,
+  "specIds": [
+   262,
+   263,
+   264
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 10060,
+  "name": "Power Infusion",
+  "classId": 5,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 120,
+  "specIds": [
+   256,
+   257,
+   258
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 11426,
+  "name": "Ice Barrier",
+  "classId": 8,
+  "category": "PERSONAL",
+  "baseCooldownSec": 30,
+  "specIds": [
+   64
+  ],
+  "origin": "defensives"
+ },
+ {
+  "spellId": 13750,
+  "name": "Adrenaline Rush",
+  "classId": 4,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 180,
+  "specIds": [
+   259,
+   260,
+   261
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 13877,
+  "name": "Blade Flurry",
+  "classId": 4,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 30,
+  "specIds": [
+   259,
+   260,
+   261
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 15286,
+  "name": "Vampiric Embrace",
+  "classId": 5,
+  "category": "EXTERNAL",
+  "baseCooldownSec": 120,
+  "specIds": [
+   258
+  ],
+  "origin": "defensives+reviewed"
+ },
+ {
+  "spellId": 18499,
+  "name": "Berserker Rage",
+  "classId": 1,
+  "category": "UTILITY",
+  "baseCooldownSec": 60,
+  "specIds": [
+   71,
+   72,
+   73
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 19236,
+  "name": "Desperate Prayer",
+  "classId": 5,
+  "category": "PERSONAL",
+  "baseCooldownSec": 90,
+  "specIds": [
+   256,
+   257
+  ],
+  "origin": "defensives+reviewed"
+ },
+ {
+  "spellId": 19574,
+  "name": "Bestial Wrath",
+  "classId": 3,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 90,
+  "specIds": [
+   253,
+   254,
+   255
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 20484,
+  "name": "Rebirth",
+  "classId": 11,
+  "category": "UTILITY",
+  "baseCooldownSec": 600,
+  "specIds": [
+   102,
+   103,
+   104,
+   105
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 20608,
+  "name": "Reincarnation",
+  "classId": 7,
+  "category": "UTILITY",
+  "baseCooldownSec": 1800,
+  "specIds": [
+   262,
+   263,
+   264
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 22812,
+  "name": "Barkskin",
+  "classId": 11,
+  "category": "PERSONAL",
+  "baseCooldownSec": 60,
+  "specIds": [
+   102,
+   103,
+   104,
+   105
+  ],
+  "origin": "defensives+reviewed"
+ },
+ {
+  "spellId": 29166,
+  "name": "Innervate",
+  "classId": 11,
+  "category": "UTILITY",
+  "baseCooldownSec": 180,
+  "specIds": [
+   102,
+   103,
+   104,
+   105
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 31224,
+  "name": "Cloak of Shadows",
+  "classId": 4,
+  "category": "PERSONAL",
+  "baseCooldownSec": 120,
+  "specIds": [
+   259,
+   260,
+   261
+  ],
+  "origin": "defensives+reviewed"
+ },
+ {
+  "spellId": 31821,
+  "name": "Aura Mastery",
+  "classId": 2,
+  "category": "HEALER",
+  "baseCooldownSec": 150,
+  "specIds": [
+   65,
+   66,
+   70
+  ],
+  "origin": "defensives+reviewed"
+ },
+ {
+  "spellId": 31850,
+  "name": "Ardent Defender",
+  "classId": 2,
+  "category": "PERSONAL",
+  "baseCooldownSec": 90,
+  "specIds": [
+   65,
+   66,
+   70
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 31884,
+  "name": "Avenging Wrath",
+  "classId": 2,
+  "category": "HEALER",
+  "baseCooldownSec": 105,
+  "specIds": [
+   65,
+   66,
+   70
+  ],
+  "origin": "defensives+reviewed"
+ },
+ {
+  "spellId": 32182,
+  "name": "Heroism",
+  "classId": 7,
+  "category": "BLOODLUST",
+  "baseCooldownSec": 300,
+  "specIds": [
+   262,
+   263,
+   264
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 32375,
+  "name": "Mass Dispel",
+  "classId": 5,
+  "category": "UTILITY",
+  "baseCooldownSec": 120,
+  "specIds": [
+   256,
+   257,
+   258
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 33891,
+  "name": "Incarnation: Tree of Life",
+  "classId": 11,
+  "category": "HEALER",
+  "baseCooldownSec": 120,
+  "specIds": [
+   102,
+   103,
+   104,
+   105
+  ],
+  "origin": "defensives+reviewed"
+ },
+ {
+  "spellId": 42650,
+  "name": "Army of the Dead",
+  "classId": 6,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 90,
+  "specIds": [
+   250,
+   251,
+   252
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 45438,
+  "name": "Ice Block",
+  "classId": 8,
+  "category": "PERSONAL",
+  "baseCooldownSec": 240,
+  "specIds": [
+   62,
+   63,
+   64
+  ],
+  "origin": "defensives"
+ },
+ {
+  "spellId": 47585,
+  "name": "Dispersion",
+  "classId": 5,
+  "category": "PERSONAL",
+  "baseCooldownSec": 120,
+  "specIds": [
+   258
+  ],
+  "origin": "defensives+reviewed"
+ },
+ {
+  "spellId": 47788,
+  "name": "Guardian Spirit",
+  "classId": 5,
+  "category": "HEALER",
+  "baseCooldownSec": 180,
+  "specIds": [
+   256,
+   257,
+   258
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 48707,
+  "name": "Anti-Magic Shell",
+  "classId": 6,
+  "category": "PERSONAL",
+  "baseCooldownSec": 45,
+  "specIds": [
+   250,
+   251,
+   252
+  ],
+  "origin": "defensives+reviewed"
+ },
+ {
+  "spellId": 48743,
+  "name": "Death Pact",
+  "classId": 6,
+  "category": "PERSONAL",
+  "baseCooldownSec": 120,
+  "specIds": [
+   250,
+   251,
+   252
+  ],
+  "origin": "defensives+reviewed"
+ },
+ {
+  "spellId": 48792,
+  "name": "Icebound Fortitude",
+  "classId": 6,
+  "category": "PERSONAL",
+  "baseCooldownSec": 120,
+  "specIds": [
+   250,
+   251,
+   252
+  ],
+  "origin": "defensives+reviewed"
+ },
+ {
+  "spellId": 49028,
+  "name": "Dancing Rune Weapon",
+  "classId": 6,
+  "category": "PERSONAL",
+  "baseCooldownSec": 120,
+  "specIds": [
+   250,
+   251,
+   252
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 49039,
+  "name": "Lichborne",
+  "classId": 6,
+  "category": "PERSONAL",
+  "baseCooldownSec": 120,
+  "specIds": [
+   250,
+   251,
+   252
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 50334,
+  "name": "Berserk",
+  "classId": 11,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 180,
+  "specIds": [
+   102,
+   103,
+   104,
+   105
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 51052,
+  "name": "Anti-Magic Zone",
+  "classId": 6,
+  "category": "EXTERNAL",
+  "baseCooldownSec": 240,
+  "specIds": [
+   250,
+   251,
+   252
+  ],
+  "origin": "defensives+reviewed"
+ },
+ {
+  "spellId": 51271,
+  "name": "Pillar of Frost",
+  "classId": 6,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 45,
+  "specIds": [
+   250,
+   251,
+   252
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 51490,
+  "name": "Thunderstorm",
+  "classId": 7,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 30,
+  "specIds": [
+   262,
+   263,
+   264
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 51690,
+  "name": "Killing Spree",
+  "classId": 4,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 180,
+  "specIds": [
+   259,
+   260,
+   261
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 53480,
+  "name": "Roar of Sacrifice",
+  "classId": 3,
+  "category": "PERSONAL",
+  "baseCooldownSec": 120,
+  "specIds": [
+   253,
+   254,
+   255
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 55233,
+  "name": "Vampiric Blood",
+  "classId": 6,
+  "category": "PERSONAL",
+  "baseCooldownSec": 90,
+  "specIds": [
+   250,
+   251,
+   252
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 55342,
+  "name": "Mirror Image",
+  "classId": 8,
+  "category": "PERSONAL",
+  "baseCooldownSec": 120,
+  "specIds": [
+   62,
+   63,
+   64
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 58875,
+  "name": "Spirit Walk",
+  "classId": 7,
+  "category": "UTILITY",
+  "baseCooldownSec": 60,
+  "specIds": [
+   262,
+   263,
+   264
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 61336,
+  "name": "Survival Instincts",
+  "classId": 11,
+  "category": "PERSONAL",
+  "baseCooldownSec": 180,
+  "specIds": [
+   103
+  ],
+  "origin": "defensives"
+ },
+ {
+  "spellId": 61999,
+  "name": "Raise Ally",
+  "classId": 6,
+  "category": "UTILITY",
+  "baseCooldownSec": 600,
+  "specIds": [
+   250,
+   251,
+   252
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 62618,
+  "name": "Power Word: Barrier",
+  "classId": 5,
+  "category": "HEALER",
+  "baseCooldownSec": 180,
+  "specIds": [
+   256
+  ],
+  "origin": "defensives+reviewed"
+ },
+ {
+  "spellId": 64843,
+  "name": "Divine Hymn",
+  "classId": 5,
+  "category": "HEALER",
+  "baseCooldownSec": 120,
+  "specIds": [
+   257
+  ],
+  "origin": "defensives+reviewed"
+ },
+ {
+  "spellId": 79206,
+  "name": "Spiritwalker's Grace",
+  "classId": 7,
+  "category": "UTILITY",
+  "baseCooldownSec": 120,
+  "specIds": [
+   262,
+   263,
+   264
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 80240,
+  "name": "Havoc",
+  "classId": 9,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 30,
+  "specIds": [
+   265,
+   266,
+   267
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 80353,
+  "name": "Time Warp",
+  "classId": 8,
+  "category": "BLOODLUST",
+  "baseCooldownSec": 300,
+  "specIds": [
+   62,
+   63,
+   64
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 84714,
+  "name": "Frozen Orb",
+  "classId": 8,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 60,
+  "specIds": [
+   62,
+   63,
+   64
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 88625,
+  "name": "Holy Word: Chastise",
+  "classId": 5,
+  "category": "HEALER",
+  "baseCooldownSec": 60,
+  "specIds": [
+   256,
+   257,
+   258
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 97462,
+  "name": "Rallying Cry",
+  "classId": 1,
+  "category": "EXTERNAL",
+  "baseCooldownSec": 180,
+  "specIds": [
+   71,
+   72,
+   73
+  ],
+  "origin": "defensives+reviewed"
+ },
+ {
+  "spellId": 98008,
+  "name": "Spirit Link Totem",
+  "classId": 7,
+  "category": "HEALER",
+  "baseCooldownSec": 180,
+  "specIds": [
+   262,
+   263,
+   264
+  ],
+  "origin": "defensives"
+ },
+ {
+  "spellId": 102342,
+  "name": "Ironbark",
+  "classId": 11,
+  "category": "PERSONAL",
+  "baseCooldownSec": 90,
+  "specIds": [
+   102,
+   103,
+   104,
+   105
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 102543,
+  "name": "Incarnation: Avatar of Ashamane",
+  "classId": 11,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 180,
+  "specIds": [
+   102,
+   103,
+   104,
+   105
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 102558,
+  "name": "Incarnation: Guardian of Ursoc",
+  "classId": 11,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 180,
+  "specIds": [
+   102,
+   103,
+   104,
+   105
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 104773,
+  "name": "Unending Resolve",
+  "classId": 9,
+  "category": "PERSONAL",
+  "baseCooldownSec": 180,
+  "specIds": [
+   265,
+   266,
+   267
+  ],
+  "origin": "defensives+reviewed"
+ },
+ {
+  "spellId": 107574,
+  "name": "Avatar",
+  "classId": 1,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 90,
+  "specIds": [
+   71,
+   72,
+   73
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 108271,
+  "name": "Astral Shift",
+  "classId": 7,
+  "category": "PERSONAL",
+  "baseCooldownSec": 90,
+  "specIds": [
+   262,
+   263,
+   264
+  ],
+  "origin": "defensives+reviewed"
+ },
+ {
+  "spellId": 108280,
+  "name": "Healing Tide Totem",
+  "classId": 7,
+  "category": "HEALER",
+  "baseCooldownSec": 180,
+  "specIds": [
+   262,
+   263,
+   264
+  ],
+  "origin": "defensives+reviewed"
+ },
+ {
+  "spellId": 108416,
+  "name": "Dark Pact",
+  "classId": 9,
+  "category": "PERSONAL",
+  "baseCooldownSec": 60,
+  "specIds": [
+   265,
+   266,
+   267
+  ],
+  "origin": "defensives+reviewed"
+ },
+ {
+  "spellId": 109304,
+  "name": "Exhilaration",
+  "classId": 3,
+  "category": "PERSONAL",
+  "baseCooldownSec": 120,
+  "specIds": [
+   253,
+   254,
+   255
+  ],
+  "origin": "defensives+reviewed"
+ },
+ {
+  "spellId": 110959,
+  "name": "Greater Invisibility",
+  "classId": 8,
+  "category": "PERSONAL",
+  "baseCooldownSec": 120,
+  "specIds": [
+   62,
+   63,
+   64
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 114050,
+  "name": "Ascendance",
+  "classId": 7,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 180,
+  "specIds": [
+   262,
+   263,
+   264
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 114051,
+  "name": "Ascendance",
+  "classId": 7,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 180,
+  "specIds": [
+   262,
+   263,
+   264
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 114052,
+  "name": "Ascendance",
+  "classId": 7,
+  "category": "HEALER",
+  "baseCooldownSec": 180,
+  "specIds": [
+   262,
+   263,
+   264
+  ],
+  "origin": "defensives+reviewed"
+ },
+ {
+  "spellId": 114165,
+  "name": "Holy Prism",
+  "classId": 2,
+  "category": "HEALER",
+  "baseCooldownSec": 45,
+  "specIds": [
+   65,
+   66,
+   70
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 115310,
+  "name": "Revival",
+  "classId": 10,
+  "category": "HEALER",
+  "baseCooldownSec": 180,
+  "specIds": [
+   268,
+   269,
+   270
+  ],
+  "origin": "defensives"
+ },
+ {
+  "spellId": 115399,
+  "name": "Black Ox Brew",
+  "classId": 10,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 120,
+  "specIds": [
+   268,
+   269,
+   270
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 118038,
+  "name": "Die by the Sword",
+  "classId": 1,
+  "category": "PERSONAL",
+  "baseCooldownSec": 120,
+  "specIds": [
+   71
+  ],
+  "origin": "defensives+reviewed"
+ },
+ {
+  "spellId": 118779,
+  "name": "Victory Rush",
+  "classId": 1,
+  "category": "PERSONAL",
+  "baseCooldownSec": 30,
+  "specIds": [
+   71,
+   72,
+   73
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 120517,
+  "name": "Halo",
+  "classId": 5,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 60,
+  "specIds": [
+   256,
+   257,
+   258
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 120644,
+  "name": "Halo",
+  "classId": 5,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 60,
+  "specIds": [
+   256,
+   257,
+   258
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 121471,
+  "name": "Shadow Blades",
+  "classId": 4,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 90,
+  "specIds": [
+   259,
+   260,
+   261
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 122470,
+  "name": "Touch of Karma",
+  "classId": 10,
+  "category": "PERSONAL",
+  "baseCooldownSec": 90,
+  "specIds": [
+   269
+  ],
+  "origin": "defensives+reviewed"
+ },
+ {
+  "spellId": 123904,
+  "name": "Invoke Xuen, the White Tiger",
+  "classId": 10,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 120,
+  "specIds": [
+   268,
+   269,
+   270
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 132158,
+  "name": "Nature's Swiftness",
+  "classId": 11,
+  "category": "HEALER",
+  "baseCooldownSec": 60,
+  "specIds": [
+   102,
+   103,
+   104,
+   105
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 132578,
+  "name": "Invoke Niuzao, the Black Ox",
+  "classId": 10,
+  "category": "PERSONAL",
+  "baseCooldownSec": 120,
+  "specIds": [
+   268,
+   269,
+   270
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 152108,
+  "name": "Cataclysm",
+  "classId": 9,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 30,
+  "specIds": [
+   265,
+   266,
+   267
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 152175,
+  "name": "Whirling Dragon Punch",
+  "classId": 10,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 35,
+  "specIds": [
+   268,
+   269,
+   270
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 153561,
+  "name": "Meteor",
+  "classId": 8,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 45,
+  "specIds": [
+   62,
+   63,
+   64
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 167105,
+  "name": "Colossus Smash",
+  "classId": 1,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 45,
+  "specIds": [
+   71,
+   72,
+   73
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 169340,
+  "name": "Touch of Fatality",
+  "classId": 10,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 90,
+  "specIds": [
+   268,
+   269,
+   270
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 184364,
+  "name": "Enraged Regeneration",
+  "classId": 1,
+  "category": "PERSONAL",
+  "baseCooldownSec": 120,
+  "specIds": [
+   72
+  ],
+  "origin": "defensives+reviewed"
+ },
+ {
+  "spellId": 185311,
+  "name": "Crimson Vial",
+  "classId": 4,
+  "category": "PERSONAL",
+  "baseCooldownSec": 30,
+  "specIds": [
+   259,
+   260,
+   261
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 186265,
+  "name": "Aspect of the Turtle",
+  "classId": 3,
+  "category": "PERSONAL",
+  "baseCooldownSec": 180,
+  "specIds": [
+   253,
+   254,
+   255
+  ],
+  "origin": "defensives+reviewed"
+ },
+ {
+  "spellId": 190319,
+  "name": "Combustion",
+  "classId": 8,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 120,
+  "specIds": [
+   62,
+   63,
+   64
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 190778,
+  "name": "Sindragosa's Fury",
+  "classId": 6,
+  "category": "PERSONAL",
+  "baseCooldownSec": 300,
+  "specIds": [
+   250,
+   251,
+   252
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 191427,
+  "name": "Metamorphosis",
+  "classId": 12,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 120,
+  "specIds": [
+   577,
+   581,
+   1480
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 191634,
+  "name": "Stormkeeper",
+  "classId": 7,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 60,
+  "specIds": [
+   262,
+   263,
+   264
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 196718,
+  "name": "Darkness",
+  "classId": 12,
+  "category": "EXTERNAL",
+  "baseCooldownSec": 180,
+  "specIds": [
+   577,
+   581,
+   1480
+  ],
+  "origin": "defensives+reviewed"
+ },
+ {
+  "spellId": 198013,
+  "name": "Eye Beam",
+  "classId": 12,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 30,
+  "specIds": [
+   577,
+   581,
+   1480
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 198103,
+  "name": "Earth Elemental",
+  "classId": 7,
+  "category": "PERSONAL",
+  "baseCooldownSec": 180,
+  "specIds": [
+   262,
+   263,
+   264
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 198589,
+  "name": "Blur",
+  "classId": 12,
+  "category": "PERSONAL",
+  "baseCooldownSec": 60,
+  "specIds": [
+   577,
+   581,
+   1480
+  ],
+  "origin": "defensives+reviewed"
+ },
+ {
+  "spellId": 200183,
+  "name": "Apotheosis",
+  "classId": 5,
+  "category": "HEALER",
+  "baseCooldownSec": 120,
+  "specIds": [
+   257
+  ],
+  "origin": "defensives+reviewed"
+ },
+ {
+  "spellId": 201467,
+  "name": "Fury of the Illidari",
+  "classId": 12,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 60,
+  "specIds": [
+   577,
+   581,
+   1480
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 202770,
+  "name": "Fury of Elune",
+  "classId": 11,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 60,
+  "specIds": [
+   102,
+   103,
+   104,
+   105
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 203415,
+  "name": "Fury of the Eagle",
+  "classId": 3,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 45,
+  "specIds": [
+   253,
+   254,
+   255
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 203524,
+  "name": "Neltharion's Fury",
+  "classId": 1,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 45,
+  "specIds": [
+   71,
+   72,
+   73
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 205065,
+  "name": "Void Torrent",
+  "classId": 5,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 60,
+  "specIds": [
+   256,
+   257,
+   258
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 205180,
+  "name": "Summon Darkglare",
+  "classId": 9,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 120,
+  "specIds": [
+   265,
+   266,
+   267
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 205223,
+  "name": "Consumption",
+  "classId": 6,
+  "category": "PERSONAL",
+  "baseCooldownSec": 45,
+  "specIds": [
+   250,
+   251,
+   252
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 205495,
+  "name": "Stormkeeper",
+  "classId": 7,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 60,
+  "specIds": [
+   262,
+   263,
+   264
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 205545,
+  "name": "Odyn's Fury",
+  "classId": 1,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 45,
+  "specIds": [
+   71,
+   72,
+   73
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 205636,
+  "name": "Force of Nature",
+  "classId": 11,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 60,
+  "specIds": [
+   102,
+   103,
+   104,
+   105
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 207407,
+  "name": "Soul Carver",
+  "classId": 12,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 60,
+  "specIds": [
+   577,
+   581,
+   1480
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 207946,
+  "name": "Light's Wrath",
+  "classId": 5,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 90,
+  "specIds": [
+   256,
+   257,
+   258
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 209577,
+  "name": "Warbreaker",
+  "classId": 1,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 60,
+  "specIds": [
+   71,
+   72,
+   73
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 210722,
+  "name": "Ashamane's Frenzy",
+  "classId": 11,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 75,
+  "specIds": [
+   102,
+   103,
+   104,
+   105
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 212084,
+  "name": "Fel Devastation",
+  "classId": 12,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 40,
+  "specIds": [
+   577,
+   581,
+   1480
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 214634,
+  "name": "Ebonbolt",
+  "classId": 8,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 45,
+  "specIds": [
+   62,
+   63,
+   64
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 214743,
+  "name": "Soul Carver",
+  "classId": 12,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 60,
+  "specIds": [
+   577,
+   581,
+   1480
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 215769,
+  "name": "Spirit of Redemption",
+  "classId": 5,
+  "category": "HEALER",
+  "baseCooldownSec": 120,
+  "specIds": [
+   256,
+   257,
+   258
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 216331,
+  "name": "Avenging Crusader",
+  "classId": 2,
+  "category": "HEALER",
+  "baseCooldownSec": 105,
+  "specIds": [
+   65,
+   66,
+   70
+  ],
+  "origin": "defensives"
+ },
+ {
+  "spellId": 220143,
+  "name": "Apocalypse",
+  "classId": 6,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 90,
+  "specIds": [
+   250,
+   251,
+   252
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 227847,
+  "name": "Bladestorm",
+  "classId": 1,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 90,
+  "specIds": [
+   71,
+   72,
+   73
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 228260,
+  "name": "Voidform",
+  "classId": 5,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 120,
+  "specIds": [
+   256,
+   257,
+   258
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 235219,
+  "name": "Cold Snap",
+  "classId": 8,
+  "category": "PERSONAL",
+  "baseCooldownSec": 300,
+  "specIds": [
+   62,
+   63,
+   64
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 235313,
+  "name": "Blazing Barrier",
+  "classId": 8,
+  "category": "PERSONAL",
+  "baseCooldownSec": 30,
+  "specIds": [
+   63
+  ],
+  "origin": "defensives"
+ },
+ {
+  "spellId": 235450,
+  "name": "Prismatic Barrier",
+  "classId": 8,
+  "category": "PERSONAL",
+  "baseCooldownSec": 30,
+  "specIds": [
+   62
+  ],
+  "origin": "defensives"
+ },
+ {
+  "spellId": 243435,
+  "name": "Fortifying Brew",
+  "classId": 10,
+  "category": "PERSONAL",
+  "baseCooldownSec": 120,
+  "specIds": [
+   268,
+   269,
+   270
+  ],
+  "origin": "defensives"
+ },
+ {
+  "spellId": 258860,
+  "name": "Essence Break",
+  "classId": 12,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 40,
+  "specIds": [
+   577,
+   581,
+   1480
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 260708,
+  "name": "Sweeping Strikes",
+  "classId": 1,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 30,
+  "specIds": [
+   71,
+   72,
+   73
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 263165,
+  "name": "Void Torrent",
+  "classId": 5,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 30,
+  "specIds": [
+   256,
+   257,
+   258
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 264130,
+  "name": "Power Siphon",
+  "classId": 9,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 30,
+  "specIds": [
+   265,
+   266,
+   267
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 264735,
+  "name": "Survival of the Fittest",
+  "classId": 3,
+  "category": "PERSONAL",
+  "baseCooldownSec": 180,
+  "specIds": [
+   253,
+   254,
+   255
+  ],
+  "origin": "defensives"
+ },
+ {
+  "spellId": 265187,
+  "name": "Summon Demonic Tyrant",
+  "classId": 9,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 60,
+  "specIds": [
+   265,
+   266,
+   267
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 271877,
+  "name": "Blade Rush",
+  "classId": 4,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 60,
+  "specIds": [
+   259,
+   260,
+   261
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 274837,
+  "name": "Feral Frenzy",
+  "classId": 11,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 45,
+  "specIds": [
+   102,
+   103,
+   104,
+   105
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 279302,
+  "name": "Frostwyrm's Fury",
+  "classId": 6,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 90,
+  "specIds": [
+   250,
+   251,
+   252
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 288613,
+  "name": "Trueshot",
+  "classId": 3,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 120,
+  "specIds": [
+   253,
+   254,
+   255
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 315341,
+  "name": "Between the Eyes",
+  "classId": 4,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 45,
+  "specIds": [
+   259,
+   260,
+   261
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 322109,
+  "name": "Touch of Death",
+  "classId": 10,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 180,
+  "specIds": [
+   268,
+   269,
+   270
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 322118,
+  "name": "Invoke Yu'lon, the Jade Serpent",
+  "classId": 10,
+  "category": "HEALER",
+  "baseCooldownSec": 120,
+  "specIds": [
+   268,
+   269,
+   270
+  ],
+  "origin": "defensives+reviewed"
+ },
+ {
+  "spellId": 325197,
+  "name": "Invoke Chi-Ji, the Red Crane",
+  "classId": 10,
+  "category": "HEALER",
+  "baseCooldownSec": 120,
+  "specIds": [
+   268,
+   269,
+   270
+  ],
+  "origin": "defensives+reviewed"
+ },
+ {
+  "spellId": 333889,
+  "name": "Fel Domination",
+  "classId": 9,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 180,
+  "specIds": [
+   265,
+   266,
+   267
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 342245,
+  "name": "Alter Time",
+  "classId": 8,
+  "category": "PERSONAL",
+  "baseCooldownSec": 60,
+  "specIds": [
+   62,
+   63,
+   64
+  ],
+  "origin": "defensives+reviewed"
+ },
+ {
+  "spellId": 355913,
+  "name": "Emerald Blossom",
+  "classId": 13,
+  "category": "HEALER",
+  "baseCooldownSec": 30,
+  "specIds": [
+   1467,
+   1468,
+   1473
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 359816,
+  "name": "Dream Flight",
+  "classId": 13,
+  "category": "HEALER",
+  "baseCooldownSec": 120,
+  "specIds": [
+   1467,
+   1468,
+   1473
+  ],
+  "origin": "defensives+reviewed"
+ },
+ {
+  "spellId": 360194,
+  "name": "Deathmark",
+  "classId": 4,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 120,
+  "specIds": [
+   259,
+   260,
+   261
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 363534,
+  "name": "Rewind",
+  "classId": 13,
+  "category": "HEALER",
+  "baseCooldownSec": 120,
+  "specIds": [
+   1467,
+   1468,
+   1473
+  ],
+  "origin": "defensives"
+ },
+ {
+  "spellId": 363916,
+  "name": "Obsidian Scales",
+  "classId": 13,
+  "category": "PERSONAL",
+  "baseCooldownSec": 90,
+  "specIds": [
+   1467,
+   1468,
+   1473
+  ],
+  "origin": "defensives"
+ },
+ {
+  "spellId": 365350,
+  "name": "Arcane Surge",
+  "classId": 8,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 90,
+  "specIds": [
+   62,
+   63,
+   64
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 370537,
+  "name": "Stasis",
+  "classId": 13,
+  "category": "HEALER",
+  "baseCooldownSec": 90,
+  "specIds": [
+   1467,
+   1468,
+   1473
+  ],
+  "origin": "defensives+reviewed"
+ },
+ {
+  "spellId": 370965,
+  "name": "The Hunt",
+  "classId": 12,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 90,
+  "specIds": [
+   577,
+   581,
+   1480
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 374227,
+  "name": "Zephyr",
+  "classId": 13,
+  "category": "HEALER",
+  "baseCooldownSec": 120,
+  "specIds": [
+   1467,
+   1468,
+   1473
+  ],
+  "origin": "defensives+reviewed"
+ },
+ {
+  "spellId": 375087,
+  "name": "Dragonrage",
+  "classId": 13,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 120,
+  "specIds": [
+   1467,
+   1468,
+   1473
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 375576,
+  "name": "Divine Toll",
+  "classId": 2,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 60,
+  "specIds": [
+   65,
+   66,
+   70
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 376079,
+  "name": "Champion's Spear",
+  "classId": 1,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 90,
+  "specIds": [
+   71,
+   72,
+   73
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 378081,
+  "name": "Nature's Swiftness",
+  "classId": 7,
+  "category": "HEALER",
+  "baseCooldownSec": 60,
+  "specIds": [
+   262,
+   263,
+   264
+  ],
+  "origin": "defensives+reviewed"
+ },
+ {
+  "spellId": 383013,
+  "name": "Poison Cleansing Totem",
+  "classId": 7,
+  "category": "PERSONAL",
+  "baseCooldownSec": 120,
+  "specIds": [
+   262,
+   263,
+   264
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 384100,
+  "name": "Berserker Shout",
+  "classId": 1,
+  "category": "UTILITY",
+  "baseCooldownSec": 60,
+  "specIds": [
+   71,
+   72,
+   73
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 384110,
+  "name": "Wrecking Throw",
+  "classId": 1,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 45,
+  "specIds": [
+   71,
+   72,
+   73
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 384352,
+  "name": "Doom Winds",
+  "classId": 7,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 60,
+  "specIds": [
+   262,
+   263,
+   264
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 385059,
+  "name": "Odyn's Fury",
+  "classId": 1,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 45,
+  "specIds": [
+   71,
+   72,
+   73
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 385627,
+  "name": "Kingsbane",
+  "classId": 4,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 60,
+  "specIds": [
+   259,
+   260,
+   261
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 386071,
+  "name": "Disrupting Shout",
+  "classId": 1,
+  "category": "UTILITY",
+  "baseCooldownSec": 90,
+  "specIds": [
+   71,
+   72,
+   73
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 388615,
+  "name": "Restoral",
+  "classId": 10,
+  "category": "HEALER",
+  "baseCooldownSec": 180,
+  "specIds": [
+   268,
+   269,
+   270
+  ],
+  "origin": "defensives"
+ },
+ {
+  "spellId": 389539,
+  "name": "Sentinel",
+  "classId": 2,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 120,
+  "specIds": [
+   65,
+   66,
+   70
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 390386,
+  "name": "Fury of the Aspects",
+  "classId": 13,
+  "category": "BLOODLUST",
+  "baseCooldownSec": 300,
+  "specIds": [
+   1467,
+   1468,
+   1473
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 391528,
+  "name": "Convoke the Spirits",
+  "classId": 11,
+  "category": "HEALER",
+  "baseCooldownSec": 60,
+  "specIds": [
+   102,
+   103,
+   104,
+   105
+  ],
+  "origin": "defensives+reviewed"
+ },
+ {
+  "spellId": 392983,
+  "name": "Strike of the Windlord",
+  "classId": 10,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 35,
+  "specIds": [
+   268,
+   269,
+   270
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 403631,
+  "name": "Breath of Eons",
+  "classId": 13,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 120,
+  "specIds": [
+   1467,
+   1468,
+   1473
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 403876,
+  "name": "Divine Protection",
+  "classId": 2,
+  "category": "PERSONAL",
+  "baseCooldownSec": 60,
+  "specIds": [
+   70
+  ],
+  "origin": "defensives+reviewed"
+ },
+ {
+  "spellId": 406732,
+  "name": "Spatial Paradox",
+  "classId": 13,
+  "category": "UTILITY",
+  "baseCooldownSec": 180,
+  "specIds": [
+   1467,
+   1468,
+   1473
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 408233,
+  "name": "Bestow Weyrnstone",
+  "classId": 13,
+  "category": "UTILITY",
+  "baseCooldownSec": 60,
+  "specIds": [
+   1467,
+   1468,
+   1473
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 421453,
+  "name": "Ultimate Penitence",
+  "classId": 5,
+  "category": "HEALER",
+  "baseCooldownSec": 240,
+  "specIds": [
+   256,
+   257,
+   258
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 421543,
+  "name": "Ultimate Penitence",
+  "classId": 5,
+  "category": "HEALER",
+  "baseCooldownSec": 240,
+  "specIds": [
+   256
+  ],
+  "origin": "defensives"
+ },
+ {
+  "spellId": 426591,
+  "name": "Goremaw's Bite",
+  "classId": 4,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 45,
+  "specIds": [
+   259,
+   260,
+   261
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 436358,
+  "name": "Demolish",
+  "classId": 1,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 30,
+  "specIds": [
+   71,
+   72,
+   73
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 439843,
+  "name": "Reaper's Mark",
+  "classId": 6,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 45,
+  "specIds": [
+   250,
+   251,
+   252
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 443028,
+  "name": "Celestial Conduit",
+  "classId": 10,
+  "category": "HEALER",
+  "baseCooldownSec": 90,
+  "specIds": [
+   268,
+   269,
+   270
+  ],
+  "origin": "defensives+reviewed"
+ },
+ {
+  "spellId": 443454,
+  "name": "Ancestral Swiftness",
+  "classId": 7,
+  "category": "HEALER",
+  "baseCooldownSec": 30,
+  "specIds": [
+   262,
+   263,
+   264
+  ],
+  "origin": "defensives"
+ },
+ {
+  "spellId": 466904,
+  "name": "Harrier's Cry",
+  "classId": 3,
+  "category": "UTILITY",
+  "baseCooldownSec": 360,
+  "specIds": [
+   253,
+   254,
+   255
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 472433,
+  "name": "Evangelism",
+  "classId": 5,
+  "category": "HEALER",
+  "baseCooldownSec": 90,
+  "specIds": [
+   256
+  ],
+  "origin": "defensives+reviewed"
+ },
+ {
+  "spellId": 1233448,
+  "name": "Dark Transformation",
+  "classId": 6,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 45,
+  "specIds": [
+   250,
+   251,
+   252
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 1234195,
+  "name": "Void Nova",
+  "classId": 12,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 45,
+  "specIds": [
+   577,
+   581,
+   1480
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 1243807,
+  "name": "Frantic Frenzy",
+  "classId": 11,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 45,
+  "specIds": [
+   102,
+   103,
+   104,
+   105
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 1246167,
+  "name": "The Hunt",
+  "classId": 12,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 90,
+  "specIds": [
+   577,
+   581,
+   1480
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 1249658,
+  "name": "Breath of Sindragosa",
+  "classId": 6,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 90,
+  "specIds": [
+   250,
+   251,
+   252
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 1250646,
+  "name": "Takedown",
+  "classId": 3,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 90,
+  "specIds": [
+   253,
+   254,
+   255
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 1253799,
+  "name": "Sundering Roar",
+  "classId": 11,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 60,
+  "specIds": [
+   102,
+   103,
+   104,
+   105
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 1257052,
+  "name": "Dark Harvest",
+  "classId": 9,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 60,
+  "specIds": [
+   265,
+   266,
+   267
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 1259173,
+  "name": "Duplicate",
+  "classId": 13,
+  "category": "UTILITY",
+  "baseCooldownSec": 120,
+  "specIds": [
+   1467,
+   1468,
+   1473
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 1259174,
+  "name": "Duplicate",
+  "classId": 13,
+  "category": "UTILITY",
+  "baseCooldownSec": 120,
+  "specIds": [
+   1467,
+   1468,
+   1473
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 1259175,
+  "name": "Duplicate",
+  "classId": 13,
+  "category": "UTILITY",
+  "baseCooldownSec": 120,
+  "specIds": [
+   1467,
+   1468,
+   1473
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 1261193,
+  "name": "Boomstick",
+  "classId": 3,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 60,
+  "specIds": [
+   253,
+   254,
+   255
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 1261867,
+  "name": "Heart of the Wild",
+  "classId": 11,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 120,
+  "specIds": [
+   102,
+   103,
+   104,
+   105
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 1263569,
+  "name": "Abomination Limb",
+  "classId": 6,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 120,
+  "specIds": [
+   250,
+   251,
+   252
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 1263824,
+  "name": "Consumption",
+  "classId": 6,
+  "category": "PERSONAL",
+  "baseCooldownSec": 45,
+  "specIds": [
+   250,
+   251,
+   252
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 1276452,
+  "name": "Grimoire: Imp Lord",
+  "classId": 9,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 120,
+  "specIds": [
+   265,
+   266,
+   267
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 1276467,
+  "name": "Grimoire: Fel Ravager",
+  "classId": 9,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 120,
+  "specIds": [
+   265,
+   266,
+   267
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 1276672,
+  "name": "Summon Doomguard",
+  "classId": 9,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 120,
+  "specIds": [
+   265,
+   266,
+   267
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 1277933,
+  "name": "Preparation",
+  "classId": 4,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": 240,
+  "specIds": [
+   259,
+   260,
+   261
+  ],
+  "origin": "reviewed"
+ },
+ {
+  "spellId": 1291894,
+  "name": "Soulcoiler Ritual Vessel",
+  "classId": null,
+  "category": "HEALER",
+  "baseCooldownSec": 120,
+  "specIds": [],
+  "origin": "defensives"
+ }
+]

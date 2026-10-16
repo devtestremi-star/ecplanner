@@ -1,0 +1,209 @@
+class,classId,spellId,name,cooldownSec,specs,category,filterType,origin
+Death Knight,6,1263569,Abomination Limb,120,,OFFENSIVE,,reviewed
+Death Knight,6,48707,Anti-Magic Shell,45,,DEFENSIVE,,defensives+reviewed
+Death Knight,6,51052,Anti-Magic Zone,240,,EXTERNAL,,defensives+reviewed
+Death Knight,6,220143,Apocalypse,90,,OFFENSIVE,,reviewed
+Death Knight,6,42650,Army of the Dead,90,,OFFENSIVE,,reviewed
+Death Knight,6,1249658,Breath of Sindragosa,90,,OFFENSIVE,,reviewed
+Death Knight,6,205223,Consumption,45,,DEFENSIVE,,reviewed
+Death Knight,6,1263824,Consumption,45,,DEFENSIVE,,reviewed
+Death Knight,6,49028,Dancing Rune Weapon,120,,DEFENSIVE,,reviewed
+Death Knight,6,1233448,Dark Transformation,45,,OFFENSIVE,,reviewed
+Death Knight,6,48743,Death Pact,120,,DEFENSIVE,,defensives+reviewed
+Death Knight,6,279302,Frostwyrm's Fury,90,,OFFENSIVE,,reviewed
+Death Knight,6,48792,Icebound Fortitude,120,,DEFENSIVE,,defensives+reviewed
+Death Knight,6,49039,Lichborne,120,,DEFENSIVE,,reviewed
+Death Knight,6,51271,Pillar of Frost,45,,OFFENSIVE,,reviewed
+Death Knight,6,61999,Raise Ally,600,,OTHER,,reviewed
+Death Knight,6,439843,Reaper's Mark,45,,OFFENSIVE,,reviewed
+Death Knight,6,190778,Sindragosa's Fury,300,,DEFENSIVE,,reviewed
+Death Knight,6,55233,Vampiric Blood,90,,DEFENSIVE,,reviewed
+Demon Hunter,12,198589,Blur,60,,DEFENSIVE,,defensives+reviewed
+Demon Hunter,12,196718,Darkness,180,,EXTERNAL,,defensives+reviewed
+Demon Hunter,12,258860,Essence Break,40,,OFFENSIVE,,reviewed
+Demon Hunter,12,198013,Eye Beam,30,,OFFENSIVE,,reviewed
+Demon Hunter,12,212084,Fel Devastation,40,,OFFENSIVE,,reviewed
+Demon Hunter,12,201467,Fury of the Illidari,60,,OFFENSIVE,,reviewed
+Demon Hunter,12,191427,Metamorphosis,120,,OFFENSIVE,,reviewed
+Demon Hunter,12,207407,Soul Carver,60,,OFFENSIVE,,reviewed
+Demon Hunter,12,214743,Soul Carver,60,,OFFENSIVE,,reviewed
+Demon Hunter,12,370965,The Hunt,90,,OFFENSIVE,,reviewed
+Demon Hunter,12,1246167,The Hunt,90,,OFFENSIVE,,reviewed
+Demon Hunter,12,1217607,Void Metamorphosis,,Devourer,OFFENSIVE,applybuff,manual
+Demon Hunter,12,1234195,Void Nova,45,,OFFENSIVE,,reviewed
+Druid,11,210722,Ashamane's Frenzy,75,,OFFENSIVE,,reviewed
+Druid,11,22812,Barkskin,60,,DEFENSIVE,,defensives+reviewed
+Druid,11,50334,Berserk,180,,OFFENSIVE,,reviewed
+Druid,11,391528,Convoke the Spirits,60,,HEALING,,defensives+reviewed
+Druid,11,274837,Feral Frenzy,45,,OFFENSIVE,,reviewed
+Druid,11,205636,Force of Nature,60,,OFFENSIVE,,reviewed
+Druid,11,1243807,Frantic Frenzy,45,,OFFENSIVE,,reviewed
+Druid,11,202770,Fury of Elune,60,,OFFENSIVE,,reviewed
+Druid,11,1261867,Heart of the Wild,120,,OFFENSIVE,,reviewed
+Druid,11,102543,Incarnation: Avatar of Ashamane,180,,OFFENSIVE,,reviewed
+Druid,11,102558,Incarnation: Guardian of Ursoc,180,,OFFENSIVE,,reviewed
+Druid,11,33891,Incarnation: Tree of Life,120,,HEALING,,defensives+reviewed
+Druid,11,29166,Innervate,180,,OTHER,,reviewed
+Druid,11,102342,Ironbark,90,,DEFENSIVE,,reviewed
+Druid,11,132158,Nature's Swiftness,60,,HEALING,,reviewed
+Druid,11,20484,Rebirth,600,,OTHER,,reviewed
+Druid,11,1253799,Sundering Roar,60,,OFFENSIVE,,reviewed
+Druid,11,61336,Survival Instincts,180,Feral,DEFENSIVE,,defensives
+Druid,11,5217,Tiger's Fury,30,,OFFENSIVE,,reviewed
+Druid,11,740,Tranquility,150,,HEALING,,defensives+reviewed
+Evoker,13,408233,Bestow Weyrnstone,60,,OTHER,,reviewed
+Evoker,13,403631,Breath of Eons,120,,OFFENSIVE,,reviewed
+Evoker,13,375087,Dragonrage,120,,OFFENSIVE,,reviewed
+Evoker,13,359816,Dream Flight,120,,HEALING,,defensives+reviewed
+Evoker,13,1259173,Duplicate,120,,OTHER,,reviewed
+Evoker,13,1259174,Duplicate,120,,OTHER,,reviewed
+Evoker,13,1259175,Duplicate,120,,OTHER,,reviewed
+Evoker,13,355913,Emerald Blossom,30,,HEALING,,reviewed
+Evoker,13,390386,Fury of the Aspects,300,,OTHER,,reviewed
+Evoker,13,363916,Obsidian Scales,90,,DEFENSIVE,,defensives
+Evoker,13,363534,Rewind,120,,HEALING,,defensives
+Evoker,13,406732,Spatial Paradox,180,,OTHER,,reviewed
+Evoker,13,370537,Stasis,90,,HEALING,,defensives+reviewed
+Evoker,13,374227,Zephyr,120,,HEALING,,defensives+reviewed
+Hunter,3,186265,Aspect of the Turtle,180,,DEFENSIVE,,defensives+reviewed
+Hunter,3,19574,Bestial Wrath,90,,OFFENSIVE,,reviewed
+Hunter,3,1261193,Boomstick,60,,OFFENSIVE,,reviewed
+Hunter,3,109304,Exhilaration,120,,DEFENSIVE,,defensives+reviewed
+Hunter,3,203415,Fury of the Eagle,45,,OFFENSIVE,,reviewed
+Hunter,3,466904,Harrier's Cry,360,,OTHER,,reviewed
+Hunter,3,53480,Roar of Sacrifice,120,,DEFENSIVE,,reviewed
+Hunter,3,264735,Survival of the Fittest,180,,DEFENSIVE,,defensives
+Hunter,3,1250646,Takedown,90,,OFFENSIVE,,reviewed
+Hunter,3,288613,Trueshot,120,,OFFENSIVE,,reviewed
+Mage,8,342245,Alter Time,60,,DEFENSIVE,,defensives+reviewed
+Mage,8,365350,Arcane Surge,90,,OFFENSIVE,,reviewed
+Mage,8,235313,Blazing Barrier,30,Fire,DEFENSIVE,,defensives
+Mage,8,235219,Cold Snap,300,,DEFENSIVE,,reviewed
+Mage,8,190319,Combustion,120,,OFFENSIVE,,reviewed
+Mage,8,214634,Ebonbolt,45,,OFFENSIVE,,reviewed
+Mage,8,84714,Frozen Orb,60,,OFFENSIVE,,reviewed
+Mage,8,110959,Greater Invisibility,120,,DEFENSIVE,,reviewed
+Mage,8,11426,Ice Barrier,30,Frost,DEFENSIVE,,defensives
+Mage,8,45438,Ice Block,240,,DEFENSIVE,,defensives
+Mage,8,66,Invisibility,300,,DEFENSIVE,,reviewed
+Mage,8,153561,Meteor,45,,OFFENSIVE,,reviewed
+Mage,8,55342,Mirror Image,120,,DEFENSIVE,,reviewed
+Mage,8,235450,Prismatic Barrier,30,Arcane,DEFENSIVE,,defensives
+Mage,8,80353,Time Warp,300,,OTHER,,reviewed
+Monk,10,115399,Black Ox Brew,120,,OFFENSIVE,,reviewed
+Monk,10,443028,Celestial Conduit,90,,HEALING,,defensives+reviewed
+Monk,10,243435,Fortifying Brew,120,,DEFENSIVE,,defensives
+Monk,10,325197,"Invoke Chi-Ji, the Red Crane",120,,HEALING,,defensives+reviewed
+Monk,10,132578,"Invoke Niuzao, the Black Ox",120,,DEFENSIVE,,reviewed
+Monk,10,123904,"Invoke Xuen, the White Tiger",120,,OFFENSIVE,,reviewed
+Monk,10,322118,"Invoke Yu'lon, the Jade Serpent",120,,HEALING,,defensives+reviewed
+Monk,10,388615,Restoral,180,,HEALING,,defensives
+Monk,10,115310,Revival,180,,HEALING,,defensives
+Monk,10,392983,Strike of the Windlord,35,,OFFENSIVE,,reviewed
+Monk,10,322109,Touch of Death,180,,OFFENSIVE,,reviewed
+Monk,10,169340,Touch of Fatality,90,,OFFENSIVE,,reviewed
+Monk,10,122470,Touch of Karma,90,Windwalker,DEFENSIVE,,defensives+reviewed
+Monk,10,152175,Whirling Dragon Punch,35,,OFFENSIVE,,reviewed
+Paladin,2,31850,Ardent Defender,90,,DEFENSIVE,,reviewed
+Paladin,2,31821,Aura Mastery,150,,HEALING,,defensives+reviewed
+Paladin,2,216331,Avenging Crusader,105,,HEALING,,defensives
+Paladin,2,31884,Avenging Wrath,105,,HEALING,,defensives+reviewed
+Paladin,2,6940,Blessing of Sacrifice,120,,DEFENSIVE,,reviewed
+Paladin,2,498,Divine Protection,60,Holy,DEFENSIVE,,defensives+reviewed
+Paladin,2,403876,Divine Protection,60,Retribution,DEFENSIVE,,defensives+reviewed
+Paladin,2,642,Divine Shield,300,,DEFENSIVE,,defensives+reviewed
+Paladin,2,375576,Divine Toll,60,,OFFENSIVE,,reviewed
+Paladin,2,114165,Holy Prism,45,,HEALING,,reviewed
+Paladin,2,633,Lay on Hands,600,,HEALING,,reviewed
+Paladin,2,389539,Sentinel,120,,OFFENSIVE,,reviewed
+Priest,5,200183,Apotheosis,120,Holy,HEALING,,defensives+reviewed
+Priest,5,19236,Desperate Prayer,90,Discipline|Holy,DEFENSIVE,,defensives+reviewed
+Priest,5,47585,Dispersion,120,Shadow,DEFENSIVE,,defensives+reviewed
+Priest,5,64843,Divine Hymn,120,Holy,HEALING,,defensives+reviewed
+Priest,5,472433,Evangelism,90,Discipline,HEALING,,defensives+reviewed
+Priest,5,586,Fade,30,,DEFENSIVE,,reviewed
+Priest,5,47788,Guardian Spirit,180,,HEALING,,reviewed
+Priest,5,120517,Halo,60,,OFFENSIVE,,reviewed
+Priest,5,120644,Halo,60,,OFFENSIVE,,reviewed
+Priest,5,88625,Holy Word: Chastise,60,,HEALING,,reviewed
+Priest,5,207946,Light's Wrath,90,,OFFENSIVE,,reviewed
+Priest,5,32375,Mass Dispel,120,,OTHER,,reviewed
+Priest,5,10060,Power Infusion,120,,OFFENSIVE,,reviewed
+Priest,5,62618,Power Word: Barrier,180,Discipline,HEALING,,defensives+reviewed
+Priest,5,215769,Spirit of Redemption,120,,HEALING,,reviewed
+Priest,5,421453,Ultimate Penitence,240,,HEALING,,reviewed
+Priest,5,421543,Ultimate Penitence,240,Discipline,HEALING,,defensives
+Priest,5,15286,Vampiric Embrace,120,Shadow,EXTERNAL,,defensives+reviewed
+Priest,5,205065,Void Torrent,60,,OFFENSIVE,,reviewed
+Priest,5,263165,Void Torrent,30,,OFFENSIVE,,reviewed
+Priest,5,228260,Voidform,120,,OFFENSIVE,,reviewed
+Rogue,4,13750,Adrenaline Rush,180,,OFFENSIVE,,reviewed
+Rogue,4,315341,Between the Eyes,45,,OFFENSIVE,,reviewed
+Rogue,4,13877,Blade Flurry,30,,OFFENSIVE,,reviewed
+Rogue,4,271877,Blade Rush,60,,OFFENSIVE,,reviewed
+Rogue,4,31224,Cloak of Shadows,120,,DEFENSIVE,,defensives+reviewed
+Rogue,4,185311,Crimson Vial,30,,DEFENSIVE,,reviewed
+Rogue,4,360194,Deathmark,120,,OFFENSIVE,,reviewed
+Rogue,4,5277,Evasion,120,,DEFENSIVE,,reviewed
+Rogue,4,426591,Goremaw's Bite,45,,OFFENSIVE,,reviewed
+Rogue,4,51690,Killing Spree,180,,OFFENSIVE,,reviewed
+Rogue,4,385627,Kingsbane,60,,OFFENSIVE,,reviewed
+Rogue,4,1277933,Preparation,240,,OFFENSIVE,,reviewed
+Rogue,4,121471,Shadow Blades,90,,OFFENSIVE,,reviewed
+Shaman,7,443454,Ancestral Swiftness,30,,HEALING,,defensives
+Shaman,7,114050,Ascendance,180,,OFFENSIVE,,reviewed
+Shaman,7,114051,Ascendance,180,,OFFENSIVE,,reviewed
+Shaman,7,114052,Ascendance,180,,HEALING,,defensives+reviewed
+Shaman,7,108271,Astral Shift,90,,DEFENSIVE,,defensives+reviewed
+Shaman,7,2825,Bloodlust,300,,OTHER,,reviewed
+Shaman,7,384352,Doom Winds,60,,OFFENSIVE,,reviewed
+Shaman,7,198103,Earth Elemental,180,,DEFENSIVE,,reviewed
+Shaman,7,108280,Healing Tide Totem,180,,HEALING,,defensives+reviewed
+Shaman,7,32182,Heroism,300,,OTHER,,reviewed
+Shaman,7,378081,Nature's Swiftness,60,,HEALING,,defensives+reviewed
+Shaman,7,383013,Poison Cleansing Totem,120,,DEFENSIVE,,reviewed
+Shaman,7,20608,Reincarnation,1800,,OTHER,,reviewed
+Shaman,7,98008,Spirit Link Totem,180,,HEALING,,defensives
+Shaman,7,58875,Spirit Walk,60,,OTHER,,reviewed
+Shaman,7,79206,Spiritwalker's Grace,120,,OTHER,,reviewed
+Shaman,7,191634,Stormkeeper,60,,OFFENSIVE,,reviewed
+Shaman,7,205495,Stormkeeper,60,,OFFENSIVE,,reviewed
+Shaman,7,51490,Thunderstorm,30,,OFFENSIVE,,reviewed
+Shaman,7,8143,Tremor Totem,60,,OTHER,,reviewed
+Warlock,9,152108,Cataclysm,30,,OFFENSIVE,,reviewed
+Warlock,9,1257052,Dark Harvest,60,,OFFENSIVE,,reviewed
+Warlock,9,108416,Dark Pact,60,,DEFENSIVE,,defensives+reviewed
+Warlock,9,333889,Fel Domination,180,,OFFENSIVE,,reviewed
+Warlock,9,1276467,Grimoire: Fel Ravager,120,,OFFENSIVE,,reviewed
+Warlock,9,1276452,Grimoire: Imp Lord,120,,OFFENSIVE,,reviewed
+Warlock,9,80240,Havoc,30,,OFFENSIVE,,reviewed
+Warlock,9,264130,Power Siphon,30,,OFFENSIVE,,reviewed
+Warlock,9,6353,Soul Fire,45,,OFFENSIVE,,reviewed
+Warlock,9,205180,Summon Darkglare,120,,OFFENSIVE,,reviewed
+Warlock,9,265187,Summon Demonic Tyrant,60,,OFFENSIVE,,reviewed
+Warlock,9,1276672,Summon Doomguard,120,,OFFENSIVE,,reviewed
+Warlock,9,1122,Summon Infernal,120,,OFFENSIVE,,reviewed
+Warlock,9,104773,Unending Resolve,180,,DEFENSIVE,,defensives+reviewed
+Warrior,1,107574,Avatar,90,,OFFENSIVE,,reviewed
+Warrior,1,18499,Berserker Rage,60,,OTHER,,reviewed
+Warrior,1,384100,Berserker Shout,60,,OTHER,,reviewed
+Warrior,1,227847,Bladestorm,90,,OFFENSIVE,,reviewed
+Warrior,1,1161,Challenging Shout,120,,OTHER,,reviewed
+Warrior,1,376079,Champion's Spear,90,,OFFENSIVE,,reviewed
+Warrior,1,167105,Colossus Smash,45,,OFFENSIVE,,reviewed
+Warrior,1,436358,Demolish,30,,OFFENSIVE,,reviewed
+Warrior,1,1160,Demoralizing Shout,45,,DEFENSIVE,,reviewed
+Warrior,1,118038,Die by the Sword,120,Arms,DEFENSIVE,,defensives+reviewed
+Warrior,1,386071,Disrupting Shout,90,,OTHER,,reviewed
+Warrior,1,184364,Enraged Regeneration,120,Fury,DEFENSIVE,,defensives+reviewed
+Warrior,1,203524,Neltharion's Fury,45,,OFFENSIVE,,reviewed
+Warrior,1,205545,Odyn's Fury,45,,OFFENSIVE,,reviewed
+Warrior,1,385059,Odyn's Fury,45,,OFFENSIVE,,reviewed
+Warrior,1,97462,Rallying Cry,180,,EXTERNAL,,defensives+reviewed
+Warrior,1,1719,Recklessness,90,,OFFENSIVE,,reviewed
+Warrior,1,260708,Sweeping Strikes,30,,OFFENSIVE,,reviewed
+Warrior,1,118779,Victory Rush,30,,DEFENSIVE,,reviewed
+Warrior,1,209577,Warbreaker,60,,OFFENSIVE,,reviewed
+Warrior,1,384110,Wrecking Throw,45,,OFFENSIVE,,reviewed
+,,1258283,Beacon of Lightblind Wrath,90,,HEALING,,manual
+,,1291894,Soulcoiler Ritual Vessel,120,,EXTERNAL,,manual

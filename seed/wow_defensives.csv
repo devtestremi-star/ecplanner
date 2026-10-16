@@ -1,0 +1,77 @@
+﻿table,category,key,name,cooldown,class,role,spec,short,flags,talentReq,talentNot
+defensives,external,51052:0,"Anti-Magic Zone (3 min)",180,DEATHKNIGHT,,,AMZ,external;spellID=51052,51052|374383,
+defensives,external,51052:1,"Anti-Magic Zone (4 min)",240,DEATHKNIGHT,,,AMZ,external;spellID=51052,51052,374383
+defensives,external,196718:0,"Darkness (5 min)",300,DEMONHUNTER,,,Dark,external;spellID=196718,196718,389783
+defensives,external,196718:1,"Darkness (3 min)",180,DEMONHUNTER,,,Dark,external;spellID=196718,196718|389783,
+defensives,external,374227,"Zephyr",120,EVOKER,DAMAGER,,Zeph,external;aoeOnly,374227,
+defensives,external,15286,"Vampiric Embrace",120,PRIEST,,Shadow,Vamp,external,,
+defensives,external,97462,"Rallying Cry",180,WARRIOR,,,Rally,external,97462,
+defensives,heal,374227:heal,"Zephyr",120,EVOKER,HEALER,,Zeph,aoeOnly;spellID=374227,374227,
+defensives,heal,1291894,"Soulcoiler Ritual Vessel",120,,,,Vessel,trinket;itemId=270162;icon=7956752,,
+defensives,heal,740:0,"Tranquility (3 min)",180,DRUID,HEALER,,Tranq,spellID=740,740,197073
+defensives,heal,740:1,"Tranquility (2 min 30)",150,DRUID,HEALER,,Tranq,spellID=740,740|197073,
+defensives,heal,391528:0,"Convoke the Spirits",120,DRUID,HEALER,,Conv,spellID=391528;choiceNode=2,391528,393371
+defensives,heal,391528:1,"Convoke the Spirits",60,DRUID,HEALER,,Conv,spellID=391528;choiceNode=2,391528|393371,
+defensives,heal,33891:0,"Incarnation: Tree of Life (3 min)",180,DRUID,HEALER,,Inc,spellID=33891;choiceNode=2,33891,393371
+defensives,heal,33891:1,"Incarnation: Tree of Life (2 min)",120,DRUID,HEALER,,Inc,spellID=33891;choiceNode=2,33891|393371,
+defensives,heal,388615,"Restoral",180,MONK,HEALER,,Res,choiceNode=4,388615,
+defensives,heal,115310,"Revival",180,MONK,HEALER,,Rev,choiceNode=4,115310,
+defensives,heal,443028,"Celestial Conduit",90,MONK,HEALER,,Cond,,443028
+defensives,heal,322118:0,"Invoke Yu'lon (1 min)",60,MONK,HEALER,,Yulon,spellID=322118;choiceNode=1,322118|388212,
+defensives,heal,322118:1,"Invoke Yu'lon (2 min)",120,MONK,HEALER,,Yulon,spellID=322118;choiceNode=1,322118,388212
+defensives,heal,325197:0,"Invoke Chi-Ji (1 min)",60,MONK,HEALER,,Chi,spellID=325197;choiceNode=1,325197|388212,
+defensives,heal,325197:1,"Invoke Chi-Ji (2 min)",120,MONK,HEALER,,Chi,spellID=325197,325197,388212
+defensives,heal,31821:0,"Aura Mastery (3 min)",180,PALADIN,HEALER,,Aura,spellID=31821,31821,392911
+defensives,heal,31821:1,"Aura Mastery (2 min 30)",150,PALADIN,HEALER,,Aura,spellID=31821,31821|392911,
+defensives,heal,31884:0,"Avenging Wrath (2 min)",120,PALADIN,HEALER,,AW,spellID=31884;choiceNode=5,31884,1241511
+defensives,heal,31884:1,"Avenging Wrath (1 min 45)",105,PALADIN,HEALER,,AW,spellID=31884;choiceNode=5,31884|1241511,
+defensives,heal,216331:0,"Avenging Crusader (1 min)",120,PALADIN,HEALER,,AC,spellID=216331;choiceNode=5,216331,1241511
+defensives,heal,216331:1,"Avenging Crusader (52,5 sec)",105,PALADIN,HEALER,,AC,spellID=216331;choiceNode=5,216331|1241511,
+defensives,heal,64843:0,"Divine Hymn (3 min)",180,PRIEST,HEALER,Holy,Hymn,spellID=64843,64843,419110
+defensives,heal,64843:1,"Divine Hymn (2 min)",120,PRIEST,HEALER,Holy,Hymn,spellID=64843,64843|419110,
+defensives,heal,200183,"Apotheosis",120,PRIEST,HEALER,Holy,Apo,,200183
+defensives,heal,472433,"Evangelism",90,PRIEST,HEALER,Discipline,Eva,,472433
+defensives,heal,421543,"Ultimate Penitence",240,PRIEST,HEALER,Discipline,UP,choiceNode=6,421543
+defensives,heal,62618,"Power Word: Barrier",180,PRIEST,HEALER,Discipline,PWB,choiceNode=6,62618
+defensives,heal,98008,"Spirit Link Totem",180,SHAMAN,HEALER,,SLT,,98008
+defensives,heal,114052:0,"Ascendance (2 min)",120,SHAMAN,HEALER,,Asc,spellID=114052;choiceNode=7,114052|462440
+defensives,heal,114052:1,"Ascendance (3 min)",180,SHAMAN,HEALER,,Asc,spellID=114052;choiceNode=7,114052,462440
+defensives,heal,108280:0,"Healing Tide Totem (2 min)",120,SHAMAN,HEALER,,HTT,spellID=108280;choiceNode=7,108280|462440
+defensives,heal,108280:1,"Healing Tide Totem (3 min)",180,SHAMAN,HEALER,,HTT,spellID=108280;choiceNode=7,108280,462440
+defensives,heal,378081,"Nature's Swiftness",60,SHAMAN,HEALER,,NS,,,443454
+defensives,heal,443454,"Ancestral Swiftness",30,SHAMAN,HEALER,,AncS,,443454,
+defensives,heal,370537,"Stasis",90,EVOKER,HEALER,,Sta,choiceNode=3,370537,
+defensives,heal,359816,"Dream Flight",120,EVOKER,HEALER,,DF,choiceNode=3,359816,
+defensives,heal,363534:0,"Rewind (3 min)",180,EVOKER,HEALER,,Rew,spellID=363534,363534,381922
+defensives,heal,363534:1,"Rewind (2 min)",120,EVOKER,HEALER,,Rew,spellID=363534,363534|381922,
+defensives,generic,SMALL_DEF,"Defensive",90,,,,Def,icon=ability_warrior_defensivestance,,
+defensives,generic,EMPTY_BAG,"Empty the bag",0,,,,Bag,icon=inv_misc_bone_skull_02,,
+defensives,generic,RAMP,"Ramp",0,,HEALER,,Ramp,icon=spell_holy_prayerofhealing02,,
+personalDefensives,personal,48707,"Anti-Magic Shell",45,DEATHKNIGHT,,,,,,
+personalDefensives,personal,48792,"Icebound Fortitude",120,DEATHKNIGHT,,,,main,,
+personalDefensives,personal,48743,"Death Pact",120,DEATHKNIGHT,,,,,,
+personalDefensives,personal,198589,"Blur",60,DEMONHUNTER,,,,,,
+personalDefensives,personal,22812,"Barkskin",60,DRUID,,,,main,,
+personalDefensives,personal,61336,"Survival Instincts",180,DRUID,,Feral,,,,
+personalDefensives,personal,363916,"Obsidian Scales",90,EVOKER,,,,,,
+personalDefensives,personal,186265,"Aspect of the Turtle",180,HUNTER,,,,,,
+personalDefensives,personal,109304,"Exhilaration",120,HUNTER,,,,,,
+personalDefensives,personal,264735,"Survival of the Fittest",180,HUNTER,,,,main,,
+personalDefensives,personal,45438,"Ice Block",240,MAGE,,,,main,,
+personalDefensives,personal,11426,"Ice Barrier",30,MAGE,,Frost,,,,
+personalDefensives,personal,235313,"Blazing Barrier",30,MAGE,,Fire,,,,
+personalDefensives,personal,235450,"Prismatic Barrier",30,MAGE,,Arcane,,,,
+personalDefensives,personal,342245,"Alter Time",60,MAGE,,,,,,
+personalDefensives,personal,243435,"Fortifying Brew",120,MONK,,,,main,,
+personalDefensives,personal,122470,"Touch of Karma",90,MONK,,Windwalker,,,,
+personalDefensives,personal,498,"Divine Protection",60,PALADIN,,Holy,,main,,
+personalDefensives,personal,403876,"Divine Protection",60,PALADIN,,Retribution,,main,,
+personalDefensives,personal,642,"Divine Shield",300,PALADIN,,,,,,
+personalDefensives,personal,47585,"Dispersion",120,PRIEST,,Shadow,,,,
+personalDefensives,personal,19236,"Desperate Prayer",90,PRIEST,,Discipline|Holy,,,,
+personalDefensives,personal,31224,"Cloak of Shadows",120,ROGUE,,,,,,
+personalDefensives,personal,108271,"Astral Shift",90,SHAMAN,,,,,,
+personalDefensives,personal,104773,"Unending Resolve",180,WARLOCK,,,,main,,
+personalDefensives,personal,108416,"Dark Pact",60,WARLOCK,,,,,,
+personalDefensives,personal,118038,"Die by the Sword",120,WARRIOR,,Arms,,,,
+personalDefensives,personal,184364,"Enraged Regeneration",120,WARRIOR,,Fury,,,,

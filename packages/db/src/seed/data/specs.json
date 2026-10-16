@@ -1,0 +1,282 @@
+[
+ {
+  "id": 71,
+  "classId": 1,
+  "slug": "arms",
+  "name": "Arms",
+  "role": "dps"
+ },
+ {
+  "id": 72,
+  "classId": 1,
+  "slug": "fury",
+  "name": "Fury",
+  "role": "dps"
+ },
+ {
+  "id": 73,
+  "classId": 1,
+  "slug": "protection",
+  "name": "Protection",
+  "role": "tank"
+ },
+ {
+  "id": 65,
+  "classId": 2,
+  "slug": "holy",
+  "name": "Holy",
+  "role": "healer"
+ },
+ {
+  "id": 66,
+  "classId": 2,
+  "slug": "protection",
+  "name": "Protection",
+  "role": "tank"
+ },
+ {
+  "id": 70,
+  "classId": 2,
+  "slug": "retribution",
+  "name": "Retribution",
+  "role": "dps"
+ },
+ {
+  "id": 253,
+  "classId": 3,
+  "slug": "beast-mastery",
+  "name": "Beast Mastery",
+  "role": "dps"
+ },
+ {
+  "id": 254,
+  "classId": 3,
+  "slug": "marksmanship",
+  "name": "Marksmanship",
+  "role": "dps"
+ },
+ {
+  "id": 255,
+  "classId": 3,
+  "slug": "survival",
+  "name": "Survival",
+  "role": "dps"
+ },
+ {
+  "id": 259,
+  "classId": 4,
+  "slug": "assassination",
+  "name": "Assassination",
+  "role": "dps"
+ },
+ {
+  "id": 260,
+  "classId": 4,
+  "slug": "outlaw",
+  "name": "Outlaw",
+  "role": "dps"
+ },
+ {
+  "id": 261,
+  "classId": 4,
+  "slug": "subtlety",
+  "name": "Subtlety",
+  "role": "dps"
+ },
+ {
+  "id": 256,
+  "classId": 5,
+  "slug": "discipline",
+  "name": "Discipline",
+  "role": "healer"
+ },
+ {
+  "id": 257,
+  "classId": 5,
+  "slug": "holy",
+  "name": "Holy",
+  "role": "healer"
+ },
+ {
+  "id": 258,
+  "classId": 5,
+  "slug": "shadow",
+  "name": "Shadow",
+  "role": "dps"
+ },
+ {
+  "id": 250,
+  "classId": 6,
+  "slug": "blood",
+  "name": "Blood",
+  "role": "tank"
+ },
+ {
+  "id": 251,
+  "classId": 6,
+  "slug": "frost",
+  "name": "Frost",
+  "role": "dps"
+ },
+ {
+  "id": 252,
+  "classId": 6,
+  "slug": "unholy",
+  "name": "Unholy",
+  "role": "dps"
+ },
+ {
+  "id": 262,
+  "classId": 7,
+  "slug": "elemental",
+  "name": "Elemental",
+  "role": "dps"
+ },
+ {
+  "id": 263,
+  "classId": 7,
+  "slug": "enhancement",
+  "name": "Enhancement",
+  "role": "dps"
+ },
+ {
+  "id": 264,
+  "classId": 7,
+  "slug": "restoration",
+  "name": "Restoration",
+  "role": "healer"
+ },
+ {
+  "id": 62,
+  "classId": 8,
+  "slug": "arcane",
+  "name": "Arcane",
+  "role": "dps"
+ },
+ {
+  "id": 63,
+  "classId": 8,
+  "slug": "fire",
+  "name": "Fire",
+  "role": "dps"
+ },
+ {
+  "id": 64,
+  "classId": 8,
+  "slug": "frost",
+  "name": "Frost",
+  "role": "dps"
+ },
+ {
+  "id": 265,
+  "classId": 9,
+  "slug": "affliction",
+  "name": "Affliction",
+  "role": "dps"
+ },
+ {
+  "id": 266,
+  "classId": 9,
+  "slug": "demonology",
+  "name": "Demonology",
+  "role": "dps"
+ },
+ {
+  "id": 267,
+  "classId": 9,
+  "slug": "destruction",
+  "name": "Destruction",
+  "role": "dps"
+ },
+ {
+  "id": 268,
+  "classId": 10,
+  "slug": "brewmaster",
+  "name": "Brewmaster",
+  "role": "tank"
+ },
+ {
+  "id": 269,
+  "classId": 10,
+  "slug": "windwalker",
+  "name": "Windwalker",
+  "role": "dps"
+ },
+ {
+  "id": 270,
+  "classId": 10,
+  "slug": "mistweaver",
+  "name": "Mistweaver",
+  "role": "healer"
+ },
+ {
+  "id": 102,
+  "classId": 11,
+  "slug": "balance",
+  "name": "Balance",
+  "role": "dps"
+ },
+ {
+  "id": 103,
+  "classId": 11,
+  "slug": "feral",
+  "name": "Feral",
+  "role": "dps"
+ },
+ {
+  "id": 104,
+  "classId": 11,
+  "slug": "guardian",
+  "name": "Guardian",
+  "role": "tank"
+ },
+ {
+  "id": 105,
+  "classId": 11,
+  "slug": "restoration",
+  "name": "Restoration",
+  "role": "healer"
+ },
+ {
+  "id": 577,
+  "classId": 12,
+  "slug": "havoc",
+  "name": "Havoc",
+  "role": "dps"
+ },
+ {
+  "id": 581,
+  "classId": 12,
+  "slug": "vengeance",
+  "name": "Vengeance",
+  "role": "tank"
+ },
+ {
+  "id": 1480,
+  "classId": 12,
+  "slug": "devourer",
+  "name": "Devourer",
+  "role": "dps"
+ },
+ {
+  "id": 1467,
+  "classId": 13,
+  "slug": "devastation",
+  "name": "Devastation",
+  "role": "dps"
+ },
+ {
+  "id": 1468,
+  "classId": 13,
+  "slug": "preservation",
+  "name": "Preservation",
+  "role": "healer"
+ },
+ {
+  "id": 1473,
+  "classId": 13,
+  "slug": "augmentation",
+  "name": "Augmentation",
+  "role": "dps"
+ }
+]

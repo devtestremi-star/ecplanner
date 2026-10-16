@@ -1,0 +1,85 @@
+[
+ {
+  "spellId": 1022,
+  "name": "Blessing of Protection",
+  "classId": 2,
+  "category": "EXTERNAL",
+  "baseCooldownSec": 300,
+  "specIds": [
+   65,
+   66,
+   70
+  ],
+  "origin": "manual",
+  "note": "Défensif externe du Paladin, toutes specs. Raté par la chaîne d'extraction."
+ },
+ {
+  "spellId": 33206,
+  "name": "Pain Suppression",
+  "classId": 5,
+  "category": "EXTERNAL",
+  "baseCooldownSec": 180,
+  "specIds": [
+   256
+  ],
+  "origin": "manual",
+  "note": "Défensif externe majeur du Prêtre Discipline. Raté par la chaîne d'extraction des arbres de talents, comme Life Cocoon et Blessing of Protection."
+ },
+ {
+  "spellId": 116849,
+  "name": "Life Cocoon",
+  "classId": 10,
+  "category": "EXTERNAL",
+  "baseCooldownSec": 120,
+  "specIds": [
+   270
+  ],
+  "origin": "manual",
+  "note": "Défensif externe du Moine Mistweaver. Raté par la chaîne d'extraction."
+ },
+ {
+  "spellId": 357170,
+  "name": "Time Dilation",
+  "classId": 13,
+  "category": "EXTERNAL",
+  "baseCooldownSec": 60,
+  "specIds": [
+   1468
+  ],
+  "origin": "manual",
+  "note": "Défensif externe de l'Évoquateur Préservation. Raté par la chaîne d'extraction."
+ },
+ {
+  "spellId": 1217607,
+  "name": "Void Metamorphosis",
+  "classId": 12,
+  "category": "OFFENSIVE",
+  "baseCooldownSec": null,
+  "specIds": [
+   1480
+  ],
+  "origin": "manual",
+  "note": "Metamorphose du Devourer. N'EMET AUCUN `cast` : elle s'active en accumulant 50 fragments d'âme, et n'apparaît que via applybuff/removebuff. D'où trackVia=APPLYBUFF. Ratée par la chaîne d'extraction des arbres de talents.",
+  "filterType": "applybuff"
+ },
+ {
+  "spellId": 1258283,
+  "name": "Beacon of Lightblind Wrath",
+  "classId": null,
+  "category": "HEALER",
+  "baseCooldownSec": 90,
+  "specIds": [],
+  "origin": "manual",
+  "note": "Effet du bijou Litany of Lightblind Wrath. Sans classe ni spec : il tombe dans la branche « inter-classes, toujours inclus » du filtre. ⚠️ Ne pas confondre avec 1263725, qui porte le MÊME nom et la même icône mais n'émet que des `damage` — le cast est sur cet id-ci."
+ },
+ {
+  "spellId": 1291894,
+  "name": "Soulcoiler Ritual Vessel",
+  "classId": null,
+  "category": "EXTERNAL",
+  "baseCooldownSec": 120,
+  "specIds": [],
+  "origin": "manual",
+  "note": "Effet du bijou Soulcoiler Ritual Vessel. Incantation canalisée de 2 s, 2 min de recharge — le cast porte bien cet id, contrairement au Beacon. Catégorie EXTERNAL : il pose une barrière sur des ALLIÉS, pas sur le lanceur. Venait de wow_defensives en 'heal' ; repris ici pour rendre l'ajout traçable et le mettre à l'abri d'une régénération des CSV."
+ }
+]

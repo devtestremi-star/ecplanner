@@ -1,0 +1,80 @@
+[
+ {
+  "id": 1,
+  "slug": "warrior",
+  "name": "Warrior",
+  "color": "#C69B6D"
+ },
+ {
+  "id": 2,
+  "slug": "paladin",
+  "name": "Paladin",
+  "color": "#F48CBA"
+ },
+ {
+  "id": 3,
+  "slug": "hunter",
+  "name": "Hunter",
+  "color": "#AAD372"
+ },
+ {
+  "id": 4,
+  "slug": "rogue",
+  "name": "Rogue",
+  "color": "#FFF468"
+ },
+ {
+  "id": 5,
+  "slug": "priest",
+  "name": "Priest",
+  "color": "#FFFFFF"
+ },
+ {
+  "id": 6,
+  "slug": "death-knight",
+  "name": "Death Knight",
+  "color": "#C41E3A"
+ },
+ {
+  "id": 7,
+  "slug": "shaman",
+  "name": "Shaman",
+  "color": "#0070DD"
+ },
+ {
+  "id": 8,
+  "slug": "mage",
+  "name": "Mage",
+  "color": "#3FC7EB"
+ },
+ {
+  "id": 9,
+  "slug": "warlock",
+  "name": "Warlock",
+  "color": "#8788EE"
+ },
+ {
+  "id": 10,
+  "slug": "monk",
+  "name": "Monk",
+  "color": "#00FF98"
+ },
+ {
+  "id": 11,
+  "slug": "druid",
+  "name": "Druid",
+  "color": "#FF7C0A"
+ },
+ {
+  "id": 12,
+  "slug": "demon-hunter",
+  "name": "Demon Hunter",
+  "color": "#A330C9"
+ },
+ {
+  "id": 13,
+  "slug": "evoker",
+  "name": "Evoker",
+  "color": "#33937F"
+ }
+]

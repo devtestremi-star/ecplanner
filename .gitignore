@@ -1,0 +1,12 @@
+node_modules/
+dist/
+*.tsbuildinfo
+
+.env
+.env.local
+recon/.env
+recon/dumps/
+
+*:Zone.Identifier
+
+.vercel/

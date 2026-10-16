@@ -1,0 +1,1712 @@
+[
+ {
+  "encounterID": 2562,
+  "name": "Vexamus",
+  "dungeon": "Algeth'ar Academy",
+  "patch": "12.0.x",
+  "spells": [
+   {
+    "spellId": 386181,
+    "name": "Mana Bomb",
+    "inTimeline": true
+   },
+   {
+    "spellId": 386544,
+    "name": "Arcane Orbs",
+    "inTimeline": false
+   },
+   {
+    "spellId": 385958,
+    "name": "Arcane Expulsion",
+    "inTimeline": false
+   },
+   {
+    "spellId": 388537,
+    "name": "Arcane Fissure",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 2563,
+  "name": "Overgrown Ancient",
+  "dungeon": "Algeth'ar Academy",
+  "patch": "12.0.x",
+  "spells": [
+   {
+    "spellId": 388623,
+    "name": "Branch Out",
+    "inTimeline": true
+   },
+   {
+    "spellId": 388923,
+    "name": "Burst Forth",
+    "inTimeline": true
+   },
+   {
+    "spellId": 388544,
+    "name": "Barkbreaker",
+    "inTimeline": false
+   },
+   {
+    "spellId": 388796,
+    "name": "Germinate",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 2564,
+  "name": "Crawth",
+  "dungeon": "Algeth'ar Academy",
+  "patch": "12.0.x",
+  "spells": [
+   {
+    "spellId": 376997,
+    "name": "Savage Peck",
+    "inTimeline": false
+   },
+   {
+    "spellId": 377004,
+    "name": "Deafening Screech",
+    "inTimeline": false
+   },
+   {
+    "spellId": 377034,
+    "name": "Overpowering Gust",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 2565,
+  "name": "Echo of Doragosa",
+  "dungeon": "Algeth'ar Academy",
+  "patch": "12.0.x",
+  "spells": [
+   {
+    "spellId": 373326,
+    "name": "Arcane Missiles",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1282251,
+    "name": "Astral Blast",
+    "inTimeline": false
+   },
+   {
+    "spellId": 374343,
+    "name": "Energy Bomb",
+    "inTimeline": false
+   },
+   {
+    "spellId": 388822,
+    "name": "Power Vacuum",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 3071,
+  "name": "Arcanotron Custos",
+  "dungeon": "Magister's Terrace",
+  "patch": "12.0.x",
+  "spells": [
+   {
+    "spellId": 474496,
+    "name": "Repulsing Slam",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1214081,
+    "name": "Arcane Expulsion",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1214032,
+    "name": "Ethereal Shackles",
+    "inTimeline": false
+   },
+   {
+    "spellId": 474345,
+    "name": "Refueling Protocol",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 3072,
+  "name": "Seranel Sunlash",
+  "dungeon": "Magister's Terrace",
+  "patch": "12.0.x",
+  "spells": [
+   {
+    "spellId": 1225792,
+    "name": "Runic Mark",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1246446,
+    "name": "Null Reaction",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1225787,
+    "name": "Runic Mark",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1224903,
+    "name": "Suppression Zone",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1248689,
+    "name": "Hastening Ward",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1225193,
+    "name": "Wave of Silence",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 3073,
+  "name": "Gemellus",
+  "dungeon": "Magister's Terrace",
+  "patch": "12.0.x",
+  "spells": [
+   {
+    "spellId": 1283904,
+    "name": "Cosmic Sting",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1224299,
+    "name": "Astral Grasp",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1223847,
+    "name": "Triplicate",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1284954,
+    "name": "Cosmic Sting",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1253709,
+    "name": "Neural Link",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 3074,
+  "name": "Degentrius",
+  "dungeon": "Magister's Terrace",
+  "patch": "12.0.x",
+  "spells": [
+   {
+    "spellId": 1215897,
+    "name": "Devouring Entropy",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1280113,
+    "name": "Hulking Fragment",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1215087,
+    "name": "Unstable Void Essence",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 3212,
+  "name": "Muro'jin & Nekraxx",
+  "dungeon": "Maisara Caverns",
+  "patch": "12.0.x",
+  "spells": [
+   {
+    "spellId": 1260648,
+    "name": "Barrage",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1246666,
+    "name": "Infected Pinions",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1266480,
+    "name": "Flanking Spear",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1260731,
+    "name": "Freezing Trap",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1243900,
+    "name": "Fetid Quillstorm",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1260643,
+    "name": "Barrage",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1249479,
+    "name": "Carrion Swoop",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 3213,
+  "name": "Vordaza",
+  "dungeon": "Maisara Caverns",
+  "patch": "12.0.x",
+  "spells": [
+   {
+    "spellId": 1251204,
+    "name": "Wrest Phantoms",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1250708,
+    "name": "Necrotic Convergence",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1251554,
+    "name": "Drain Soul",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1252054,
+    "name": "Unmake",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 3214,
+  "name": "Rak'tul, Vessel of Souls",
+  "dungeon": "Maisara Caverns",
+  "patch": "12.0.x",
+  "spells": [
+   {
+    "spellId": 1251023,
+    "name": "Spiritbreaker",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1252676,
+    "name": "Crush Souls",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1253788,
+    "name": "Soulrending Roar",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 3328,
+  "name": "Chief Corewright Kasreth",
+  "dungeon": "Nexus-Point Xenas",
+  "patch": "12.0.x",
+  "spells": [
+   {
+    "spellId": 1257509,
+    "name": "Corespark Detonation",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1251579,
+    "name": "Leyline Array",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1251772,
+    "name": "Reflux Charge",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1264048,
+    "name": "Flux Collapse",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 3332,
+  "name": "Corewarden Nysarra",
+  "dungeon": "Nexus-Point Xenas",
+  "patch": "12.0.x",
+  "spells": [
+   {
+    "spellId": 1249014,
+    "name": "Eclipsing Step",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1247976,
+    "name": "Lightscar Flare",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1247937,
+    "name": "Umbral Lash",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1252703,
+    "name": "Null Vanguard",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1264439,
+    "name": "Lightscar Flare",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1271684,
+    "name": "Devour the Unworthy",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 3333,
+  "name": "Lothraxion",
+  "dungeon": "Nexus-Point Xenas",
+  "patch": "12.0.x",
+  "spells": [
+   {
+    "spellId": 1253855,
+    "name": "Brilliant Dispersion",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1253950,
+    "name": "Searing Rend",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1255531,
+    "name": "Flicker",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1257595,
+    "name": "Divine Guile",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 1999,
+  "name": "Forgemaster Garfrost",
+  "dungeon": "Pit of Saron",
+  "patch": "12.0.x",
+  "spells": [
+   {
+    "spellId": 1261847,
+    "name": "Cryostomp",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1261299,
+    "name": "Throw Saronite",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1261546,
+    "name": "Orebreaker",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1262029,
+    "name": "Glacial Overload",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 2000,
+  "name": "Scourgelord Tyrannus",
+  "dungeon": "Pit of Saron",
+  "patch": "12.0.x",
+  "spells": [
+   {
+    "spellId": 1276648,
+    "name": "Bone Infusion",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1263406,
+    "name": "Army of the Dead",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1262745,
+    "name": "Rime Blast",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1276948,
+    "name": "Ice Barrage",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1262582,
+    "name": "Scourgelord's Brand",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1263756,
+    "name": "Death's Grasp",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 2001,
+  "name": "Ick & Krick",
+  "dungeon": "Pit of Saron",
+  "patch": "12.0.x",
+  "spells": [
+   {
+    "spellId": 1264027,
+    "name": "Shade Shift",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1264336,
+    "name": "Plague Expulsion",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1264287,
+    "name": "Blight Smash",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1264363,
+    "name": "Get 'Em, Ick!",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 2065,
+  "name": "Zuraal the Ascended",
+  "dungeon": "Seat of the Triumvirate",
+  "patch": "12.0.x",
+  "spells": [
+   {
+    "spellId": 1263399,
+    "name": "Oozing Slam",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1263297,
+    "name": "Crashing Void",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1263440,
+    "name": "Void Slash",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1263282,
+    "name": "Decimate",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1268916,
+    "name": "Null Palm",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 2066,
+  "name": "Saprish",
+  "dungeon": "Seat of the Triumvirate",
+  "patch": "12.0.x",
+  "spells": [
+   {
+    "spellId": 1263523,
+    "name": "Overload",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1280065,
+    "name": "Phase Dash",
+    "inTimeline": true
+   },
+   {
+    "spellId": 245742,
+    "name": "Shadow Pounce",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1248219,
+    "name": "Void Bomb",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 2067,
+  "name": "Viceroy Nezhar",
+  "dungeon": "Seat of the Triumvirate",
+  "patch": "12.0.x",
+  "spells": [
+   {
+    "spellId": 1263542,
+    "name": "Mass Void Infusion",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1263538,
+    "name": "Umbral Tentacles",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1263529,
+    "name": "Collapsing Void",
+    "inTimeline": true
+   },
+   {
+    "spellId": 244750,
+    "name": "Mind Blast",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1277358,
+    "name": "Gates of the Abyss",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1263528,
+    "name": "Repulse",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 2068,
+  "name": "L'ura",
+  "dungeon": "Seat of the Triumvirate",
+  "patch": "12.0.x",
+  "spells": [
+   {
+    "spellId": 1265421,
+    "name": "Dirge of Despair",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1264196,
+    "name": "Disintegrate",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1265463,
+    "name": "Discordant Beam",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1265689,
+    "name": "Grim Chorus",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1266003,
+    "name": "Symphony of the Eternal Night",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1265999,
+    "name": "Siphon Void",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1265464,
+    "name": "Discordant Beam",
+    "inTimeline": true
+   }
+  ]
+ },
+ {
+  "encounterID": 1698,
+  "name": "Ranjit",
+  "dungeon": "Skyreach",
+  "patch": "12.0.x",
+  "spells": [
+   {
+    "spellId": 153757,
+    "name": "Fan of Blades",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1252690,
+    "name": "Gale Surge",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1258152,
+    "name": "Wind Chakram",
+    "inTimeline": false
+   },
+   {
+    "spellId": 156793,
+    "name": "Chakram Vortex",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 1699,
+  "name": "Araknath",
+  "dungeon": "Skyreach",
+  "patch": "12.0.x",
+  "spells": [
+   {
+    "spellId": 1252877,
+    "name": "Energize",
+    "inTimeline": true
+   },
+   {
+    "spellId": 154135,
+    "name": "Supernova",
+    "inTimeline": true
+   },
+   {
+    "spellId": 154110,
+    "name": "Fiery Smash",
+    "inTimeline": false
+   },
+   {
+    "spellId": 154162,
+    "name": "Energize",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 1700,
+  "name": "Rukhran",
+  "dungeon": "Skyreach",
+  "patch": "12.0.x",
+  "spells": [
+   {
+    "spellId": 1253510,
+    "name": "Sunbreak",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1253519,
+    "name": "Burning Claws",
+    "inTimeline": false
+   },
+   {
+    "spellId": 159382,
+    "name": "Searing Quills",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 1701,
+  "name": "High Sage Viryx",
+  "dungeon": "Skyreach",
+  "patch": "12.0.x",
+  "spells": [
+   {
+    "spellId": 1253543,
+    "name": "Scorching Ray",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1253538,
+    "name": "Scorching Ray",
+    "inTimeline": false
+   },
+   {
+    "spellId": 154396,
+    "name": "Solar Blast",
+    "inTimeline": false
+   },
+   {
+    "spellId": 153954,
+    "name": "Cast Down",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1253840,
+    "name": "Lens Flare",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 3056,
+  "name": "Emberdawn",
+  "dungeon": "Windrunner Spire",
+  "patch": "12.0.x",
+  "spells": [
+   {
+    "spellId": 466556,
+    "name": "Flaming Updraft",
+    "inTimeline": true
+   },
+   {
+    "spellId": 465904,
+    "name": "Burning Gale",
+    "inTimeline": true
+   },
+   {
+    "spellId": 466064,
+    "name": "Searing Beak",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 3057,
+  "name": "Derelict Duo",
+  "dungeon": "Windrunner Spire",
+  "patch": "12.0.x",
+  "spells": [
+   {
+    "spellId": 472745,
+    "name": "Splattering Spew",
+    "inTimeline": true
+   },
+   {
+    "spellId": 472795,
+    "name": "Heaving Yank",
+    "inTimeline": true
+   },
+   {
+    "spellId": 472888,
+    "name": "Bone Hack",
+    "inTimeline": false
+   },
+   {
+    "spellId": 474105,
+    "name": "Curse of Darkness",
+    "inTimeline": false
+   },
+   {
+    "spellId": 472736,
+    "name": "Debilitating Shriek",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 3058,
+  "name": "Commander Kroluk",
+  "dungeon": "Windrunner Spire",
+  "patch": "12.0.x",
+  "spells": [
+   {
+    "spellId": 468070,
+    "name": "Rallying Bellow",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1270620,
+    "name": "Flame Nova",
+    "inTimeline": true
+   },
+   {
+    "spellId": 467620,
+    "name": "Rampage",
+    "inTimeline": false
+   },
+   {
+    "spellId": 470963,
+    "name": "Bladestorm",
+    "inTimeline": false
+   },
+   {
+    "spellId": 472081,
+    "name": "Reckless Leap",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1253272,
+    "name": "Intimidating Shout",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 3059,
+  "name": "The Restless Heart",
+  "dungeon": "Windrunner Spire",
+  "patch": "12.0.x",
+  "spells": [
+   {
+    "spellId": 472556,
+    "name": "Arrow Rain",
+    "inTimeline": true
+   },
+   {
+    "spellId": 468429,
+    "name": "Bullseye Windblast",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1253986,
+    "name": "Gust Shot",
+    "inTimeline": true
+   },
+   {
+    "spellId": 472662,
+    "name": "Tempest Slash",
+    "inTimeline": false
+   },
+   {
+    "spellId": 474528,
+    "name": "Bolt Gale",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 3456,
+  "name": "Rav'i",
+  "dungeon": "Altar of Fangs",
+  "patch": "12.1.x",
+  "spells": [
+   {
+    "spellId": 1307894,
+    "name": "Ravenous Stomp",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1296220,
+    "name": "Triple Shot",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1296216,
+    "name": "Ssscavenging",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1296050,
+    "name": "Regurgitate",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1307703,
+    "name": "Fresh Meat",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 3457,
+  "name": "The Writhing Coil",
+  "dungeon": "Altar of Fangs",
+  "patch": "12.1.x",
+  "spells": [
+   {
+    "spellId": 1299154,
+    "name": "Synchronized Venom",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1299053,
+    "name": "Death Rattle",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1298949,
+    "name": "Tail Scythe",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1310357,
+    "name": "Preparing Toxin",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1299940,
+    "name": "Vindictive Onslaught",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1310547,
+    "name": "Toxic Atrophy",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1300686,
+    "name": "Assimilation",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1299130,
+    "name": "Burrowing Charge",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1300044,
+    "name": "Venom Jet",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 3458,
+  "name": "Zul'jan",
+  "dungeon": "Altar of Fangs",
+  "patch": "12.1.x",
+  "spells": [
+   {
+    "spellId": 1300876,
+    "name": "Ritual of the Fang",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1301413,
+    "name": "Boneslicer",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1301111,
+    "name": "Axegrinder",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1301350,
+    "name": "Chop Down",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 3207,
+  "name": "The Hoardmonger",
+  "dungeon": "Den of Nalorakk",
+  "patch": "12.1.x",
+  "spells": [
+   {
+    "spellId": 1235118,
+    "name": "Ravenous Bellow",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1234233,
+    "name": "Spoiled Supplies",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1253268,
+    "name": "Earthshatter Slam",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 3208,
+  "name": "Sentinel of Winter",
+  "dungeon": "Den of Nalorakk",
+  "patch": "12.1.x",
+  "spells": [
+   {
+    "spellId": 1235548,
+    "name": "Glacial Torment",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1235656,
+    "name": "Frozen Tempest",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1235623,
+    "name": "Raging Squall",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1235783,
+    "name": "Shattering Frostspike",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 3209,
+  "name": "Nalorakk",
+  "dungeon": "Den of Nalorakk",
+  "patch": "12.1.x",
+  "spells": [
+   {
+    "spellId": 1242860,
+    "name": "Echoing Maul",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1243569,
+    "name": "Overwhelming Onslaught",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1243011,
+    "name": "Fury of the War God",
+    "inTimeline": true
+   }
+  ]
+ },
+ {
+  "encounterID": 2139,
+  "name": "The Golden Serpent",
+  "dungeon": "Kings' Rest",
+  "patch": "12.1.x",
+  "spells": [
+   {
+    "spellId": 265773,
+    "name": "Spit Gold",
+    "inTimeline": true
+   },
+   {
+    "spellId": 265781,
+    "name": "Serpentine Gust",
+    "inTimeline": true
+   },
+   {
+    "spellId": 265910,
+    "name": "Tail Thrash",
+    "inTimeline": false
+   },
+   {
+    "spellId": 265923,
+    "name": "Lucre's Call",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 2142,
+  "name": "Mchimba the Embalmer",
+  "dungeon": "Kings' Rest",
+  "patch": "12.1.x",
+  "spells": [
+   {
+    "spellId": 267618,
+    "name": "Drain Fluids",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1311956,
+    "name": "Burn Corruption",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1312146,
+    "name": "Awakening Slam",
+    "inTimeline": true
+   },
+   {
+    "spellId": 267702,
+    "name": "Entomb",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 2143,
+  "name": "King Dazar",
+  "dungeon": "Kings' Rest",
+  "patch": "12.1.x",
+  "spells": [
+   {
+    "spellId": 1303327,
+    "name": "Quaking Leap",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1303267,
+    "name": "Gilded Destruction",
+    "inTimeline": true
+   },
+   {
+    "spellId": 269230,
+    "name": "Hunting Leap",
+    "inTimeline": false
+   },
+   {
+    "spellId": 269369,
+    "name": "Deathly Roar",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1303115,
+    "name": "Aerial Smash",
+    "inTimeline": false
+   },
+   {
+    "spellId": 268586,
+    "name": "Blade Combo",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1303488,
+    "name": "Savage Maul",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 3101,
+  "name": "Kystia Manaheart",
+  "dungeon": "Murder Row",
+  "patch": "12.1.x",
+  "spells": [
+   {
+    "spellId": 1253811,
+    "name": "Fel Spray",
+    "inTimeline": false
+   },
+   {
+    "spellId": 474240,
+    "name": "Fel Nova",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1264095,
+    "name": "Mirror Images",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1228198,
+    "name": "Corroding Spittle",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 3102,
+  "name": "Zaen Bladesorrow",
+  "dungeon": "Murder Row",
+  "patch": "12.1.x",
+  "spells": [
+   {
+    "spellId": 474478,
+    "name": "Killing Spree",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1218347,
+    "name": "Murder in a Row",
+    "inTimeline": true
+   },
+   {
+    "spellId": 474765,
+    "name": "Same-Day Delivery",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1214357,
+    "name": "Fire Bomb",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1222795,
+    "name": "Envenom",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 3103,
+  "name": "Xathuux the Annihilator",
+  "dungeon": "Murder Row",
+  "patch": "12.1.x",
+  "spells": [
+   {
+    "spellId": 1214637,
+    "name": "Axe Toss",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1295453,
+    "name": "Infernal Crush",
+    "inTimeline": true
+   },
+   {
+    "spellId": 474197,
+    "name": "Demonic Rage",
+    "inTimeline": true
+   },
+   {
+    "spellId": 473898,
+    "name": "Legion Strike",
+    "inTimeline": false
+   },
+   {
+    "spellId": 474234,
+    "name": "Burning Steps",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1214650,
+    "name": "Fel Lightning",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 3105,
+  "name": "Lithiel Cinderfury",
+  "dungeon": "Murder Row",
+  "patch": "12.1.x",
+  "spells": [
+   {
+    "spellId": 1218203,
+    "name": "Fingers of Gul'dan",
+    "inTimeline": true
+   },
+   {
+    "spellId": 474408,
+    "name": "Summon Vilefiend",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1224478,
+    "name": "Malefic Wave",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 2606,
+  "name": "Kokia Blazehoof",
+  "dungeon": "Ruby Life Pools",
+  "patch": "12.1.x",
+  "spells": [
+   {
+    "spellId": 372864,
+    "name": "Ritual of Blazebinding",
+    "inTimeline": true
+   },
+   {
+    "spellId": 372110,
+    "name": "Molten Boulder",
+    "inTimeline": false
+   },
+   {
+    "spellId": 372858,
+    "name": "Searing Blows",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 2609,
+  "name": "Melidrussa Chillworn",
+  "dungeon": "Ruby Life Pools",
+  "patch": "12.1.x",
+  "spells": [
+   {
+    "spellId": 373686,
+    "name": "Frost Overload",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1307297,
+    "name": "Hailburst",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1307308,
+    "name": "Chillstorm",
+    "inTimeline": false
+   },
+   {
+    "spellId": 373046,
+    "name": "Awaken Whelps",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 2623,
+  "name": "Kyrakka and Erkhart Stormvein",
+  "dungeon": "Ruby Life Pools",
+  "patch": "12.1.x",
+  "spells": [
+   {
+    "spellId": 381512,
+    "name": "Stormslam",
+    "inTimeline": false
+   },
+   {
+    "spellId": 381517,
+    "name": "Winds of Change",
+    "inTimeline": false
+   },
+   {
+    "spellId": 381862,
+    "name": "Inferno Spit",
+    "inTimeline": true
+   },
+   {
+    "spellId": 381516,
+    "name": "Interrupting Cloudburst",
+    "inTimeline": true
+   },
+   {
+    "spellId": 381525,
+    "name": "Roaring Firebreath",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 2124,
+  "name": "Adderis and Aspix",
+  "dungeon": "Temple of Sethraliss",
+  "patch": "12.1.x",
+  "spells": [
+   {
+    "spellId": 1288864,
+    "name": "Tempest Winds",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1288428,
+    "name": "Overload",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1289059,
+    "name": "Gale Force",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1288049,
+    "name": "Thunder and Lightning",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 2125,
+  "name": "Merektha",
+  "dungeon": "Temple of Sethraliss",
+  "patch": "12.1.x",
+  "spells": [
+   {
+    "spellId": 1293048,
+    "name": "Serpentstorm",
+    "inTimeline": true
+   },
+   {
+    "spellId": 264172,
+    "name": "Burrow",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1290797,
+    "name": "Lightning Bite",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1290029,
+    "name": "A Knot of Snakes",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1289109,
+    "name": "Thunder Spit",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1289205,
+    "name": "Hatch",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 2126,
+  "name": "Galvazzt",
+  "dungeon": "Temple of Sethraliss",
+  "patch": "12.1.x",
+  "spells": [
+   {
+    "spellId": 1309525,
+    "name": "Induction",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1291618,
+    "name": "Lightning Spire",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 3199,
+  "name": "Lightblossom Trinity",
+  "dungeon": "The Blinding Vale",
+  "patch": "12.1.x",
+  "spells": [
+   {
+    "spellId": 1234753,
+    "name": "Bedrock Slam",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1235564,
+    "name": "Lightblossom Beam",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1234850,
+    "name": "Lightsower Dash",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1234802,
+    "name": "Fertile Loam",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1235828,
+    "name": "Light-Scorched Earth",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1235640,
+    "name": "Thornblade",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 3200,
+  "name": "Ikuzz the Light Hunter",
+  "dungeon": "The Blinding Vale",
+  "patch": "12.1.x",
+  "spells": [
+   {
+    "spellId": 1236746,
+    "name": "Verdant Stomp",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1236709,
+    "name": "Thorncaller Roar",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1237090,
+    "name": "Bloodthirsty Gaze",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1237267,
+    "name": "Incise",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1272290,
+    "name": "Crunched",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 3201,
+  "name": "Lightwarden Ruia",
+  "dungeon": "The Blinding Vale",
+  "patch": "12.1.x",
+  "spells": [
+   {
+    "spellId": 1239825,
+    "name": "Lightfire",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1239919,
+    "name": "Lightfire Beams",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1241058,
+    "name": "Grievous Thrash",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1251345,
+    "name": "Blight Resin",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1257094,
+    "name": "Pulverized",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 3202,
+  "name": "Ziekket",
+  "dungeon": "The Blinding Vale",
+  "patch": "12.1.x",
+  "spells": [
+   {
+    "spellId": 1246372,
+    "name": "Awaken the Lightbloom",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1246858,
+    "name": "Lightbloom's Essence",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1246751,
+    "name": "Concentrated Lightbeam",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1246753,
+    "name": "Lightsap",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1247746,
+    "name": "Thornspike",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 3285,
+  "name": "Taz'rah",
+  "dungeon": "Voidscar Arena",
+  "patch": "12.1.x",
+  "spells": [
+   {
+    "spellId": 1222098,
+    "name": "Nether Dash",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1300259,
+    "name": "Dark Bloom",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1296963,
+    "name": "Umbral Rupture",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1297017,
+    "name": "Void Blast",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 3286,
+  "name": "Atroxus",
+  "dungeon": "Voidscar Arena",
+  "patch": "12.1.x",
+  "spells": [
+   {
+    "spellId": 1226120,
+    "name": "Poison Splash",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1262497,
+    "name": "Monstrous Roar",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1222642,
+    "name": "Hulking Claw",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1222721,
+    "name": "Noxious Breath",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1222484,
+    "name": "Poison Pool",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1263971,
+    "name": "Lingering Poison",
+    "inTimeline": false
+   }
+  ]
+ },
+ {
+  "encounterID": 3287,
+  "name": "Charonus",
+  "dungeon": "Voidscar Arena",
+  "patch": "12.1.x",
+  "spells": [
+   {
+    "spellId": 1282770,
+    "name": "Unstable Singularity",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1227264,
+    "name": "Cosmic Crash",
+    "inTimeline": true
+   },
+   {
+    "spellId": 1263982,
+    "name": "Gravitic Orbs",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1222755,
+    "name": "Void Cascade",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1311923,
+    "name": "Dark Waves",
+    "inTimeline": false
+   },
+   {
+    "spellId": 1264188,
+    "name": "Event Horizon",
+    "inTimeline": false
+   }
+  ]
+ }
+]

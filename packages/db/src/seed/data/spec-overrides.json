@@ -1,0 +1,344 @@
+{
+  "removes": [
+    {
+      "spellId": 740,
+      "specId": 103
+    },
+    {
+      "spellId": 740,
+      "specId": 104
+    },
+    {
+      "spellId": 740,
+      "specId": 105
+    },
+    {
+      "spellId": 1160,
+      "specId": 71
+    },
+    {
+      "spellId": 1160,
+      "specId": 72
+    },
+    {
+      "spellId": 1161,
+      "specId": 71
+    },
+    {
+      "spellId": 1161,
+      "specId": 72
+    },
+    {
+      "spellId": 1719,
+      "specId": 71
+    },
+    {
+      "spellId": 1719,
+      "specId": 73
+    },
+    {
+      "spellId": 5217,
+      "specId": 102
+    },
+    {
+      "spellId": 5217,
+      "specId": 104
+    },
+    {
+      "spellId": 5217,
+      "specId": 105
+    },
+    {
+      "spellId": 31821,
+      "specId": 66
+    },
+    {
+      "spellId": 31821,
+      "specId": 70
+    },
+    {
+      "spellId": 31850,
+      "specId": 65
+    },
+    {
+      "spellId": 31850,
+      "specId": 70
+    },
+    {
+      "spellId": 33891,
+      "specId": 102
+    },
+    {
+      "spellId": 33891,
+      "specId": 103
+    },
+    {
+      "spellId": 33891,
+      "specId": 104
+    },
+    {
+      "spellId": 42650,
+      "specId": 250
+    },
+    {
+      "spellId": 42650,
+      "specId": 252
+    },
+    {
+      "spellId": 47788,
+      "specId": 256
+    },
+    {
+      "spellId": 47788,
+      "specId": 258
+    },
+    {
+      "spellId": 49028,
+      "specId": 251
+    },
+    {
+      "spellId": 49028,
+      "specId": 252
+    },
+    {
+      "spellId": 50334,
+      "specId": 102
+    },
+    {
+      "spellId": 50334,
+      "specId": 105
+    },
+    {
+      "spellId": 51271,
+      "specId": 250
+    },
+    {
+      "spellId": 51271,
+      "specId": 252
+    },
+    {
+      "spellId": 51490,
+      "specId": 263
+    },
+    {
+      "spellId": 51490,
+      "specId": 264
+    },
+    {
+      "spellId": 55233,
+      "specId": 251
+    },
+    {
+      "spellId": 55233,
+      "specId": 252
+    },
+    {
+      "spellId": 88625,
+      "specId": 258
+    },
+    {
+      "spellId": 98008,
+      "specId": 262
+    },
+    {
+      "spellId": 98008,
+      "specId": 263
+    },
+    {
+      "spellId": 102342,
+      "specId": 102
+    },
+    {
+      "spellId": 102342,
+      "specId": 103
+    },
+    {
+      "spellId": 102342,
+      "specId": 104
+    },
+    {
+      "spellId": 102543,
+      "specId": 102
+    },
+    {
+      "spellId": 102543,
+      "specId": 104
+    },
+    {
+      "spellId": 102543,
+      "specId": 105
+    },
+    {
+      "spellId": 102558,
+      "specId": 102
+    },
+    {
+      "spellId": 102558,
+      "specId": 103
+    },
+    {
+      "spellId": 102558,
+      "specId": 105
+    },
+    {
+      "spellId": 108280,
+      "specId": 262
+    },
+    {
+      "spellId": 108280,
+      "specId": 263
+    },
+    {
+      "spellId": 114050,
+      "specId": 263
+    },
+    {
+      "spellId": 114050,
+      "specId": 264
+    },
+    {
+      "spellId": 114051,
+      "specId": 262
+    },
+    {
+      "spellId": 114051,
+      "specId": 264
+    },
+    {
+      "spellId": 114052,
+      "specId": 262
+    },
+    {
+      "spellId": 114052,
+      "specId": 263
+    },
+    {
+      "spellId": 114165,
+      "specId": 66
+    },
+    {
+      "spellId": 114165,
+      "specId": 70
+    },
+    {
+      "spellId": 115310,
+      "specId": 268
+    },
+    {
+      "spellId": 115310,
+      "specId": 269
+    },
+    {
+      "spellId": 123904,
+      "specId": 268
+    },
+    {
+      "spellId": 123904,
+      "specId": 270
+    },
+    {
+      "spellId": 132158,
+      "specId": 102
+    },
+    {
+      "spellId": 132158,
+      "specId": 103
+    },
+    {
+      "spellId": 132158,
+      "specId": 104
+    },
+    {
+      "spellId": 132578,
+      "specId": 269
+    },
+    {
+      "spellId": 132578,
+      "specId": 270
+    },
+    {
+      "spellId": 190778,
+      "specId": 250
+    },
+    {
+      "spellId": 190778,
+      "specId": 252
+    },
+    {
+      "spellId": 191634,
+      "specId": 263
+    },
+    {
+      "spellId": 191634,
+      "specId": 264
+    },
+    {
+      "spellId": 202770,
+      "specId": 103
+    },
+    {
+      "spellId": 202770,
+      "specId": 105
+    },
+    {
+      "spellId": 205223,
+      "specId": 251
+    },
+    {
+      "spellId": 205223,
+      "specId": 252
+    },
+    {
+      "spellId": 205636,
+      "specId": 103
+    },
+    {
+      "spellId": 205636,
+      "specId": 104
+    }
+  ],
+  "overrides": [
+    {
+      "spellId": 633,
+      "specId": 66,
+      "category": "PERSONAL",
+      "note": "Lay on Hands en Protection"
+    },
+    {
+      "spellId": 633,
+      "specId": 70,
+      "category": "PERSONAL",
+      "note": "Lay on Hands en Retribution"
+    },
+    {
+      "spellId": 47788,
+      "specId": 257,
+      "category": "EXTERNAL",
+      "note": "Guardian Spirit en Holy"
+    },
+    {
+      "spellId": 102342,
+      "specId": 105,
+      "category": "EXTERNAL",
+      "note": "Ironbark en Restoration"
+    },
+    {
+      "spellId": 375576,
+      "specId": 65,
+      "category": "HEALER",
+      "note": "Divine Toll en Holy"
+    },
+    {
+      "spellId": 355913,
+      "specId": 1467,
+      "category": "PERSONAL",
+      "note": "Emerald Blossom en Devastation — soin de survie personnel, pas un cooldown de soigneur"
+    },
+    {
+      "spellId": 355913,
+      "specId": 1473,
+      "category": "PERSONAL",
+      "note": "Emerald Blossom en Augmentation — idem ; seul Preservation le garde en HEALER"
+    }
+  ]
+}

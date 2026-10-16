@@ -1,0 +1,30 @@
+{
+  "name": "timeline",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "services:up": "docker compose up -d",
+    "services:down": "docker compose down",
+    "services:logs": "docker compose logs -f",
+    "db:check": "npm run -w @timeline/db check",
+    "typecheck": "tsc -b --pretty",
+    "build": "tsc -b && npm run -w @timeline/web build",
+    "clean": "rm -rf packages/*/dist packages/*/tsconfig.tsbuildinfo",
+    "dev:api": "npm run -w @timeline/api dev",
+    "dev:web": "npm run -w @timeline/web dev",
+    "check": "npm run -w @timeline/db check && npm run -w @timeline/worker check"
+  },
+  "devDependencies": {
+    "@swc-node/register": "^1.12.1",
+    "@swc/core": "^1.16.0",
+    "@types/node": "^26.2.0",
+    "tsx": "^4.23.12",
+    "typescript": "^5.9.3"
+  }
+}

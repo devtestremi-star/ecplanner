@@ -1,0 +1,53 @@
+# Ports hôte décalés : 5432 et 6379 sont déjà pris sur cette machine.
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: timeline-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: timeline
+      POSTGRES_PASSWORD: timeline
+      POSTGRES_DB: timeline
+    ports:
+      - "55432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U timeline -d timeline"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    container_name: timeline-redis
+    restart: unless-stopped
+    # BullMQ exige noeviction : une éviction de clé perdrait des jobs en vol.
+    command: ["redis-server", "--appendonly", "yes", "--maxmemory-policy", "noeviction"]
+    ports:
+      - "56379:6379"
+    volumes:
+      - redisdata:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # Interface web de consultation. Dev uniquement — jamais exposée ailleurs.
+  adminer:
+    image: adminer:5
+    container_name: timeline-adminer
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      ADMINER_DEFAULT_SERVER: postgres
+      ADMINER_DEFAULT_DRIVER: pgsql
+    ports:
+      - "8081:8080"
+
+volumes:
+  pgdata:
+  redisdata:

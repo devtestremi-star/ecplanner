@@ -1,0 +1,21 @@
+{
+  "name": "@timeline/wcl",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "check": "node --env-file=../../.env --import @swc-node/register/esm-register src/check.ts"
+  },
+  "dependencies": {
+    "zod": "^4.4.3"
+  }
+}

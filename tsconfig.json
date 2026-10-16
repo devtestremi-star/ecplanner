@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.base.json",
+  "files": [],
+  "references": [
+    { "path": "packages/shared" },
+    { "path": "packages/wcl" },
+    { "path": "packages/db" },
+    { "path": "packages/scanner" },
+    { "path": "packages/worker" },
+    { "path": "packages/api" }
+  ]
+}

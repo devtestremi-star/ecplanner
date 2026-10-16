@@ -1,0 +1,47 @@
+{
+  "name": "@timeline/db",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./mikro-orm.config": {
+      "types": "./dist/mikro-orm.config.d.ts",
+      "default": "./dist/mikro-orm.config.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "check": "node --env-file=../../.env --import @swc-node/register/esm-register src/check.ts",
+    "schema:create": "node --env-file=../../.env --import @swc-node/register/esm-register ../../node_modules/@mikro-orm/cli/esm.js schema:create --run",
+    "schema:update": "node --env-file=../../.env --import @swc-node/register/esm-register ../../node_modules/@mikro-orm/cli/esm.js schema:update --run",
+    "migration:create": "node --env-file=../../.env --import @swc-node/register/esm-register ../../node_modules/@mikro-orm/cli/esm.js migration:create",
+    "migration:up": "node --env-file=../../.env --import @swc-node/register/esm-register ../../node_modules/@mikro-orm/cli/esm.js migration:up",
+    "seed": "node --env-file=../../.env --import @swc-node/register/esm-register src/seed/seed.ts"
+  },
+  "dependencies": {
+    "@mikro-orm/core": "~6.6.16",
+    "@mikro-orm/migrations": "~6.6.16",
+    "@mikro-orm/postgresql": "~6.6.16",
+    "@mikro-orm/reflection": "~6.6.16",
+    "reflect-metadata": "^0.2.2"
+  },
+  "devDependencies": {
+    "@mikro-orm/cli": "~6.6.16"
+  },
+  "engines": {
+    "node": ">=20.19"
+  },
+  "mikro-orm": {
+    "configPaths": [
+      "./src/mikro-orm.config.ts",
+      "./dist/mikro-orm.config.js"
+    ],
+    "useTsNode": false
+  }
+}
