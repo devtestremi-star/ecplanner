@@ -12,8 +12,16 @@ if (!url) throw new Error('DATABASE_URL absent — copier .env.example vers .env
 /** Fonction Vercel : beaucoup d'instances éphémères, chacune avec son propre pool. */
 const serverless = process.env.VERCEL === '1';
 
+/**
+ * MikroORM découpe `clientUrl` en hôte/utilisateur/base et JETTE la query string : un
+ * `?sslmode=require` n'atteint jamais pg, qui se connecte en clair — et Neon refuse
+ * (« connection is insecure »). On le traduit donc en option explicite.
+ */
+const ssl = /[?&]sslmode=(require|verify-ca|verify-full)\b/.test(url);
+
 export default defineConfig({
   clientUrl: url,
+  ...(ssl && { driverOptions: { connection: { ssl: true } } }),
   ...(serverless && {
     // Une instance ne traite qu'une poignée de requêtes à la fois ; c'est le pooler Neon
     // (URL `-pooler`) qui mutualise. min 0 : ne rien garder ouvert quand l'instance dort.
