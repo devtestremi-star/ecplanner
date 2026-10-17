@@ -4,12 +4,21 @@
   },
   "nav": {
     "home": "Home",
+    "history": "History",
     "discord": "Discord",
     "getAddon": "Get the addon",
     "curseforge": "CurseForge",
     "wago": "Wago",
     "collapse": "Collapse",
     "expand": "Expand"
+  },
+  "history": {
+    "title": "History",
+    "subtitle": "Your last {{count}} runs viewed, kept in this browser.",
+    "empty": "No run viewed yet. Scan a run and it will show up here.",
+    "viewedAt": "viewed {{date}}",
+    "clear": "Clear history",
+    "close": "Close"
   },
   "footer": {
     "tagline": "Eiiko Cooldown Planner - companion site of the in-game addon",
@@ -130,6 +139,8 @@
       "groupReference": "Reference data",
       "groupScan": "Scan",
       "groupSite": "Site",
+      "groupTools": "Tools",
+      "timerExtraction": "Timer extraction",
       "seasons": "Seasons",
       "dungeons": "Dungeons",
       "bosses": "Bosses",
@@ -185,8 +196,41 @@
       "yes": "yes",
       "no": "no"
     },
-    "tokenPrompt": "Admin token",
-    "httpError": "Error {{status}}"
+    "httpError": "Error {{status}}",
+    "tools": {
+      "timers": {
+        "title": "Timer extraction",
+        "intro": "Every curated ability of a boss, at each occurrence, timed from the pull and averaged over the selected fights. Occurrences are matched by rank (the 3rd cast against the 3rd cast). Coverage only counts fights still running at that time.",
+        "boss": "Boss",
+        "pickBoss": "- pick a boss -",
+        "bossOption": "{{name}} ({{count}} fights)",
+        "minCoverage": "Min coverage",
+        "format": "Time",
+        "formatSeconds": "seconds",
+        "formatSeconds1": "seconds (0.1)",
+        "planOnly": "Plannable only",
+        "pulls": "Fights - {{selected}} / {{total}} selected",
+        "colRun": "Run",
+        "colDate": "Date",
+        "colLevel": "Level",
+        "colDuration": "Duration",
+        "colCasts": "Boss casts",
+        "outdated": "outdated scan",
+        "outdatedHelp": "Scanned with an older spell set: abilities added since (aliases) are missing. Unchecked by default.",
+        "result": "Timers - {{count}} occurrence(s)",
+        "noResult": "No timer: select at least one fight, or lower the minimum coverage.",
+        "colTime": "Avg time",
+        "colSpell": "Ability",
+        "colSpellId": "Spell ID",
+        "colSeen": "Seen",
+        "colSd": "Spread",
+        "colRange": "Min - max",
+        "colPlan": "Plannable",
+        "output": "Output",
+        "copy": "Copy",
+        "copied": "Copied"
+      }
+    }
   },
   "dev": {
     "open": "Dev tools",

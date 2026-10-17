@@ -8,6 +8,7 @@ import { ScanJobsPage } from './pages/ScanJobsPage.js';
 import { ScannedBossesPage } from './pages/ScannedBossesPage.js';
 import { SeasonsPage } from './pages/SeasonsPage.js';
 import { SpellsPage } from './pages/SpellsPage.js';
+import { TimerExtractionPage } from './tools/TimerExtractionPage.js';
 
 /**
  * Une route par table NON pivot. Les deux pivots (`dungeon_season`, `spell_spec`)
@@ -28,6 +29,7 @@ export const adminRoute: RouteObject = {
     { path: 'runs', element: <RunsPage /> },
     { path: 'scanned-bosses', element: <ScannedBossesPage /> },
     { path: 'scan-jobs', element: <ScanJobsPage /> },
+    { path: 'tools/timers', element: <TimerExtractionPage /> },
     { path: '*', element: <Navigate to="/admin" replace /> },
   ],
 };

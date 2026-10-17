@@ -219,3 +219,7 @@
 .admin .card .t { font-family: var(--adm-mono); font-size: 11px; color: var(--adm-faint); margin-top: 6px; }
 .admin .card.pivot { border-style: dashed; }
 .admin .card.pivot:hover { border-color: var(--adm-border); cursor: default; }
+
+/* ───────────────────────────────── outils ─────────────────────────────── */
+
+.admin .tool-section { font-size: 13px; color: var(--adm-dim); font-weight: 600; margin: 22px 0 10px; }

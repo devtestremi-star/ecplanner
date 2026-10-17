@@ -1,5 +1,6 @@
 import ChevronLeftRoundedIcon from '@mui/icons-material/ChevronLeftRounded';
 import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded';
+import HistoryRoundedIcon from '@mui/icons-material/HistoryRounded';
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 import {
   Box, Drawer, IconButton, List, ListItemButton, ListItemIcon, ListItemText, Stack, Tooltip, Typography,
@@ -14,6 +15,7 @@ import { DEV_MODE } from '../devMode.js';
 import { DevDrawer } from './DevDrawer.js';
 import { ConsentBanner } from './ConsentBanner.js';
 import { Footer } from './Footer.js';
+import { HistoryDrawer } from './HistoryDrawer.js';
 import { PageViewTracker } from './PageViewTracker.js';
 import { ADDON_URL, DISCORD_URL, WAGO_URL } from './links.js';
 import { WagoIcon } from './WagoIcon.js';
@@ -42,6 +44,7 @@ const readCollapsed = (): boolean => {
 export function AppShell() {
   const { t } = useTranslation();
   const [collapsed, setCollapsed] = useState(readCollapsed);
+  const [historyOpen, setHistoryOpen] = useState(false);
 
   const toggleCollapsed = () => {
     const next = !collapsed;
@@ -104,6 +107,33 @@ export function AppShell() {
                 </ListItemButton>
               </Tooltip>
             ))}
+            {/* Pas une page : ouvre le panneau d'historique, comme le tiroir de dev. */}
+            <Tooltip title={collapsed ? t('nav.history') : ''} placement="right">
+              <ListItemButton
+                onClick={() => setHistoryOpen(true)}
+                selected={historyOpen}
+                sx={{
+                  borderRadius: '10px',
+                  minHeight: 44,
+                  px: 1.5,
+                  flexGrow: 0,
+                  justifyContent: collapsed ? 'center' : 'flex-start',
+                  color: 'text.secondary',
+                  '&:hover': { color: 'text.primary' },
+                  '&.Mui-selected, &.Mui-selected:hover': { bgcolor: 'rgba(157,140,245,.16)', color: 'primary.light' },
+                }}
+              >
+                <ListItemIcon sx={{ minWidth: 0, mr: collapsed ? 0 : 1.75, color: 'inherit' }}>
+                  <HistoryRoundedIcon />
+                </ListItemIcon>
+                {!collapsed && (
+                  <ListItemText
+                    primary={t('nav.history')}
+                    slotProps={{ primary: { sx: { fontWeight: 600, fontSize: '.92rem' } } }}
+                  />
+                )}
+              </ListItemButton>
+            </Tooltip>
             {/* Lien sortant, mais placé avec la navigation : c'est là qu'on cherche la communauté. */}
             <StoreLink
               href={DISCORD_URL} label={t('nav.discord')} collapsed={collapsed}
@@ -151,6 +181,7 @@ export function AppShell() {
         <PageViewTracker />
         <ConsentBanner />
       </Box>
+      <HistoryDrawer open={historyOpen} onClose={() => setHistoryOpen(false)} />
       {DEV_MODE && <DevDrawer />}
     </Box>
   );

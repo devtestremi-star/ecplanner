@@ -17,6 +17,7 @@
     "build": "tsc -b && npm run -w @timeline/web build",
     "clean": "rm -rf packages/*/dist packages/*/tsconfig.tsbuildinfo",
     "dev:api": "npm run -w @timeline/api dev",
+    "dev:api:neon": "npm run -w @timeline/api dev:neon",
     "dev:web": "npm run -w @timeline/web dev",
     "check": "npm run -w @timeline/db check && npm run -w @timeline/worker check"
   },

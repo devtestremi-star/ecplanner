@@ -1,23 +1,17 @@
-import { type CanActivate, type ExecutionContext, ForbiddenException, Injectable, UnauthorizedException } from '@nestjs/common';
-import type { FastifyRequest } from 'fastify';
-import { bearerMatches, isDeployed } from '../auth.js';
+import { type CanActivate, Injectable, NotFoundException } from '@nestjs/common';
+import { isDeployed } from '../auth.js';
 
 /**
- * L'admin écrit dans les 9 tables : en ligne, sans garde, n'importe qui viderait la base.
+ * L'admin écrit dans les 9 tables : il ne tourne qu'en LOCAL.
  *
- * `ADMIN_TOKEN` absent : ouvert en local pour ne pas gêner le dev, FERMÉ une fois déployé —
- * un oubli de configuration doit verrouiller, pas exposer.
+ * Une fois déployé, `AppModule` ne monte même pas le module admin. Cette garde est la
+ * seconde ceinture : si le module venait à être monté par erreur, la route répondrait
+ * quand même 404, comme si elle n'existait pas.
  */
 @Injectable()
 export class AdminGuard implements CanActivate {
-  canActivate(ctx: ExecutionContext): boolean {
-    const token = process.env.ADMIN_TOKEN;
-    if (!token) {
-      if (isDeployed()) throw new ForbiddenException('Admin disabled: ADMIN_TOKEN is not configured');
-      return true;
-    }
-    const req = ctx.switchToHttp().getRequest<FastifyRequest>();
-    if (!bearerMatches(req.headers.authorization, token)) throw new UnauthorizedException('Admin token required');
+  canActivate(): boolean {
+    if (isDeployed()) throw new NotFoundException();
     return true;
   }
 }

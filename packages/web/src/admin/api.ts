@@ -1,5 +1,6 @@
 import i18n from '../i18n/index.js';
 import type { ListResult, Option, ResourceSchema, Row, Stat } from './types.js';
+import type { TimerData } from './tools/timers.js';
 
 const BASE = '/api/admin';
 
@@ -10,44 +11,15 @@ export class ApiError extends Error {
   }
 }
 
-/**
- * Jeton `ADMIN_TOKEN` de l'API, demandé au premier refus puis gardé dans ce navigateur.
- * En local sans `ADMIN_TOKEN`, l'API laisse passer et la question n'est jamais posée.
- */
-const TOKEN_KEY = 'timeline.adminToken';
-
-function readToken(): string | null {
-  try {
-    return localStorage.getItem(TOKEN_KEY);
-  } catch {
-    return null;
-  }
-}
-
-function askToken(): string | null {
-  const token = window.prompt(i18n.t('admin.tokenPrompt'))?.trim() || null;
-  try {
-    if (token) localStorage.setItem(TOKEN_KEY, token);
-    else localStorage.removeItem(TOKEN_KEY);
-  } catch {
-    // stockage indisponible : le jeton ne vaudra que pour cette requête
-  }
-  return token;
-}
-
-function send(path: string, init: RequestInit | undefined, token: string | null): Promise<Response> {
+/** Pas d'authentification : l'admin n'existe qu'en local (voir `AdminGuard` côté API). */
+function send(path: string, init?: RequestInit): Promise<Response> {
   const headers: Record<string, string> = {};
   if (init?.body) headers['Content-Type'] = 'application/json';
-  if (token) headers['Authorization'] = `Bearer ${token}`;
   return fetch(`${BASE}${path}`, { ...init, headers });
 }
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
-  let res = await send(path, init, readToken());
-  if (res.status === 401) {
-    const token = askToken();
-    if (token) res = await send(path, init, token);
-  }
+  const res = await send(path, init);
 
   if (!res.ok) {
     // Nest renvoie `{ message }` — c'est le texte que l'admin doit montrer, pas un code HTTP nu.
@@ -70,6 +42,11 @@ export const api = {
   },
 
   stats: () => request<Stat[]>('/stats'),
+
+  /** Boss ayant au moins un combat scanné, pour l'extraction de timers. */
+  timerBosses: () =>
+    request<Array<{ encounterID: number; name: string; dungeon: string; pulls: number; runs: number }>>('/tools/timers'),
+  timers: (encounterID: number) => request<TimerData>(`/tools/timers/${encounterID}`),
 
   list(resource: string, params: Record<string, string | number | undefined>): Promise<ListResult> {
     const qs = new URLSearchParams();

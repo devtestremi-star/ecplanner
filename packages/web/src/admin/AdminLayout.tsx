@@ -5,7 +5,7 @@ import { api } from './api.js';
 import type { Stat } from './types.js';
 import './admin.css';
 
-/** Les 7 tables non pivot, dans l'ordre où on les lit : référentiel, puis scan. */
+/** Les 7 tables non pivot, dans l'ordre où on les lit : référentiel, puis scan ; puis les outils. */
 export const NAV = [
   {
     group: 'admin.nav.groupReference',
@@ -22,6 +22,12 @@ export const NAV = [
       { to: '/admin/runs', key: 'runs', label: 'admin.nav.runs' },
       { to: '/admin/scanned-bosses', key: 'scanned-bosses', label: 'admin.nav.scannedBosses' },
       { to: '/admin/scan-jobs', key: 'scan-jobs', label: 'admin.nav.scanJobs' },
+    ],
+  },
+  {
+    group: 'admin.nav.groupTools',
+    items: [
+      { to: '/admin/tools/timers', key: 'tools-timers', label: 'admin.nav.timerExtraction' },
     ],
   },
 ] as const;

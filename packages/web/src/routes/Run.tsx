@@ -5,6 +5,7 @@ import { Trans, useTranslation } from 'react-i18next';
 import { useParams, useSearchParams } from 'react-router-dom';
 import { ApiError, fetchRun, scan, type RunDetail } from '../api.js';
 import { DEV_MODE } from '../devMode.js';
+import { recordRun } from '../history.js';
 import { formatLocale } from '../i18n/index.js';
 import { PALETTE } from '../theme.js';
 import { dungeonArt } from './dungeonArt.js';
@@ -47,6 +48,7 @@ export function Run() {
       .then(([d, c]) => {
         setDetail(d);
         setCatalog(c);
+        recordRun(d);
       })
       .catch((e) => setError(String(e)));
   }, [reportCode, fightID, version]);

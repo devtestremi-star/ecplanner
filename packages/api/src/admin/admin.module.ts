@@ -1,15 +1,11 @@
 import { Module } from '@nestjs/common';
-import { APP_FILTER } from '@nestjs/core';
 import { AdminController } from './admin.controller.js';
 import { AdminService } from './admin.service.js';
-import { DbExceptionFilter } from './db-exception.filter.js';
+import { ToolsController } from './tools.controller.js';
 
 @Module({
-  controllers: [AdminController],
-  providers: [
-    AdminService,
-    // Traduit les violations de contrainte en 409/400 lisibles plutôt qu'en 500 muet.
-    { provide: APP_FILTER, useClass: DbExceptionFilter },
-  ],
+  // Tools d'abord : `admin/tools/...` ne doit pas tomber dans `admin/:resource/:id`.
+  controllers: [ToolsController, AdminController],
+  providers: [AdminService],
 })
 export class AdminModule {}
