@@ -5,11 +5,14 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 import { adminRoute } from './admin/routes.js';
+import { initAnalytics } from './analytics.js';
 import { AppShell } from './layout/AppShell.js';
 import { Home } from './routes/Home.js';
 import { Run } from './routes/Run.js';
 import { Spells } from './routes/Spells.js';
 import { theme } from './theme.js';
+
+initAnalytics();
 
 const router = createBrowserRouter([
   {

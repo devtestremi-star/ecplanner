@@ -12,7 +12,9 @@ import { CURSEFORGE_ORANGE, CurseForgeIcon } from './CurseForgeIcon.js';
 import { DISCORD_BLURPLE, DiscordIcon } from './DiscordIcon.js';
 import { DEV_MODE } from '../devMode.js';
 import { DevDrawer } from './DevDrawer.js';
+import { ConsentBanner } from './ConsentBanner.js';
 import { Footer } from './Footer.js';
+import { PageViewTracker } from './PageViewTracker.js';
 import { ADDON_URL, DISCORD_URL, WAGO_URL } from './links.js';
 import { WagoIcon } from './WagoIcon.js';
 
@@ -146,6 +148,8 @@ export function AppShell() {
           <Outlet />
         </Box>
         <Footer />
+        <PageViewTracker />
+        <ConsentBanner />
       </Box>
       {DEV_MODE && <DevDrawer />}
     </Box>

@@ -13,7 +13,15 @@
   },
   "footer": {
     "tagline": "Eiiko Cooldown Planner - companion site of the in-game addon",
-    "discord": "Join the Discord"
+    "discord": "Join the Discord",
+    "cookies": "Cookie settings"
+  },
+  "consent": {
+    "title": "Cookies",
+    "body": "We use Google Analytics to see how the site is used. It only sets cookies if you accept.",
+    "learnMore": "How Google uses data",
+    "accept": "Accept",
+    "decline": "Decline"
   },
   "home": {
     "hero": {
