@@ -1,6 +1,7 @@
 import i18n from '../i18n/index.js';
 import type { ListResult, Option, ResourceSchema, Row, Stat } from './types.js';
 import type { TimerData } from './tools/timers.js';
+import type { ImportBatch, ImportBatchSummary, ImportCandidate, ImportOptions } from './tools/imports.js';
 
 const BASE = '/api/admin';
 
@@ -70,6 +71,20 @@ export const api = {
   timerBosses: () =>
     request<Array<{ encounterID: number; name: string; dungeon: string; pulls: number; runs: number }>>('/tools/timers'),
   timers: (encounterID: number) => request<TimerData>(`/tools/timers/${encounterID}`),
+
+  imports: {
+    options: () => request<ImportOptions>('/tools/imports/options'),
+    list: () => request<ImportBatchSummary[]>('/tools/imports'),
+    get: (id: number) => request<{ batch: ImportBatch; candidates: ImportCandidate[] }>(`/tools/imports/${id}`),
+    create: (body: { character: string; dungeons: number[]; minLevel: number; name: string | null; healerSpecId: number | null }) =>
+      request<{ id: number; found: number }>('/tools/imports', { method: 'POST', body: JSON.stringify(body) }),
+    update: (id: number, body: { name?: string | null; healerSpecId?: number | null }) =>
+      request<{ batch: ImportBatch; candidates: ImportCandidate[] }>(`/tools/imports/${id}`, { method: 'PATCH', body: JSON.stringify(body) }),
+    remove: (id: number) => request<void>(`/tools/imports/${id}`, { method: 'DELETE' }),
+    importCandidate: (id: number, cid: number) =>
+      request<{ ok: boolean; error?: string }>(`/tools/imports/${id}/candidates/${cid}/import`, { method: 'POST' }),
+    removeCandidate: (id: number, cid: number) => request<void>(`/tools/imports/${id}/candidates/${cid}`, { method: 'DELETE' }),
+  },
 
   list(resource: string, params: Record<string, string | number | undefined>): Promise<ListResult> {
     const qs = new URLSearchParams();

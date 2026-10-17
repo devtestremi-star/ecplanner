@@ -1,6 +1,6 @@
 import { Box, Skeleton, Tooltip } from '@mui/material';
 import DOMPurify from 'dompurify';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import { iconFallbackUrl, iconSizeFor, iconUrl, loadTooltip, type SpellSummary } from './catalog.js';
 
 /**
@@ -62,10 +62,12 @@ export interface SpellIconProps {
   size?: number;
   /** Bordure colorée, pour teinter par catégorie ou par classe du lanceur. */
   borderColor?: string;
+  /** Ligne ajoutée en tête du tooltip (l'instant du cast, dans la timeline). */
+  caption?: ReactNode;
 }
 
 /** L'icône seule dans la timeline ; le tooltip n'est chargé qu'au survol. */
-export function SpellIcon({ spell, size = 36, borderColor }: SpellIconProps) {
+export function SpellIcon({ spell, size = 36, borderColor, caption }: SpellIconProps) {
   // L'affichage et la taille servie sont découplés : demander /icons/32/ rendrait un 403.
   const served = iconSizeFor(size);
   // 0 = CDN Blizzard, 1 = repli Wowhead, 2 = les deux ont échoué → « ? ».
@@ -74,7 +76,16 @@ export function SpellIcon({ spell, size = 36, borderColor }: SpellIconProps) {
   const broken = attempt >= 2;
   return (
     <Tooltip
-      title={<TooltipBody spellId={spell.spellId} name={spell.name} />}
+      title={
+        caption ? (
+          <>
+            <Box sx={{ fontSize: '.78rem', fontWeight: 700, color: '#ffd100', mb: .75, fontVariantNumeric: 'tabular-nums' }}>
+              {caption}
+            </Box>
+            <TooltipBody spellId={spell.spellId} name={spell.name} />
+          </>
+        ) : <TooltipBody spellId={spell.spellId} name={spell.name} />
+      }
       enterDelay={250}
       slotProps={{ tooltip: { sx: { bgcolor: '#0b0d11', border: '1px solid #3a4152', maxWidth: 'none', p: 1 } } }}
     >

@@ -27,6 +27,11 @@ export class ScanService {
     });
   }
 
+  /** Client WCL partagé : l'import de masse s'en sert pour lister les clés d'un personnage. */
+  get wcl(): WclClient {
+    return this.client;
+  }
+
   /** Une run terminée est immuable : c'est le seul endroit où le cache est trivialement correct. */
   async findScanned(reportCode: string, fightID: number): Promise<ScannedRun | null> {
     return this.orm.em.fork().findOne(ScannedRun, { reportCode, fightID });

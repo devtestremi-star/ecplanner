@@ -8,6 +8,8 @@ import { ScanJobsPage } from './pages/ScanJobsPage.js';
 import { ScannedBossesPage } from './pages/ScannedBossesPage.js';
 import { SeasonsPage } from './pages/SeasonsPage.js';
 import { SpellsPage } from './pages/SpellsPage.js';
+import { ImportBatchPage } from './tools/ImportBatchPage.js';
+import { MassImportPage } from './tools/MassImportPage.js';
 import { TimerExtractionPage } from './tools/TimerExtractionPage.js';
 
 /**
@@ -30,6 +32,8 @@ export const adminRoute: RouteObject = {
     { path: 'scanned-bosses', element: <ScannedBossesPage /> },
     { path: 'scan-jobs', element: <ScanJobsPage /> },
     { path: 'tools/timers', element: <TimerExtractionPage /> },
+    { path: 'tools/imports', element: <MassImportPage /> },
+    { path: 'tools/imports/:id', element: <ImportBatchPage /> },
     { path: '*', element: <Navigate to="/admin" replace /> },
   ],
 };

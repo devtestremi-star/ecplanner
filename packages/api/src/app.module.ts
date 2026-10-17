@@ -10,7 +10,7 @@ import { PurgeController } from './purge.controller.js';
 import { RunsController } from './runs.controller.js';
 import { SpellsController } from './spells.controller.js';
 import { WowheadService } from './wowhead.service.js';
-import { ScanService } from './scan.service.js';
+import { ScanModule } from './scan.module.js';
 
 @Module({
   imports: [
@@ -20,10 +20,10 @@ import { ScanService } from './scan.service.js';
     MikroOrmModule.forRoot(ormConfig),
     // CRUD générique sur les 9 tables, monté sous /api/admin, derrière une session (AdminGuard).
     AdminModule,
+    ScanModule,
   ],
   controllers: [HealthController, PurgeController, RunsController, SpellsController],
   providers: [
-    ScanService,
     WowheadService,
     // Global, et donc ici plutôt que dans AdminModule : les routes publiques en profitent aussi.
     { provide: APP_FILTER, useClass: DbExceptionFilter },

@@ -17,6 +17,11 @@ export interface CrudPageProps {
   extra?: (row: Row) => ReactNode;
   /** Cette table se remplit par le scan, pas à la main. */
   readOnlyCreate?: boolean;
+  /**
+   * Actions propres à la table, dans une PREMIÈRE colonne : les tables larges défilent, et
+   * en fin de ligne l'action tombait hors de l'écran.
+   */
+  rowActions?: (row: Row) => ReactNode;
 }
 
 const numeric = (f: FieldDef): boolean => f.kind === 'integer';
@@ -172,7 +177,7 @@ function EditDrawer({ schema, id, onClose, onSaved, extra }: {
 
 // ───────────────────────────────────── page ───────────────────────────────────
 
-export function CrudPage({ resource, title, columns, filters, extra, readOnlyCreate }: CrudPageProps) {
+export function CrudPage({ resource, title, columns, filters, extra, readOnlyCreate, rowActions }: CrudPageProps) {
   const { t } = useTranslation();
   const schema = useSchema(resource);
   // L'état de la liste vit dans l'URL : un filtre est partageable et le retour arrière fonctionne.
@@ -263,6 +268,7 @@ export function CrudPage({ resource, title, columns, filters, extra, readOnlyCre
         <table>
           <thead>
             <tr>
+              {rowActions && <th style={{ width: 1 }} />}
               {cols.map((f) => (
                 <th key={f.name} className="sortable" onClick={() => toggleSort(f.name)}>
                   {f.label}
@@ -275,6 +281,7 @@ export function CrudPage({ resource, title, columns, filters, extra, readOnlyCre
           <tbody>
             {data?.rows.map((row) => (
               <tr key={row.__id}>
+                {rowActions && <td className="lead-actions">{rowActions(row)}</td>}
                 {cols.map((f) => (
                   <td key={f.name} className={numeric(f) ? 'num' : undefined}>
                     <Cell field={f} row={row} refs={data.refs} />

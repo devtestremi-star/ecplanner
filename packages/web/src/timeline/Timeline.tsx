@@ -62,6 +62,16 @@ const mmss = (ms: number): string => {
   return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
 };
 
+/**
+ * Instant d'un cast au survol, au dixième : arrondis à la seconde, l'instant réel, celui
+ * de l'ancre et leur écart ne se recoupaient pas toujours (0:04 → 0:10, « -5 s »).
+ */
+const castTime = (ms: number): string => {
+  const tenths = Math.max(0, Math.round(ms / 100));
+  const s = Math.floor(tenths / 10);
+  return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}.${tenths % 10}`;
+};
+
 /** Graduations toutes les 30 s, une étiquette toutes les minutes, jusqu'au bout du ruban. */
 function Ruler({ endSec }: { endSec: number }) {
   const ticks = [];
@@ -289,7 +299,10 @@ export function Timeline({ detail, catalog, categories, hiddenBossSpells, hidden
                               zIndex: bossLane.rowCount - row,
                             }}
                           >
-                            <SpellIcon spell={spell} size={ICON} borderColor={BOSS_COLOR} />
+                            <SpellIcon
+                              spell={spell} size={ICON} borderColor={BOSS_COLOR}
+                              caption={t('timeline.castAt', { time: castTime(c.offsetBoss) })}
+                            />
                           </Box>
                         );
                       })}
@@ -341,7 +354,10 @@ export function Timeline({ detail, catalog, categories, hiddenBossSpells, hidden
                               zIndex: rowCount - row,
                             }}
                           >
-                            <SpellIcon spell={spell} size={ICON} borderColor={p.color ?? undefined} />
+                            <SpellIcon
+                              spell={spell} size={ICON} borderColor={p.color ?? undefined}
+                              caption={<CastCaption offsetBoss={c.offsetBoss} aligned={aligned ? c.ecp_timestamp : null} />}
+                            />
                           </Box>
                         );
                       })}
@@ -355,5 +371,24 @@ export function Timeline({ detail, catalog, categories, hiddenBossSpells, hidden
       })}
       {bySource.size === 0 && <Typography color="text.secondary">{t('timeline.noParticipants')}</Typography>}
     </Stack>
+  );
+}
+
+/**
+ * Tête du tooltip d'un cast de joueur : son instant réel, et, en mode ECP, l'instant de
+ * la capacité de boss sur laquelle il est recalé avec l'écart. Le recalage déplace
+ * l'icône : sans cette ligne, on ne saurait plus quand le sort est vraiment parti.
+ */
+function CastCaption({ offsetBoss, aligned }: { offsetBoss: number; aligned: number | null }) {
+  const { t } = useTranslation();
+  if (aligned === null || aligned === offsetBoss) return <>{t('timeline.castAt', { time: castTime(offsetBoss) })}</>;
+  const delta = (Math.round((offsetBoss - aligned) / 100) / 10).toFixed(1);
+  return (
+    <>
+      {t('timeline.castAt', { time: castTime(offsetBoss) })}
+      <Box component="span" sx={{ display: 'block', color: 'text.secondary', fontWeight: 400 }}>
+        {t('timeline.alignedOn', { time: castTime(aligned), delta: `${offsetBoss > aligned ? '+' : ''}${delta}` })}
+      </Box>
+    </>
   );
 }

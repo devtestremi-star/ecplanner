@@ -29,6 +29,7 @@ export const NAV = [
     group: 'admin.nav.groupTools',
     items: [
       { to: '/admin/tools/timers', key: 'tools-timers', label: 'admin.nav.timerExtraction' },
+      { to: '/admin/tools/imports', key: 'tools-imports', label: 'admin.nav.massImport' },
     ],
   },
 ] as const;

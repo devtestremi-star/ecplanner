@@ -2,7 +2,7 @@ import { UnderscoreNamingStrategy } from '@mikro-orm/core';
 import { Migrator } from '@mikro-orm/migrations';
 import { defineConfig } from '@mikro-orm/postgresql';
 import {
-  Boss, Dungeon, DungeonSeason, ScanJob,
+  Boss, Dungeon, DungeonSeason, ImportBatch, ImportCandidate, ScanJob,
   ScannedBoss, ScannedRun, Season, Spell, SpellAlias, SpellSpec, TraitEntry,
 } from './entities/index.js';
 
@@ -33,6 +33,7 @@ export default defineConfig({
     Season, Dungeon, DungeonSeason, Boss,
     Spell, SpellAlias, SpellSpec, TraitEntry,
     ScannedRun, ScannedBoss, ScanJob,
+    ImportBatch, ImportCandidate,
   ],
   // Pas de metadataProvider par réflexion : chaque décorateur porte son `type`.
   // esbuild (donc tsx) n'émet pas design:type — l'inférence serait un piège en dev.

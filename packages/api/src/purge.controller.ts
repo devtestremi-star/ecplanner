@@ -39,11 +39,20 @@ export class PurgeController {
     const runs = Number(row?.n ?? 0);
     if (runs <= max) return { runs, max, deleted: 0 };
 
-    // La moitié la plus ancienne. `scanned_boss` suit par ON DELETE CASCADE.
+    /**
+     * La moitié la plus ancienne. `scanned_boss` suit par ON DELETE CASCADE.
+     *
+     * Les runs d'un lot d'import de masse sont épargnées : elles ont été choisies une par
+     * une dans l'admin, ce ne sont pas des scans de passage.
+     */
     const toDelete = Math.floor(runs / 2);
     await conn.execute(
       `delete from scanned_run where (report_code, fight_id) in (
-         select report_code, fight_id from scanned_run order by scanned_at asc limit ?
+         select r.report_code, r.fight_id from scanned_run r
+         where not exists (
+           select 1 from import_candidate c where c.report_code = r.report_code and c.fight_id = r.fight_id
+         )
+         order by r.scanned_at asc limit ?
        )`,
       [toDelete],
     );

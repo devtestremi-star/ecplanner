@@ -236,3 +236,38 @@
 .admin .login-box input { width: 100%; }
 .admin .login-box .btn { width: 100%; margin-top: 4px; }
 .admin .nav .logout { margin-top: 6px; width: 100%; text-align: left; }
+
+/* ─────────────────────────────── import de masse ──────────────────────── */
+
+.admin .tool-form {
+  background: var(--adm-panel); border: 1px solid var(--adm-border); border-radius: var(--adm-radius);
+  padding: 16px 18px; max-width: 980px;
+}
+.admin .tool-form .row { display: flex; gap: 14px; flex-wrap: wrap; }
+.admin .tool-form .row .field { min-width: 180px; }
+.admin .tool-form .row .field.grow { flex: 1; }
+.admin .tool-form .field > input:not([type=checkbox]) { width: 100%; }
+.admin .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.admin .chip {
+  padding: 4px 11px; border-radius: 14px; font-size: 12px; cursor: pointer;
+  border: 1px solid var(--adm-border); background: var(--adm-elev); color: var(--adm-dim);
+}
+.admin .chip.on { background: var(--adm-accent-dim); border-color: #3a5f9e; color: #fff; }
+.admin .spec { display: inline-flex; align-items: center; gap: 6px; }
+.admin .spec img { border-radius: 3px; }
+.admin .badge.medal-gold { color: #f0c75e; border-color: #6b5520; }
+.admin .badge.medal-silver { color: #c9d1dc; border-color: #4b525c; }
+.admin .badge.medal-bronze { color: #d69a6a; border-color: #6a4528; }
+.admin .badge.medal-none { color: var(--adm-danger); border-color: var(--adm-danger-dim); }
+.admin .row-actions { display: inline-flex; gap: 4px; align-items: center; }
+.admin .btn.icon { font-size: 16px; line-height: 1; padding: 4px 6px; display: inline-flex; }
+.admin .btn.danger-hover:hover:not(:disabled) { color: var(--adm-danger); }
+.admin .import-error {
+  color: var(--adm-danger); font-size: 12px; display: inline-block; max-width: 280px;
+  overflow: hidden; text-overflow: ellipsis; vertical-align: bottom;
+}
+.admin a.btn:hover { text-decoration: none; }
+.admin td.lead-actions { padding-right: 0; }
+
+.admin .ecp-preview { margin-top: 26px; }
+.admin tbody tr.selected { background: var(--adm-accent-dim); }
