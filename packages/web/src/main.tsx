@@ -26,9 +26,7 @@ const router = createBrowserRouter([
   },
   // Ancienne adresse de l'accueil : les liens déjà partagés doivent continuer de marcher.
   { path: '/scan', element: <Navigate to="/" replace /> },
-  // Admin en local seulement : `import.meta.env.DEV` vaut false au build, Vite élimine la
-  // branche et tout le code de l'admin avec elle. En prod, /admin tombe sur le catch-all.
-  ...(import.meta.env.DEV ? [adminRoute] : []),
+  adminRoute,
   // Le catch-all doit rester EN DERNIER, sinon il avale /admin.
   { path: '*', element: <Navigate to="/" replace /> },
 ]);

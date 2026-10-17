@@ -134,12 +134,19 @@
   },
   "admin": {
     "subtitle": "administration",
+    "login": {
+      "subtitle": "administration - sign in",
+      "password": "Password",
+      "signIn": "Sign in",
+      "signingIn": "Signing in…"
+    },
     "nav": {
       "dashboard": "Dashboard",
       "groupReference": "Reference data",
       "groupScan": "Scan",
       "groupSite": "Site",
       "groupTools": "Tools",
+      "logout": "Sign out",
       "timerExtraction": "Timer extraction",
       "seasons": "Seasons",
       "dungeons": "Dungeons",

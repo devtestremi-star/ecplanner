@@ -11,7 +11,10 @@ export class ApiError extends Error {
   }
 }
 
-/** Pas d'authentification : l'admin n'existe qu'en local (voir `AdminGuard` côté API). */
+/**
+ * La session vit dans un cookie `HttpOnly` posé par l'API : le navigateur l'envoie seul
+ * (même origine), le code n'y touche jamais.
+ */
 function send(path: string, init?: RequestInit): Promise<Response> {
   const headers: Record<string, string> = {};
   if (init?.body) headers['Content-Type'] = 'application/json';
@@ -20,6 +23,8 @@ function send(path: string, init?: RequestInit): Promise<Response> {
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   const res = await send(path, init);
+  // Session expirée en cours de route : la coque de l'admin réaffiche la connexion.
+  if (res.status === 401) for (const fn of unauthorizedListeners) fn();
 
   if (!res.ok) {
     // Nest renvoie `{ message }` — c'est le texte que l'admin doit montrer, pas un code HTTP nu.
@@ -31,6 +36,24 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
   }
   return res.status === 204 ? (undefined as T) : ((await res.json()) as T);
 }
+
+const unauthorizedListeners = new Set<() => void>();
+export const onUnauthorized = (fn: () => void): (() => void) => {
+  unauthorizedListeners.add(fn);
+  return () => unauthorizedListeners.delete(fn);
+};
+
+export interface SessionStatus {
+  /** `open` : local sans mot de passe. `password` : connexion exigée. */
+  mode: 'open' | 'password';
+  authenticated: boolean;
+}
+
+export const session = {
+  status: () => request<SessionStatus>('/session'),
+  login: (password: string) => request<void>('/session', { method: 'POST', body: JSON.stringify({ password }) }),
+  logout: () => request<void>('/session', { method: 'DELETE' }),
+};
 
 /** Le schéma ne change pas d'un rendu à l'autre : une seule requête pour toute la session. */
 let schemaPromise: Promise<ResourceSchema[]> | null = null;

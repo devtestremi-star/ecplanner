@@ -20,7 +20,7 @@ const schemaOf = (def: ResourceDef) => ({
  * Un contrôleur pour les 9 tables. Tout ce qui les différencie vit dans `resources.ts` ;
  * ici il n'y a que le transport.
  *
- * Local uniquement : voir `AdminGuard`.
+ * Protégé par `AdminGuard` (session par mot de passe).
  */
 @Controller('admin')
 @UseGuards(AdminGuard)

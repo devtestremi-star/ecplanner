@@ -56,13 +56,13 @@ Coût : 0 $. Le front est servi en statique, toute l'API passe par une seule fon
 2. **Projet Vercel** : importer le dépôt (ou `npx vercel deploy`). `vercel.json` porte le
    build, les rewrites et le cron ; rien à régler dans le dashboard côté build.
 3. **Variables d'environnement** (dashboard Vercel) :
-   `DATABASE_URL`, `WCL_CLIENT_ID`, `WCL_CLIENT_SECRET`, `CRON_SECRET`,
+   `DATABASE_URL`, `WCL_CLIENT_ID`, `WCL_CLIENT_SECRET`, `ADMIN_PASSWORD`, `ADMIN_SESSION_SECRET`, `CRON_SECRET`,
    et optionnellement `PURGE_MAX_RUNS` (27 000 par défaut).
 4. **Vérifier** : `/api/health` doit répondre `{"db":"up"}`.
 
 | Point | Comportement |
 |---|---|
-| `/api/admin` | **Local uniquement.** Une fois déployé, le module n'est pas monté (404) et la page `/admin` est absente du build. Pour administrer la prod : `npm run dev:api:neon` (API locale sur la base Neon de `.env.neon`) + `npm run dev:web`, puis http://localhost:5173/admin. |
+| `/api/admin` | Connexion par mot de passe (`ADMIN_PASSWORD`) sur `/admin`, qui pose un cookie de session `HttpOnly`, `Secure`, `SameSite=Strict`, signé avec `ADMIN_SESSION_SECRET`, valable 7 jours. 5 échecs par IP en 15 min bloquent (compteur par instance). Sans ces deux variables : ouvert en local, **404** une fois déployé. `npm run dev:api:neon` lance aussi l'API locale sur la base Neon. |
 | `/api/cron/purge` | Appelé chaque jour par Vercel. Au-delà de `PURGE_MAX_RUNS` runs, supprime la moitié la plus ancienne (`scanned_at`). Seuil en NOMBRE de runs : un DELETE ne réduit pas `pg_database_size()`. |
 | Pool | Sur Vercel (`VERCEL=1`), 2 connexions max par instance ; c'est le pooler Neon qui mutualise. |
 | Migrations | `packages/db/src/migrations/`. À appliquer sur Neon après chaque ajout : `DATABASE_URL='<url non poolée>' npm run -w @timeline/db migration:up`. Une correction de données va AUSSI dans le JSON du seed, qui reste la source de vérité. |

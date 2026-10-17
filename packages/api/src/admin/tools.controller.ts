@@ -12,7 +12,7 @@ interface PullRow {
 }
 
 /**
- * Outils d'admin, hors CRUD. Local uniquement, comme le reste de l'admin.
+ * Outils d'admin, hors CRUD. Même garde que le reste de l'admin.
  *
  * Extraction de timers : on rend les casts BRUTS de chaque combat (instants relatifs au
  * pull), et c'est le front qui fait les moyennes. Cocher ou décocher une run recalcule
